@@ -1,0 +1,5 @@
+node_modules/
+.book-dist/
+__pycache__/
+.DS_Store
+.shots/

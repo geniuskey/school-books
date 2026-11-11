@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"page": "stamps", "title": "도장 수첩 · 고등 뉴스 속 수학과 과학", "desc": "뉴스 속 수학과 과학에서 모은 도장. 장마다 확인 문제 세 개를 풀면 도장이 하나씩 찍혀요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도장 수첩 · 고등 뉴스 속 수학과 과학</title>
+<meta name="description" content="뉴스 속 수학과 과학에서 모은 도장. 장마다 확인 문제 세 개를 풀면 도장이 하나씩 찍혀요.">
+<link rel="canonical" href="https://school.euiyun.com/high/stamps.html">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#7a2350">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="도장 수첩 · 고등 뉴스 속 수학과 과학">
+<meta property="og:description" content="뉴스 속 수학과 과학에서 모은 도장. 장마다 확인 문제 세 개를 풀면 도장이 하나씩 찍혀요.">
+<meta property="og:url" content="https://school.euiyun.com/high/stamps.html">
+<meta property="og:image" content="https://school.euiyun.com/high/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"도장 수첩 · 고등 뉴스 속 수학과 과학","description":"뉴스 속 수학과 과학에서 모은 도장. 장마다 확인 문제 세 개를 풀면 도장이 하나씩 찍혀요.","url":"https://school.euiyun.com/high/stamps.html","inLanguage":"ko","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/high/#book","name":"뉴스 속 수학과 과학","url":"https://school.euiyun.com/high/"}}</script>
+<link rel="stylesheet" href="../shared/css/style.css">
+<script src="book.js"></script>
+<script src="../shared/js/sim.js"></script>
+<script src="../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body data-book="high" data-page="stamps">
+<main class="wrap">
+  <section class="book-hero" style="grid-template-columns:1fr">
+    <div>
+      <p class="kicker">고등 · 뉴스 속 수학과 과학</p>
+      <h1>도장 수첩</h1>
+      <p class="lead">장마다 확인 문제 세 개를 다 풀면 도장이 하나씩 찍혀요. 몇 번을 다시 풀어도 괜찮아요.</p>
+      <p class="stamp-count" id="count" aria-live="polite"></p>
+    </div>
+  </section>
+  <div class="stampbook" id="book"></div>
+  <p class="small">도장은 이 기기의 브라우저에만 저장돼요. 다른 기기와 나누지 않고, 저장이 막힌 브라우저(사생활 보호 창 등)에서는 창을 닫으면 사라져요.</p>
+  <div class="btn-row" style="justify-content:flex-start"><button class="btn" type="button" id="clear">도장 모두 지우기</button></div>
+</main>
+<script>
+SB.ready(() => {
+  const box = document.getElementById('book');
+  function draw() {
+    const got = SB.stamps();
+    const list = SB.book.chapters;
+    box.innerHTML = list.map((c) => {
+      const s = got[c.slug];
+      const num = String(c.num).padStart(2, '0');
+      const inner = s ? SB.stampFor(c.slug, s.date, 'still') : `<span class="empty">${num}</span>`;
+      const cap = `<span class="cap">${SB.esc(c.title)}</span>` + (s ? `<span class="date">${s.date}</span>` : (c.ready ? '' : '<span class="date">준비 중</span>'));
+      return c.ready ? `<a class="slot" href="chapters/${c.slug}.html">${inner}${cap}</a>` : `<div class="slot off">${inner}${cap}</div>`;
+    }).join('');
+    const n = list.filter((c) => got[c.slug]).length;
+    document.getElementById('count').textContent = `${list.length}개 중 ${n}개를 모았어요`;
+  }
+  draw();
+  document.getElementById('clear').addEventListener('click', () => {
+    if (!confirm('모은 도장을 모두 지울까요?')) return;
+    SB.store.remove('stamps:' + SB.book.id);
+    draw();
+  });
+});
+</script>
+</body>
+</html>

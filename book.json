@@ -1,0 +1,15 @@
+{
+  "id": "schoolbooks",
+  "title": "SchoolBooks",
+  "description": "그 나이엔 이 정도는, 만지며 배우는 수학과 과학. 초등·중등·고등 교과서의 수학과 과학을 생활 속 질문 하나로 시작해, 먼저 예상하고 직접 해 보고 플랩을 들춰 확인하는 그림책 같은 서가.",
+  "url": "https://school.euiyun.com/",
+  "repo": "https://github.com/geniuskey/school-books",
+  "field": "school",
+  "status": "writing",
+  "domain": "school.euiyun.com",
+  "books": [
+    "elementary/book.json",
+    "middle/book.json",
+    "high/book.json"
+  ]
+}
