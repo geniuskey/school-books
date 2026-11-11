@@ -103,3 +103,20 @@ test('고등 11장: 충격량', () => {
   // 속도가 두 배면 충격량도 두 배
   near(SIM.momentum(60, 2 * v) / SIM.momentum(60, v), 2)
 })
+
+test('고등 11장: 충돌 힘 곡선', () => {
+  // 곡선 아래 넓이 = 평균 힘 × 시간 (같은 충격량)
+  for (const T of [0.03, 0.1, 0.15]) {
+    let a = 0; const n = 20000, dt = T / n
+    for (let i = 0; i < n; i++) a += SIM.humpForce(14, T, (i + 0.5) * dt) * dt
+    near(a, 14 * T, 1e-6)
+  }
+  near(SIM.humpForce(10, 0.1, 0.05), 10 * Math.PI / 2, 1e-12)
+  assert.equal(SIM.humpForce(10, 0.1, -0.01), 0)
+  assert.equal(SIM.humpForce(10, 0.1, 0.2), 0)
+  // 시속 50km: 맨몸 0.03초 약 47배, 벨트 0.1초 약 14배, 에어백 0.15초 약 9배 / 시속 80km 벨트 약 23배, 에어백 약 15배
+  const k = (kmh, T) => SIM.timesWeight(SIM.stopForce(60, SIM.kmhToMs(kmh), T), 60)
+  assert.deepEqual([k(50, 0.03), k(50, 0.1), k(50, 0.15), k(80, 0.1), k(80, 0.15)].map(Math.round), [47, 14, 9, 23, 15])
+  // 시속 80km 맨몸도 최고 힘이 그래프(120배) 안에 들어온다
+  assert.ok(k(80, 0.03) * Math.PI / 2 < 120)
+})

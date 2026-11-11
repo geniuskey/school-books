@@ -106,6 +106,8 @@
   const stopDistance = (v, t) => (v * t) / 2;
   // 힘이 몸무게(m·g)의 몇 배인가
   const timesWeight = (F, m) => F / (m * G);
+  // 충돌 힘의 모양: T초 동안 사인 반 주기로 솟았다 줄어든다. 넓이(충격량)는 평균 힘 × T와 같고 최고 힘은 평균의 π/2배.
+  const humpForce = (avg, T, t) => (t <= 0 || t >= T ? 0 : (Math.PI / 2) * avg * Math.sin((Math.PI * t) / T));
 
   const SIM = {
     clamp, lerp, round, deg, rad, gcd, lcm, rng, randInt,
@@ -114,7 +116,7 @@
     simplify, sameFraction,
     rectArea, rectPerimeter, rectsWithPerimeter,
     shadowLength, diceSumWays, rollSums, mean, median, compound, simpleInterest, dist, moonLitFraction,
-    G, kmhToMs, momentum, stopForce, stopDistance, timesWeight
+    G, kmhToMs, momentum, stopForce, stopDistance, timesWeight, humpForce
   };
   if (typeof module !== "undefined" && module.exports) module.exports = SIM;
   else root.SIM = SIM;
