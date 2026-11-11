@@ -1,0 +1,481 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "축척 1:50,000 지도에서 2cm는 실제로 얼마일까요? 우리 동네 지도의 축척을 바꾸고 자를 끌어 재며 비와 축척, 그리고 왜 뒤의 수가 클수록 지도가 덜 자세한지 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지도 속 1cm는 실제로 몇 m일까요? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="축척 1:50,000 지도에서 2cm는 실제로 얼마일까요? 우리 동네 지도의 축척을 바꾸고 자를 끌어 재며 비와 축척, 그리고 왜 뒤의 수가 클수록 지도가 덜 자세한지 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/map.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="지도 속 1cm는 실제로 몇 m일까요? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="축척 1:50,000 지도에서 2cm는 실제로 얼마일까요? 우리 동네 지도의 축척을 바꾸고 자를 끌어 재며 비와 축척, 그리고 왜 뒤의 수가 클수록 지도가 덜 자세한지 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/map.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/map.html#chapter","name":"지도 속 1cm는 실제로 몇 m일까요?","headline":"지도 속 1cm는 실제로 몇 m일까요? · 초등 하루의 수학과 과학","description":"축척 1:50,000 지도에서 2cm는 실제로 얼마일까요? 우리 동네 지도의 축척을 바꾸고 자를 끌어 재며 비와 축척, 그리고 왜 뒤의 수가 클수록 지도가 덜 자세한지 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/map.html","position":11,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"비와 비율, 축척, 백분율","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"11. 지도 속 1cm는 실제로 몇 m일까요?","item":"https://school.euiyun.com/elementary/chapters/map.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  .mapsvg { touch-action: none; }
+  .mapsvg .m-paper { fill: var(--card); }
+  .mapsvg .m-land { fill: var(--paper); }
+  .mapsvg .m-river { fill: none; stroke: var(--water); stroke-opacity: .45; stroke-linecap: round; stroke-linejoin: round; }
+  .mapsvg .m-road { fill: none; stroke: var(--glow); stroke-opacity: .75; stroke-linecap: round; }
+  .mapsvg .m-road-edge { fill: none; stroke: var(--ink-soft); stroke-linecap: round; }
+  .mapsvg .m-street { fill: none; stroke: var(--ink-faint); stroke-opacity: .55; }
+  .mapsvg .m-rail { fill: none; stroke: var(--ink); stroke-width: 2.4; }
+  .mapsvg .m-rail-dash { fill: none; stroke: var(--card); stroke-width: 1.4; stroke-dasharray: 6 6; }
+  .mapsvg .m-house { fill: var(--wash-pink); stroke: var(--ink-soft); stroke-width: .8; }
+  .mapsvg .m-park { fill: var(--wash-green); stroke: var(--life); stroke-width: 1; }
+  .mapsvg .m-bld { fill: var(--wash-warm); stroke: var(--ink); stroke-width: 1.2; }
+  .mapsvg .m-contour { fill: none; stroke: var(--life); stroke-width: 1; stroke-opacity: .8; }
+  .mapsvg .m-dot { fill: var(--card); stroke: var(--ink); stroke-width: 1.6; }
+  .mapsvg .m-home { fill: var(--accent); stroke: var(--card); stroke-width: 1.5; }
+  .mapsvg .m-lbl { font-size: 13px; paint-order: stroke; stroke: var(--card); stroke-width: 3.5px; stroke-linejoin: round; }
+  .mapsvg .m-lbl.water { fill: var(--water); font-size: 12px; }
+  .mapsvg .m-frame { fill: none; stroke: var(--ink); stroke-width: 2; }
+  .mapsvg .m-title { font-size: 13px; }
+  .mapsvg .m-scale { font-size: 18px; fill: var(--accent); }
+  .mapsvg .m-bar { fill: var(--ink); }
+  .mapsvg .m-bar2 { fill: var(--card); stroke: var(--ink); stroke-width: 1; }
+  .mapsvg .m-sbtxt { font-size: 12px; }
+  #ruler .strip { fill: var(--card); fill-opacity: .82; stroke: var(--accent); stroke-width: 1.6; }
+  #ruler .tick { stroke: var(--ink); stroke-width: 1; }
+  #ruler .tick.cm { stroke-width: 1.6; }
+  #ruler .rn { font-size: 12px; text-anchor: middle; }
+  #ruler .edge { stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; }
+  .figrow { display: grid; gap: 4px 12px; }
+  @media (min-width: 560px) { .figrow { grid-template-columns: 1fr 1fr; } }
+  .figrow figure { margin: 0 0 8px; }
+  #map-calc { text-align: center; color: var(--ink-soft); font-size: .95rem; margin: -4px 0 6px; min-height: 1.6em; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="map">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">18:30</span><span class="chip math">수학</span><span>읽는 시간 10분</span></div>
+    <h1>지도 속 1cm는 실제로 몇 m일까요?</h1>
+    <p class="unit">비와 비율, 축척, 백분율</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="저녁 식탁 위에 동네 지도가 펼쳐져 있다. 지도 귀퉁이에 1:50,000이라고 적혀 있다. 지우가 자를 대고, 고양이 두부는 지도 한쪽 위에 앉아 있다.">
+        <g filter="url(#sb-ink)">
+          <!-- 전등 -->
+          <path class="ink-thin" d="M250 0 V30"/>
+          <path class="glow-halo" d="M196 70 L304 70 L340 170 L160 170 Z" opacity=".55"/>
+          <path class="fill-card" d="M226 30 H274 L290 62 H210 Z"/>
+          <path class="ink" d="M226 30 H274 L290 62 H210 Z"/>
+          <ellipse class="glow" cx="250" cy="64" rx="12" ry="4"/>
+          <!-- 식탁 -->
+          <path class="wash-warm" d="M40 168 H440 L470 268 H10 Z"/>
+          <path class="ink" d="M40 168 H440 L470 268 H10 Z"/>
+          <!-- 지도 -->
+          <path class="fill-card" d="M110 178 L388 174 L404 256 L92 262 Z"/>
+          <path class="ink" d="M110 178 L388 174 L404 256 L92 262 Z"/>
+          <path class="ink-soft" d="M248 176 L250 259"/>
+          <path style="fill:none;stroke:var(--water);stroke-width:7;stroke-opacity:.45;stroke-linecap:round" d="M104 204 C150 196 190 214 232 204 C276 194 330 208 392 196"/>
+          <path style="fill:none;stroke:var(--glow);stroke-width:3.4;stroke-opacity:.8" d="M178 177 L170 260 M100 232 L400 224"/>
+          <path class="m-contour" style="fill:none;stroke:var(--life);stroke-width:1.2" d="M314 238 c10 -14 40 -14 50 0 c-10 10 -40 10 -50 0 M324 238 c6 -7 24 -7 30 0 c-6 5 -24 5 -30 0"/>
+          <path class="wash-pink" d="M206 236 h12 v10 h-12 z"/>
+          <circle class="fill-accent" cx="212" cy="240" r="3.4"/>
+          <rect class="fill-card" x="330" y="244" width="62" height="14"/>
+          <!-- 자 -->
+          <path class="fill-card" d="M150 246 L262 220 L266 232 L154 258 Z"/>
+          <path class="ink-thin" d="M150 246 L262 220 L266 232 L154 258 Z M164 243 l2 5 M178 240 l1 3 M192 236 l2 5 M206 233 l1 3 M220 230 l2 5 M234 227 l1 3 M248 223 l2 5"/>
+          <!-- 지우 -->
+          <circle class="fill-card" cx="90" cy="112" r="24"/>
+          <circle class="ink" cx="90" cy="112" r="24"/>
+          <path class="fill-ink" d="M66 116 C62 84 118 82 114 116 C110 100 100 94 90 94 C80 94 70 100 66 116 Z"/>
+          <circle class="fill-ink" cx="86" cy="116" r="2"/><circle class="fill-ink" cx="100" cy="116" r="2"/>
+          <path class="ink-thin" d="M88 126 q5 3 10 0"/>
+          <path class="fill-card" d="M70 136 C60 146 56 160 58 172 H122 C122 158 118 146 110 136 Z"/>
+          <path class="ink" d="M70 136 C60 146 56 160 58 172 M110 136 C118 146 122 158 122 172"/>
+          <path class="ink" d="M116 150 C130 170 140 200 150 240"/>
+          <circle class="fill-card" cx="152" cy="244" r="6"/><circle class="ink-thin" cx="152" cy="244" r="6"/>
+          <!-- 두부: 지도 위에 앉아 있다 -->
+          <path class="fill-card" d="M352 214 C346 182 360 160 384 160 C408 160 424 182 420 214 Z"/>
+          <path class="ink" d="M352 214 C346 182 360 160 384 160 C408 160 424 182 420 214 M360 170 L358 146 L374 162 M394 162 L410 146 L410 170"/>
+          <path class="ink-thin" d="M370 180 q4 3 8 0 M390 180 q4 3 8 0 M382 188 l2 2 l2 -2"/>
+          <path class="ink" d="M420 206 C440 210 448 196 440 186"/>
+          <path class="ink-thin" d="M362 214 v-8 M410 214 v-8"/>
+        </g>
+        <text x="334" y="255" font-size="10" style="fill:var(--accent)">1:50,000</text>
+      </svg>
+    </figure>
+    <p>저녁을 먹고 아빠가 종이 지도를 펼쳐요. 주말에 자전거로 갈 길을 같이 정하재요.</p>
+    <p>지도 귀퉁이에 "1:50,000"이라고 적혀 있어요. 두부는 하필 지도 귀퉁이에 앉아요.</p>
+    <p class="question">이 지도에서 2cm는 실제로 얼마나 될까요?</p>
+  </section>
+
+  <section class="predict card" id="p-map" data-id="map" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">축척 1:50,000 지도의 2cm는 실제로?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 100m는 학교 운동장 한 바퀴쯤이에요. 50,000이라는 수는 생각보다 커요.">100m</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 자로 직접 재어 보며 확인해 봐요.">1km</button>
+      <button class="choice" data-v="c" data-echo="좋은 예상이에요. 그런데 10km는 지도 2cm로는 너무 멀어요. 자로 재어 봐요.">10km</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="map-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>지우네 동네 지도예요. 자의 두 끝을 끌어 여러 곳을 재어 보고, 축척을 바꿔 봐요.</p>
+    <figure class="stage">
+      <svg class="drawing mapsvg" id="map-svg" viewBox="0 0 360 300" role="img" aria-label="지우네 동네 지도와 그 위에 놓인 자. 축척을 바꾸면 같은 동네가 크게 또는 작게 그려진다.">
+        <defs><clipPath id="map-clip"><rect x="0" y="0" width="360" height="300"/></clipPath></defs>
+        <g clip-path="url(#map-clip)"><g id="map-layer"></g></g>
+        <rect class="m-frame" x="0" y="0" width="360" height="300" filter="url(#sb-ink)"/>
+        <g id="ruler"></g>
+        <g id="hA" aria-label="자의 왼쪽 끝"><circle class="hit" r="27"/><circle class="knob" r="9"/></g>
+        <g id="hB" aria-label="자의 오른쪽 끝"><circle class="hit" r="27"/><circle class="knob" r="9"/></g>
+      </svg>
+    </figure>
+    <p class="readout" id="map-read" aria-live="polite"></p>
+    <p id="map-calc"></p>
+    <div class="controls">
+      <div class="slider">
+        <label for="k">축척 <output for="k"></output></label>
+        <input type="range" id="k" min="0" max="3" step="1" value="3">
+      </div>
+      <div class="btn-row">
+        <button class="btn" type="button" id="to-lib">집에서 도서관까지</button>
+        <button class="btn" type="button" id="to-2cm">자를 2cm로</button>
+      </div>
+    </div>
+    <p class="simplified">화면의 1cm는 기기마다 실제 1cm와 달라요. 그림 속 자의 눈금을 1cm로 봐요. 지우네 동네는 지어낸 곳이에요.</p>
+  </section>
+
+  <section class="flap" id="f-map" data-for="p-map" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 1km예요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 360 150" role="img" aria-label="지도 위 1cm는 실제 50,000cm, 곧 500m. 지도 위 2cm는 500m가 두 번이라 1km.">
+          <g filter="url(#sb-ink)">
+            <path class="fill-card" d="M20 18 H120 V44 H20 Z"/>
+            <path class="ink" d="M20 18 H120 V44 H20 Z M70 18 V44"/>
+            <path class="ink-thin" d="M30 18 v6 M40 18 v6 M50 18 v6 M60 18 v6 M80 18 v6 M90 18 v6 M100 18 v6 M110 18 v6"/>
+            <rect class="glow-halo" x="20" y="104" width="160" height="22"/>
+            <rect class="wash-cool" x="180" y="104" width="160" height="22"/>
+            <path class="ink" d="M20 104 H340 V126 H20 Z M180 104 V126"/>
+            <path class="ink-soft" d="M20 46 L20 102 M70 46 L180 102 M120 46 L340 102"/>
+          </g>
+          <text x="45" y="38" font-size="15" text-anchor="middle">1cm</text>
+          <text x="95" y="38" font-size="15" text-anchor="middle">1cm</text>
+          <text x="134" y="36" font-size="15">지도</text>
+          <text x="100" y="121" font-size="16" text-anchor="middle">50,000cm = 500m</text>
+          <text x="260" y="121" font-size="16" text-anchor="middle">500m</text>
+          <text x="180" y="146" font-size="17" text-anchor="middle" style="fill:var(--accent)">실제로 1,000m = 1km</text>
+          <text x="236" y="70" font-size="14" style="fill:var(--ink-soft)">50,000배로 늘리면</text>
+        </svg>
+      </figure>
+      <p>"1:50,000"은 "1 대 50,000"이라고 읽어요. 두 수를 이렇게 견주어 나타낸 것을 <span class="term">비</span>라고 해요.</p>
+      <p>지도 위 길이와 실제 길이의 비가 <span class="term">축척</span>이에요. 지도의 1cm는 실제로 50,000cm예요.</p>
+      <p>100cm가 1m이니 50,000cm는 500m예요. 2cm는 500m가 두 번, 곧 1,000m라서 1km예요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">축척 뒤의 수가 클수록 더 자세한 지도예요.</span><span class="no">반대예요</span></p>
+    <div class="figrow">
+      <figure>
+        <svg class="drawing" viewBox="0 0 176 156" role="img" aria-label="1:5,000 지도. 집 하나하나와 골목이 보인다.">
+          <g id="mini-a" transform="translate(4 4)"></g>
+          <text x="88" y="152" font-size="14" text-anchor="middle">1:5,000 · 골목까지</text>
+        </svg>
+      </figure>
+      <figure>
+        <svg class="drawing" viewBox="0 0 176 156" role="img" aria-label="같은 크기 종이의 1:50,000 지도. 강과 학교, 동네 전체가 작게 보이고 집 하나하나는 빠졌다.">
+          <g id="mini-b" transform="translate(4 4)"></g>
+          <text x="88" y="152" font-size="14" text-anchor="middle">1:50,000 · 동네 전체</text>
+        </svg>
+      </figure>
+    </div>
+    <p>뒤의 수가 크면 실제 땅을 더 많이 줄인 거예요. 같은 종이에 넓은 곳이 담기는 대신, 집이나 골목은 너무 작아 빠져요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="fill-card" x="14" y="4" width="28" height="48" rx="5"/><path class="ink" d="M14 9 a5 5 0 0 1 5 -5 h18 a5 5 0 0 1 5 5 v38 a5 5 0 0 1 -5 5 h-18 a5 5 0 0 1 -5 -5 z"/><rect class="wash-cool" x="17" y="10" width="22" height="32"/><path class="ink-thin" d="M19 37 h12 M19 35 v4 M31 35 v4"/><circle class="fill-accent" cx="28" cy="22" r="2.5"/></g></svg>
+        <span>지도 앱을 확대하면 아래 막대가 "1km"에서 "100m"로 바뀌어요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-pink" d="M8 34 L14 24 H38 L46 34 Z"/><path class="ink" d="M6 40 V34 L14 24 H38 L46 34 H50 V40 Z"/><circle class="fill-card" cx="16" cy="41" r="5"/><circle class="ink" cx="16" cy="41" r="5"/><circle class="fill-card" cx="40" cy="41" r="5"/><circle class="ink" cx="40" cy="41" r="5"/></g></svg>
+        <span>1:64 장난감 자동차는 진짜 차를 64분의 1로 줄인 모형이에요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="fill-card" x="6" y="8" width="44" height="40"/><path class="ink" d="M6 8 H50 V48 H6 Z M28 8 V30 M6 30 H40 M40 30 V48"/><path class="ink-thin" d="M28 20 a8 8 0 0 1 8 8"/></g></svg>
+        <span>집 평면도가 1:100이면 도면의 1cm가 실제 1m예요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 지도를 복사기로 줄이면?</summary>
+    <p>1:50,000은 실제 길이를 50,000분의 1로 줄였다는 뜻이에요. 이 지도를 복사기로 50%, 곧 반으로 줄여 볼까요?</p>
+    <p>지도의 2cm가 1cm가 되지만 가리키는 곳은 그대로 1km예요. 이제 1cm가 1km이니 축척은 1:100,000이 돼요. 종이에 적힌 "1:50,000"은 틀린 말이 되어 버려요.</p>
+    <p>그래서 지도에는 숫자 축척과 함께 막대 축척을 그려요. 막대는 지도와 함께 줄어드니 복사해도 맞아요. 해 보기 지도의 왼쪽 아래 막대가 바로 그거예요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>등산 지도는 흔히 1:25,000이라 지도의 4cm가 1km예요. 실을 구불구불한 길 모양대로 놓았다가 펴서 자로 재면, 앱 없이도 걸을 거리를 어림할 수 있어요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">축척 1:50,000은 지도의 1cm가 실제 50,000cm라는 뜻.<br>뒤의 수가 클수록 넓게, 덜 자세하게 그려요.</p>
+    <div class="quiz" data-stamp="map">
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">축척 1:10,000 지도에서 3cm는 실제로 얼마일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="1cm가 10,000cm예요. 10,000cm는 몇 m일까요? 100cm가 1m예요.">30m</button>
+          <button class="opt">300m</button>
+          <button class="opt" data-hint="3km는 300,000cm예요. 0을 하나 덜 붙여 봐요.">3km</button>
+        </div>
+        <p class="why">1cm가 10,000cm, 곧 100m라서 3cm는 300m예요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">같은 크기 종이에 그린 두 지도 중 더 넓은 지역이 담긴 것은?</p>
+        <div class="opts">
+          <button class="opt" data-hint="1:5,000은 덜 줄인 지도예요. 해 보기에서 축척을 바꿔 보며 비교해 봐요.">1:5,000 지도</button>
+          <button class="opt">1:50,000 지도</button>
+          <button class="opt" data-hint="종이 크기가 같아도 얼마나 줄였는지가 달라요.">둘이 같아요</button>
+        </div>
+        <p class="why">더 많이 줄였으니 같은 종이에 더 넓은 곳이 담겨요.</p>
+      </div>
+      <div class="quiz-q" data-answer="0">
+        <p class="qtext">실제 1km는 축척 1:25,000 지도에서 몇 cm일까요?</p>
+        <div class="opts">
+          <button class="opt">4cm</button>
+          <button class="opt" data-hint="1:25,000 지도의 1cm는 실제 250m예요. 1km가 되려면 몇 cm가 필요할까요?">25cm</button>
+          <button class="opt" data-hint="2.5cm면 250m가 두 번 반이에요. 1km에 모자라요.">2.5cm</button>
+        </div>
+        <p class="why">1cm가 250m라서, 250m를 네 번 모은 4cm가 1km예요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const SCALES = [5000, 10000, 25000, 50000];
+  const W = 360, H = 300, CM = 40; // 그림에서 1cm = 40칸
+
+  /* ---------- 지우네 동네(지어낸 곳). 좌표는 집에서 잰 실제 미터: 오른쪽이 동쪽, 아래가 남쪽 ---------- */
+  const RIVER = [[-4000, -1080], [-2400, -1010], [-1300, -1180], [-300, -1050], [700, -1220], [1700, -1110], [2800, -1300], [4000, -1170]];
+  const ROADS = [[[-4000, -220], [4000, -220]], [[320, 4000], [320, -4000]]];
+  const RAIL = [[-4000, 1000], [4000, 200]];
+  const PLACES = [
+    { name: '집', x: 0, y: 0, kind: 'home', min: 0 },
+    { name: '놀이터', x: 130, y: -100, w: 50, h: 40, kind: 'park', max: 10000 },
+    { name: '편의점', x: -150, y: 60, w: 24, h: 18, kind: 'bld', max: 10000 },
+    { name: '공원', x: -380, y: -380, w: 260, h: 200, kind: 'park', max: 25000 },
+    { name: '우체국', x: 420, y: 260, w: 40, h: 30, kind: 'bld', max: 10000 },
+    { name: '학교', x: 900, y: -700, w: 170, h: 120, kind: 'bld' },
+    { name: '도서관', x: 600, y: 800, w: 80, h: 60, kind: 'bld' },
+    { name: '다리', x: 320, y: -1120, kind: 'dot' },
+    { name: '기차역', x: 1700, y: 430, w: 140, h: 50, kind: 'bld' },
+    { name: '뒷산', x: -1600, y: -900, kind: 'hill' }
+  ];
+  // 집 가까이 골목(100m마다)과 집들
+  const rnd = SIM.rng(11);
+  const HOUSES = [];
+  for (let gx = -700; gx < 700; gx += 100) for (let gy = -700; gy < 700; gy += 100) {
+    if (gy === -300 || gx === 300) continue; // 큰길 옆 칸은 비운다
+    const inPark = gx >= -510 && gx < -250 && gy >= -480 && gy < -280;
+    if (inPark || (gx === 100 && gy === -200)) continue;
+    for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) if (rnd() < 0.82) HOUSES.push([gx + 12 + i * 46 + rnd() * 6, gy + 12 + j * 46 + rnd() * 6, 26 + rnd() * 10, 22 + rnd() * 10]);
+  }
+
+  function render(g, k, w, h, cx, cy, labels) {
+    g.textContent = '';
+    const u = (CM * 100) / k; // 실제 1m가 그림에서 몇 칸인가
+    const X = (x) => cx + x * u, Y = (y) => cy + y * u;
+    const line = (pts) => 'M' + pts.map((p) => X(p[0]).toFixed(1) + ' ' + Y(p[1]).toFixed(1)).join(' L');
+    const vis = (x, y, m) => X(x) > -m && X(x) < w + m && Y(y) > -m && Y(y) < h + m;
+    S('rect', { x: 0, y: 0, width: w, height: h, class: 'm-land' }, g);
+    // 뒷산 등고선(50m 간격으로 높아진다고 보고 그린 세 줄)
+    const hill = PLACES.find((p) => p.kind === 'hill');
+    [[520, 360], [360, 240], [200, 130]].forEach(([rx, ry]) => S('ellipse', { cx: X(hill.x), cy: Y(hill.y), rx: Math.max(rx * u, 1), ry: Math.max(ry * u, 1), class: 'm-contour' }, g));
+    // 골목: 100m가 그림에서 12칸보다 넓을 때만
+    if (100 * u >= 12) {
+      let d = '';
+      for (let v = -800; v <= 800; v += 100) { d += `M${X(v)} ${Y(-800)} V${Y(800)} M${X(-800)} ${Y(v)} H${X(800)} `; }
+      S('path', { d, class: 'm-street', 'stroke-width': Math.min(1.2, Math.max(0.6, 8 * u)) }, g);
+    }
+    // 덜 자세한 지도에서는 집 하나하나 대신 집이 모인 곳을 한 덩어리로 칠한다
+    if (k > 10000) S('rect', { x: X(-720), y: Y(-720), width: 1440 * u, height: 1440 * u, rx: 60 * u, class: 'm-house', opacity: .55, 'stroke-width': 0 }, g);
+    // 집들: 1:10,000보다 자세할 때만
+    if (k <= 10000) HOUSES.forEach(([x, y, a, b]) => { if (vis(x, y, 20)) S('rect', { x: X(x), y: Y(y), width: a * u, height: b * u, class: 'm-house' }, g); });
+    // 강
+    S('path', { d: line(RIVER), class: 'm-river', 'stroke-width': Math.max(70 * u, 3) }, g);
+    // 큰길
+    ROADS.forEach((r) => {
+      const wd = Math.max(22 * u, 2.6);
+      S('path', { d: line(r), class: 'm-road-edge', 'stroke-width': wd + 1.6 }, g);
+      S('path', { d: line(r), class: 'm-road', 'stroke-width': wd }, g);
+    });
+    // 철길
+    S('path', { d: line(RAIL), class: 'm-rail' }, g);
+    S('path', { d: line(RAIL), class: 'm-rail-dash' }, g);
+    // 장소
+    PLACES.forEach((p) => {
+      if (p.max && k > p.max) return;
+      if (!vis(p.x, p.y, 40)) return;
+      const px = X(p.x), py = Y(p.y);
+      if (p.kind === 'home') {
+        S('path', { d: `M${px} ${py - 8} L${px + 7} ${py - 1} V${py + 6} H${px - 7} V${py - 1} Z`, class: 'm-home' }, g);
+      } else if (p.kind === 'park' || p.kind === 'bld') {
+        const ww = p.w * u, hh = p.h * u;
+        if (ww >= 5) S('rect', { x: px - ww / 2, y: py - hh / 2, width: ww, height: hh, class: p.kind === 'park' ? 'm-park' : 'm-bld', rx: p.kind === 'park' ? 2 : 0 }, g);
+        else S('rect', { x: px - 3, y: py - 3, width: 6, height: 6, class: 'm-bld' }, g);
+      } else if (p.kind === 'dot') {
+        const bw = Math.max(26 * u, 2), bl = Math.max(110 * u, 8);
+        S('path', { d: `M${px - bw} ${py - bl / 2} V${py + bl / 2} M${px + bw} ${py - bl / 2} V${py + bl / 2}`, class: 'm-road-edge', 'stroke-width': 1.6 }, g);
+      } else if (p.kind === 'hill') {
+        S('path', { d: `M${px - 5} ${py + 4} L${px} ${py - 5} L${px + 5} ${py + 4} Z`, class: 'm-dot' }, g);
+      }
+      if (labels && px > 6 && px < w - 6 && py > 12 && py < h - 4) {
+        const ww = (p.w || 0) * u, right = px + Math.max(ww / 2, 8) + 3;
+        S('text', { x: right, y: py + 4, class: 'm-lbl', text: p.name, 'text-anchor': right > w - 40 ? 'end' : 'start', ...(right > w - 40 ? { x: px - Math.max(ww / 2, 8) - 3 } : {}) }, g);
+      }
+    });
+    if (labels) {
+      // 강 이름
+      const rx = X(-1300), ry = Y(-1180) - Math.max(35 * u, 2) - 4;
+      if (ry > 10 && ry < h) S('text', { x: Math.max(8, Math.min(rx, w - 60)), y: ry, class: 'm-lbl water', text: '한내천' }, g);
+    }
+    return u;
+  }
+
+  // 막대 축척: 2.5cm를 넘지 않는 가장 긴 깔끔한 길이
+  function scaleBar(g, k, x, y) {
+    const u = (CM * 100) / k;
+    const nice = [20, 50, 100, 200, 250, 500, 1000];
+    let m = nice[0]; nice.forEach((v) => { if (v * u <= CM * 2.5) m = v; });
+    const L = m * u;
+    S('rect', { x: x - 6, y: y - 16, width: L + 34, height: 26, rx: 4, class: 'm-paper', opacity: .9 }, g);
+    S('rect', { x, y: y - 3, width: L / 2, height: 6, class: 'm-bar' }, g);
+    S('rect', { x: x + L / 2, y: y - 3, width: L / 2, height: 6, class: 'm-bar2' }, g);
+    S('text', { x: x + L + 4, y: y + 4, class: 'm-sbtxt', text: SIM.fmtLen(m) }, g);
+    S('text', { x, y: y - 6, class: 'm-sbtxt', text: '0' }, g);
+  }
+
+  /* ---------- 흔한 오해의 두 지도 ---------- */
+  [['mini-a', 5000], ['mini-b', 50000]].forEach(([id, k]) => {
+    const g = $(id), w = 168, h = 128;
+    const clip = S('clipPath', { id: id + '-clip' }, g); S('rect', { x: 0, y: 0, width: w, height: h }, clip);
+    const inner = S('g', { 'clip-path': `url(#${id}-clip)` }, g);
+    const mg = S('g', {}, inner);
+    g.setAttribute('class', 'mapsvg');
+    render(mg, k, w, h, k === 5000 ? w / 2 : 76, k === 5000 ? h / 2 + 10 : 100, true);
+    S('rect', { x: 0, y: 0, width: w, height: h, class: 'm-frame', filter: 'url(#sb-ink)' }, g);
+  });
+
+  /* ---------- 해 보기 ---------- */
+  const layer = $('map-layer'), ruler = $('ruler'), hA = $('hA'), hB = $('hB');
+  const CX = 150, CY = 150; // 집이 놓이는 자리
+  let k = 50000;
+  let A = { x: CX, y: CY }, B = { x: CX + 2 * CM * 0.6, y: CY + 2 * CM * 0.8 }; // 처음: 집에서 도서관 쪽으로 2cm
+
+  const toWorld = (p) => ({ x: (p.x - CX) * k / (CM * 100), y: (p.y - CY) * k / (CM * 100) });
+  const toMap = (w) => ({ x: CX + w.x * CM * 100 / k, y: CY + w.y * CM * 100 / k });
+  function nameAt(p) {
+    let best = null, bd = 14;
+    PLACES.forEach((pl) => {
+      if (pl.max && k > pl.max) return;
+      const q = toMap(pl), d = Math.hypot(q.x - p.x, q.y - p.y);
+      if (d < bd) { bd = d; best = pl; }
+    });
+    return best;
+  }
+  const clampPt = (p) => ({ x: SIM.clamp(p.x, 6, W - 6), y: SIM.clamp(p.y, 6, H - 6) });
+
+  function drawRuler() {
+    ruler.textContent = '';
+    const dx = B.x - A.x, dy = B.y - A.y, len = Math.hypot(dx, dy);
+    const ang = Math.atan2(dy, dx) * 180 / Math.PI;
+    const g = S('g', { transform: `translate(${A.x} ${A.y}) rotate(${ang})` }, ruler);
+    const ext = Math.max(len, 1);
+    S('rect', { x: -4, y: 0, width: ext + 8, height: 20, class: 'strip', rx: 2 }, g);
+    for (let i = 0; i * 4 <= ext + 0.01; i++) {
+      const x = i * 4, cm = i % 10 === 0, half = i % 5 === 0;
+      S('line', { x1: x, y1: 0, x2: x, y2: cm ? 9 : half ? 6.5 : 4, class: 'tick' + (cm ? ' cm' : '') }, g);
+      if (cm && i) S('text', { x, y: 18, class: 'rn', text: i / 10, transform: Math.abs(ang) > 90 ? `rotate(180 ${x} 14)` : '' }, g);
+    }
+    S('line', { x1: 0, y1: -3, x2: 0, y2: 22, class: 'edge' }, g);
+    S('line', { x1: len, y1: -3, x2: len, y2: 22, class: 'edge' }, g);
+    hA.setAttribute('transform', `translate(${A.x.toFixed(1)} ${A.y.toFixed(1)})`);
+    hB.setAttribute('transform', `translate(${B.x.toFixed(1)} ${B.y.toFixed(1)})`);
+  }
+
+  function draw() {
+    render(layer, k, W, H, CX, CY, true);
+    // 축척 표(오른쪽 위)와 막대 축척(왼쪽 아래)
+    S('rect', { x: W - 104, y: 6, width: 98, height: 40, rx: 4, class: 'm-paper', opacity: .92 }, layer);
+    S('text', { x: W - 55, y: 22, class: 'm-title', 'text-anchor': 'middle', text: '지우네 동네' }, layer);
+    S('text', { x: W - 55, y: 40, class: 'm-scale', 'text-anchor': 'middle', text: '1:' + SIM.fmtNum(k) }, layer);
+    scaleBar(layer, k, 14, H - 14);
+    drawRuler();
+    const cm = Math.hypot(B.x - A.x, B.y - A.y) / CM, cmR = Math.round(cm * 10) / 10;
+    const real = SIM.mapToRealM(cmR, k);
+    const a = nameAt(A), b = nameAt(B);
+    const where = a && b && a !== b ? `${a.name}에서 ${b.name}까지 · ` : '';
+    $('map-read').innerHTML = `${where}지도에서 <b>${cmR}cm</b> → 실제로 <b>${SIM.fmtLen(real)}</b>`;
+    $('map-calc').textContent = `지도의 1cm = 실제 ${SIM.fmtNum(k)}cm = ${SIM.fmtLen(SIM.mapToRealM(1, k))} · ${cmR}cm면 ${SIM.fmtNum(cmR * k)}cm`;
+    hB.setAttribute('aria-valuetext', `${cmR}cm, 실제로 ${SIM.fmtLen(real)}`);
+    hA.setAttribute('aria-valuetext', `${cmR}cm, 실제로 ${SIM.fmtLen(real)}`);
+  }
+
+  // 끝을 장소 가까이 놓으면 그 장소에 붙는다
+  function snap(p) { const pl = nameAt(p); return pl ? clampPt(toMap(pl)) : p; }
+  [[hA, 'A'], [hB, 'B']].forEach(([h, which]) => {
+    SB.drag(h, {
+      svg: $('map-svg'),
+      onMove(p) { const q = clampPt(p); if (which === 'A') A = q; else B = q; draw(); },
+      onEnd() { if (which === 'A') A = snap(A); else B = snap(B); draw(); },
+      onKey(dx, dy) { const P = which === 'A' ? A : B; const q = clampPt({ x: P.x + dx * 4, y: P.y + dy * 4 }); if (which === 'A') A = q; else B = q; draw(); }
+    });
+  });
+
+  // 축척을 바꿔도 자는 종이 위 그대로: 같은 cm가 다른 실제 거리를 가리킨다
+  const ks = SB.slider($('k'), { format: (i) => '1:' + SIM.fmtNum(SCALES[i]), onInput: (i) => { k = SCALES[i]; draw(); } });
+  $('to-lib').addEventListener('click', () => {
+    const lib = PLACES.find((p) => p.name === '도서관');
+    A = { x: CX, y: CY }; B = clampPt(toMap(lib)); draw();
+  });
+  $('to-2cm').addEventListener('click', () => {
+    const dx = B.x - A.x, dy = B.y - A.y, len = Math.hypot(dx, dy) || 1;
+    B = clampPt({ x: A.x + dx / len * 2 * CM, y: A.y + dy / len * 2 * CM }); draw();
+  });
+  draw();
+});
+</script>
+</body>
+</html>

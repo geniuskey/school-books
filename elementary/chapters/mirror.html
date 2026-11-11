@@ -1,0 +1,403 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "샤워 뒤 욕실 거울에 맺힌 물방울은 어디서 왔을까요? 거울 온도와 공기 속 수증기를 바꿔 보며 보이지 않는 수증기가 차가운 곳에서 물로 돌아오는 응결을 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>욕실 거울은 왜 뿌예질까요? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="샤워 뒤 욕실 거울에 맺힌 물방울은 어디서 왔을까요? 거울 온도와 공기 속 수증기를 바꿔 보며 보이지 않는 수증기가 차가운 곳에서 물로 돌아오는 응결을 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/mirror.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="욕실 거울은 왜 뿌예질까요? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="샤워 뒤 욕실 거울에 맺힌 물방울은 어디서 왔을까요? 거울 온도와 공기 속 수증기를 바꿔 보며 보이지 않는 수증기가 차가운 곳에서 물로 돌아오는 응결을 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/mirror.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/mirror.html#chapter","name":"욕실 거울은 왜 뿌예질까요?","headline":"욕실 거울은 왜 뿌예질까요? · 초등 하루의 수학과 과학","description":"샤워 뒤 욕실 거울에 맺힌 물방울은 어디서 왔을까요? 거울 온도와 공기 속 수증기를 바꿔 보며 보이지 않는 수증기가 차가운 곳에서 물로 돌아오는 응결을 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/mirror.html","position":2,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"물의 세 가지 모습: 증발·응결·끓음","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"02. 욕실 거울은 왜 뿌예질까요?","item":"https://school.euiyun.com/elementary/chapters/mirror.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  #fog-svg { touch-action: pan-y; }
+  #fog-svg .lbl { font-size: 22px; }
+  #fog-svg .lbl-s { font-size: 20px; fill: var(--ink-soft); }
+  #fog-svg .vap { fill: var(--water); }
+  #fog-svg .drop { fill: var(--water-soft); stroke: var(--water); stroke-width: 1.4; }
+  #fog-svg .fog { fill: #eef2f2; }
+  #fog-svg .fdot { fill: var(--water); opacity: .55; }
+  #bars-svg text { font-size: 18px; }
+  #bars-svg .val { fill: var(--accent); }
+  #bars-svg .over { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 5 4; }
+  .fog-sub { text-align: center; color: var(--ink-soft); font-size: .95rem; margin: -4px 0 6px; min-height: 1.4em; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="mirror">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">07:10</span><span class="chip science">과학</span><span>읽는 시간 9분</span></div>
+    <h1>욕실 거울은 왜 뿌예질까요?</h1>
+    <p class="unit">물의 세 가지 모습: 증발·응결·끓음</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="아침 욕실. 하얗게 뿌연 거울을 지우가 손바닥으로 한 줄 닦아 내고, 고양이 두부는 세면대 끝에 앉아 거울을 올려다본다.">
+        <g filter="url(#sb-ink)">
+          <path class="ink-thin" style="stroke:var(--rule)" d="M20 60 H148 M332 60 H460 M20 120 H148 M332 120 H460 M20 180 H66 M332 180 H460 M60 20 V196 M104 20 V140 M376 20 V196 M420 20 V196"/>
+          <rect class="wash-cool" x="148" y="28" width="184" height="148" rx="12"/>
+          <rect class="fill-card" x="148" y="28" width="184" height="148" rx="12" opacity=".78"/>
+          <path class="wash-cool" d="M156 92 C200 84 262 86 324 90 L324 116 C262 114 200 112 156 120 Z"/>
+          <path class="ink-thin" d="M214 118 C214 100 228 90 244 90 C260 90 274 100 274 118" style="stroke:var(--ink-faint)"/><circle cx="232" cy="108" r="2" style="fill:var(--ink-faint)"/>
+          <rect class="ink" x="148" y="28" width="184" height="148" rx="12"/>
+          <path class="ink-thin" style="stroke:var(--water)" d="M172 128 v14 M196 136 v18 M286 126 v12 M308 134 v22 M262 140 v10"/>
+          <circle class="water" cx="172" cy="144" r="2.6"/><circle class="water" cx="196" cy="156" r="3"/><circle class="water" cx="286" cy="140" r="2.4"/><circle class="water" cx="308" cy="158" r="3"/><circle class="water" cx="262" cy="152" r="2.4"/>
+          <path class="fill-card" d="M108 196 H376 V212 H108 Z"/>
+          <path class="ink" d="M108 196 H376 V212 H108 Z"/>
+          <path class="ink" d="M150 212 C160 252 320 252 330 212"/>
+          <path class="ink" d="M234 196 V178 H254 M244 178 V170"/>
+          <path class="wash-warm" d="M52 290 C52 236 70 208 100 204 C128 208 142 236 142 290 Z"/>
+          <path class="ink" d="M52 290 C52 236 70 208 100 204 C128 208 142 236 142 290"/>
+          <circle class="fill-card" cx="98" cy="170" r="27"/>
+          <circle class="ink" cx="98" cy="170" r="27"/>
+          <path class="fill-ink" d="M72 168 C68 140 124 136 124 166 C116 152 86 150 72 168 Z"/>
+          <path class="ink-thin" d="M104 178 q5 3 9 0"/>
+          <circle class="fill-ink" cx="112" cy="168" r="2.2"/>
+          <path class="ink" d="M124 214 C140 190 150 150 166 108"/>
+          <path class="fill-card" d="M158 112 C156 98 164 92 172 96 C178 100 176 112 170 118 Z"/>
+          <path class="ink" d="M158 112 C156 98 164 92 172 96 C178 100 176 112 170 118 Z"/>
+          <path class="fill-card" d="M340 196 C334 170 344 152 360 150 C378 150 388 172 384 196 Z"/>
+          <path class="ink" d="M340 196 C334 170 344 152 360 150 C378 150 388 172 384 196"/>
+          <circle class="fill-card" cx="356" cy="138" r="16"/>
+          <circle class="ink" cx="356" cy="138" r="16"/>
+          <path class="ink" d="M343 130 L342 115 L352 124 M361 123 L370 114 L370 130"/>
+          <circle class="fill-ink" cx="349" cy="137" r="2"/><circle class="fill-ink" cx="361" cy="136" r="2"/>
+          <path class="ink-thin" d="M353 145 q2 2 4 0"/>
+          <path class="ink" d="M384 194 C398 198 402 218 394 240"/>
+        </g>
+      </svg>
+    </figure>
+    <p>아침 7시 10분, 아빠가 샤워를 마치고 나왔어요. 지우가 이를 닦으러 욕실에 들어가요.</p>
+    <p>거울이 하얗게 뿌예서 얼굴이 안 보여요. 손바닥으로 쓱 닦으니 손에 물이 묻어요. 두부는 세면대 끝에 앉아 거울을 빤히 올려다봐요.</p>
+    <p class="question">거울에 붙은 이 물은 어디서 왔을까요?</p>
+  </section>
+
+  <section class="predict card" id="p-mirror" data-id="mirror" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">샤워 뒤 거울에 맺힌 물방울은 어디서 왔을까요?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 그런데 유리는 물을 품고 있지 않아요. 물은 바깥에서 왔어요.">거울 속에서 배어 나왔어요</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 보이지 않는 물이 어떻게 물방울이 되는지 볼까요?">공기 속 수증기에서 왔어요</button>
+      <button class="choice" data-v="c" data-echo="좋은 예상이에요. 그런데 샤워기에서 먼 거울 위쪽까지 고르게 맺혀요. 튄 물이라면 그럴까요?">샤워기에서 물이 튀었어요</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="fog-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>왼쪽은 거울 바로 앞 공기를 아주 크게 본 그림이에요. 파란 점이 공기에 섞인 물이에요. 거울 온도를 내렸다 올렸다 해 봐요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="fog-svg" viewBox="0 0 480 300" role="img" aria-label="왼쪽은 거울 앞 공기를 크게 본 모습, 오른쪽은 앞에서 본 거울. 거울이 차가우면 물 알갱이가 거울에 붙어 물방울이 자란다.">
+        <defs>
+          <clipPath id="air-clip"><rect x="14" y="40" width="290" height="232"/></clipPath>
+          <clipPath id="front-clip"><rect x="346" y="48" width="118" height="210" rx="10"/></clipPath>
+        </defs>
+        <g filter="url(#sb-ink)">
+          <rect class="wash-warm" x="14" y="40" width="290" height="232" opacity=".55"/>
+          <path class="ink-thin" d="M14 40 H304 M14 272 H318"/>
+          <path class="ink-soft" d="M14 40 V272"/>
+        </g>
+        <rect id="glass-cool" class="wash-cool" x="304" y="34" width="14" height="238"/>
+        <rect id="glass-warm" class="wash-warm" x="304" y="34" width="14" height="238" opacity="0"/>
+        <path class="ink" d="M304 34 V272 M318 34 V272 M304 34 H318"/>
+        <text class="lbl-s" x="16" y="28">샤워 쪽 따뜻한 공기(26℃)</text>
+        <text class="lbl" x="311" y="24" text-anchor="middle">거울</text>
+        <g clip-path="url(#air-clip)"><g id="vap"></g></g>
+        <g id="drops"></g>
+        <path class="ink-soft" d="M320 60 L346 60 M320 250 L346 250"/>
+        <g clip-path="url(#front-clip)">
+          <rect class="wash-cool" x="346" y="48" width="118" height="210"/>
+          <g filter="url(#sb-ink)">
+            <path class="ink-thin" d="M372 152 C372 122 388 108 405 108 C422 108 438 122 438 152 C438 176 424 192 405 192 C386 192 372 176 372 152 Z" style="stroke:var(--ink-faint)"/>
+            <path class="ink-thin" d="M360 258 C364 226 380 212 405 210 C430 212 446 226 450 258" style="stroke:var(--ink-faint)"/>
+            <path class="fill-ink" opacity=".35" d="M372 146 C368 112 442 108 438 146 C428 128 384 126 372 146 Z"/>
+          </g>
+          <rect id="fog" class="fog" x="346" y="48" width="118" height="210" opacity="0"/>
+          <g id="fdots"></g>
+        </g>
+        <rect class="ink" x="346" y="48" width="118" height="210" rx="10"/>
+        <text class="lbl-s" x="405" y="282" text-anchor="middle">앞에서 본 거울</text>
+      </svg>
+    </figure>
+    <p class="readout" id="fog-read" aria-live="polite"></p>
+    <p class="fog-sub" id="fog-sub"></p>
+    <figure class="stage">
+      <svg class="drawing" id="bars-svg" viewBox="0 0 360 118" role="img" aria-label="공기에 섞인 물의 양과, 거울 앞에서 식은 공기가 품을 수 있는 물의 양을 비교하는 막대">
+        <text x="8" y="20" id="b1t"></text>
+        <rect class="fill-paper" x="8" y="28" width="344" height="20" rx="4"/>
+        <rect id="b1" class="water" x="8" y="28" width="0" height="20" rx="4" opacity=".75"/>
+        <rect id="bover" class="over" x="8" y="28" width="0" height="20" rx="3"/>
+        <text x="8" y="80" id="b2t"></text>
+        <rect class="fill-paper" x="8" y="88" width="344" height="20" rx="4"/>
+        <rect id="b2" class="wash-cool" x="8" y="88" width="0" height="20" rx="4"/>
+        <rect class="ink-thin" x="8" y="28" width="344" height="20" rx="4"/>
+        <rect class="ink-thin" x="8" y="88" width="344" height="20" rx="4"/>
+      </svg>
+    </figure>
+    <div class="controls">
+      <div class="slider">
+        <label for="mt"><span>거울 온도</span><output for="mt"></output></label>
+        <input type="range" id="mt" min="0" max="40" step="1" value="18">
+      </div>
+      <div class="slider">
+        <label for="rho"><span>공기에 섞인 물(샤워를 오래 할수록 많아요)</span><output for="rho"></output></label>
+        <input type="range" id="rho" min="6" max="24" step="1" value="20">
+      </div>
+    </div>
+    <p class="simplified">공기 온도는 26℃로 두었어요. 물의 양은 욕실 공기 1m³(가로·세로·높이 1m인 상자)에 든 양이에요. 알갱이 수와 빠르기는 보기 좋게 줄였어요.</p>
+  </section>
+
+  <section class="flap" id="f-mirror" data-for="p-mirror" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 공기 속 수증기예요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 360 140" role="img" aria-label="따뜻한 물에서 보이지 않는 수증기가 나와 공기에 퍼지고, 차가운 거울에 닿으면 물방울로 바뀐다.">
+          <g filter="url(#sb-ink)">
+            <path class="wash-warm" d="M14 100 H100 V126 H14 Z"/>
+            <path class="ink" d="M10 92 V126 H104 V92"/>
+            <path class="water-halo" d="M14 104 H100 V126 H14 Z"/>
+            <rect class="wash-cool" x="300" y="22" width="16" height="104"/>
+            <path class="ink" d="M300 22 V126 M316 22 V126"/>
+          </g>
+          <g class="ink-soft"><circle cx="40" cy="78" r="3"/><circle cx="66" cy="62" r="3"/><circle cx="96" cy="74" r="3"/><circle cx="128" cy="52" r="3"/><circle cx="160" cy="70" r="3"/><circle cx="190" cy="46" r="3"/><circle cx="222" cy="66" r="3"/><circle cx="252" cy="54" r="3"/></g>
+          <path class="ink-thin accent" style="stroke:var(--accent)" d="M120 90 C170 98 230 96 280 80 l-8 -2 M280 80 l-4 7"/>
+          <circle class="water" cx="294" cy="50" r="4"/><circle class="water" cx="294" cy="72" r="5.5"/><circle class="water" cx="294" cy="98" r="4.5"/>
+          <text x="57" y="22" font-size="17" text-anchor="middle">따뜻한 물</text>
+          <text x="57" y="42" font-size="15" text-anchor="middle" style="fill:var(--ink-soft)">수증기가 나와요</text>
+          <text x="190" y="22" font-size="17" text-anchor="middle" style="fill:var(--ink-soft)">수증기(안 보여요)</text>
+          <text x="236" y="122" font-size="17" text-anchor="middle" style="fill:var(--water)">식어서 물방울</text>
+          <text x="308" y="14" font-size="16" text-anchor="middle">차가운 거울</text>
+        </svg>
+      </figure>
+      <p>물은 눈에 보이지 않는 기체가 되어 공기에 섞일 수 있어요. 이것을 <span class="term">수증기</span>라고 해요. 따뜻한 샤워 물에서 수증기가 많이 나와 욕실 공기에 퍼져요.</p>
+      <p>수증기가 차가운 거울에 닿으면 식어서 다시 물이 돼요. 이렇게 수증기가 물로 바뀌는 것을 <span class="term">응결</span>이라고 해요.</p>
+      <p>따뜻한 공기는 수증기를 많이 품지만, 차가운 공기는 조금밖에 못 품어요. 거울 앞에서 식은 공기가 다 품지 못한 만큼이 물방울로 맺혀요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">주전자에서 나오는 하얀 김은 수증기예요.</span><span class="no">아니에요</span></p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 128" role="img" aria-label="주전자 주둥이 바로 앞은 투명하고, 조금 떨어진 곳부터 하얀 김이 보인다.">
+        <g filter="url(#sb-ink)">
+          <path class="fill-card" d="M24 120 C14 80 34 56 70 56 C106 56 126 80 116 120 Z"/>
+          <path class="ink" d="M24 120 C14 80 34 56 70 56 C106 56 126 80 116 120 Z M50 56 C52 44 88 44 90 56 M62 42 h16"/>
+          <path class="ink" d="M112 84 L150 62 L156 70 L120 98"/>
+          <path class="wash-cool" d="M196 58 C190 38 214 26 230 36 C244 18 276 22 280 42 C302 40 316 58 304 74 C312 92 290 106 272 98 C258 112 230 110 222 96 C200 100 186 80 196 58 Z"/>
+          <path class="ink-thin" style="stroke:var(--ink-faint)" d="M196 58 C190 38 214 26 230 36 C244 18 276 22 280 42 C302 40 316 58 304 74 C312 92 290 106 272 98 C258 112 230 110 222 96 C200 100 186 80 196 58 Z"/>
+        </g>
+        <path class="ink-soft" d="M160 52 V84 M190 50 V86"/>
+        <text x="175" y="110" font-size="15" text-anchor="middle">투명한 틈</text>
+        <text x="175" y="126" font-size="14" text-anchor="middle" style="fill:var(--ink-soft)">수증기</text>
+        <text x="252" y="70" font-size="17" text-anchor="middle">김</text>
+        <text x="252" y="124" font-size="15" text-anchor="middle" style="fill:var(--ink-soft)">작은 물방울</text>
+      </svg>
+    </figure>
+    <p>수증기는 공기처럼 투명해서 보이지 않아요. 주전자 주둥이 바로 앞을 보면 김이 없는 투명한 틈이 있어요.</p>
+    <p>그 틈을 지나며 식은 수증기가 아주 작은 물방울이 돼요. 하얀 김은 공기에 뜬 작은 물방울이에요. 조금 더 날아가면 다시 수증기가 되어 사라져요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-cool" d="M14 12 H42 L38 48 H18 Z"/><path class="ink" d="M14 12 H42 L38 48 H18 Z"/><path class="ink-thin" d="M20 22 h7 v7 h-7 z M29 30 h7 v7 h-7 z"/></g><circle class="water" cx="13" cy="28" r="2"/><circle class="water" cx="42" cy="22" r="2.2"/><circle class="water" cx="40" cy="38" r="1.8"/><circle class="water" cx="15" cy="40" r="2.2"/></svg>
+        <span>얼음물 컵 겉의 물방울은 컵에서 새어 나온 게 아니라 공기 속 수증기예요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><circle class="fill-card" cx="17" cy="30" r="11"/><circle class="fill-card" cx="39" cy="30" r="11"/><circle class="ink" cx="17" cy="30" r="11"/><circle class="ink" cx="39" cy="30" r="11"/><path class="ink" d="M28 30 q0 -4 0 0 M26 28 q2 -3 4 0 M6 28 L2 24 M50 28 L54 24"/></g><circle class="water-halo" cx="17" cy="30" r="9"/><circle class="water-halo" cx="39" cy="30" r="9"/></svg>
+        <span>겨울에 따뜻한 교실로 들어오면 차가운 안경알에 김이 서려요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-green" d="M10 48 C18 30 30 16 48 10 C42 28 30 42 10 48 Z"/><path class="ink" d="M10 48 C18 30 30 16 48 10 C42 28 30 42 10 48 Z M12 46 C24 34 34 24 46 12"/></g><circle class="water" cx="30" cy="26" r="3"/><circle class="water" cx="20" cy="38" r="2.4"/></svg>
+        <span>새벽에 식은 풀잎에 맺히는 이슬도 같은 응결이에요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 뿌연 거울은 왜 저절로 맑아질까요?</summary>
+    <p>욕실 문을 열어 두면 마른 공기가 들어와요. 그러면 거울의 물방울이 다시 수증기가 되어 날아가요. 물의 겉에서 물이 수증기로 바뀌는 것을 증발이라고 해요. 빨래가 마르는 것도 증발이에요.</p>
+    <p>냄비의 물을 계속 데우면 물속에서도 수증기 거품이 부글부글 생겨요. 이것이 끓음이에요. 증발은 물의 겉에서 조금씩, 끓음은 물속 곳곳에서 한꺼번에 일어나요.</p>
+    <p>물은 얼음(고체), 물(액체), 수증기(기체), 세 가지 모습을 오가요. 해 보기에서 거울 온도를 올리면 맺힌 물방울이 하나씩 다시 날아가는 것을 볼 수 있어요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>겨울 차 앞유리에 김이 서리면 에어컨을 켜요. 에어컨은 공기 속 수증기를 물로 맺히게 해 빼내고 마른 바람을 보내요. 겨울 창가와 벽 모서리의 물기·곰팡이도 응결이라, 환기로 수증기를 내보내면 줄어요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">보이지 않는 수증기가 차가운 곳에 닿으면<br>다시 물방울로 돌아와요.</p>
+    <div class="quiz" data-stamp="mirror">
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">얼음물 컵 겉에 물방울이 맺혔어요. 어디서 온 물일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="유리컵에는 구멍이 없어요. 컵 안 물은 밖으로 못 나와요.">컵 속 물이 스며 나왔어요</button>
+          <button class="opt">공기 속 수증기예요</button>
+          <button class="opt" data-hint="얼음이 녹아도 물은 컵 안에 있어요. 컵 겉은 무엇과 닿아 있죠?">얼음이 녹아 넘쳤어요</button>
+        </div>
+        <p class="why">차가운 컵 겉에서 공기 속 수증기가 식어 응결했어요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">욕실 거울에 김이 덜 서리게 하려면 어떻게 할까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="해 보기에서 거울 온도를 내려 보세요. 물방울이 늘었나요, 줄었나요?">거울을 더 차갑게 해요</button>
+          <button class="opt">거울을 따뜻하게 해요</button>
+          <button class="opt" data-hint="불빛은 거울 온도나 수증기 양을 거의 바꾸지 않아요.">욕실 불을 꺼요</button>
+        </div>
+        <p class="why">거울이 따뜻하면 그 앞의 공기가 수증기를 다 품어서 물방울이 맺히지 않아요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">주전자 주둥이에서 나오는 하얀 김은 무엇일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="수증기는 투명해서 보이지 않아요. 주둥이 바로 앞의 틈을 떠올려 봐요.">수증기</button>
+          <button class="opt">아주 작은 물방울</button>
+          <button class="opt" data-hint="타는 것이 없으니 연기가 아니에요.">연기</button>
+        </div>
+        <p class="why">수증기가 식어 응결한 작은 물방울이라 하얗게 보여요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const AIR = 26, X0 = 16, XM = 302, Y0 = 42, Y1 = 270, PER_G = 4, MAXP = 100;
+  const rand = SIM.rng(202);
+  const vapG = $('vap'), dropG = $('drops'), fdG = $('fdots');
+  let mt = 18, rho = 20;
+
+  // 물 알갱이(화면에 보이는 것만 만든다)
+  const parts = [];
+  for (let i = 0; i < MAXP + 30; i++) {
+    const el = S('circle', { r: 3.2, class: 'vap' }, vapG);
+    parts.push({ el, on: false, x: 0, y: 0, vx: 0, vy: 0 });
+  }
+  function spawn(x, y, dir) {
+    const p = parts.find((q) => !q.on); if (!p) return;
+    const a = (rand() - 0.5) * 2.4 + (dir < 0 ? Math.PI : 0);
+    p.on = true; p.x = x; p.y = y; p.vx = Math.cos(a); p.vy = Math.sin(a);
+  }
+  // 거울에 붙는 물방울 자리: 세로로 칸을 나눠 두고 칸마다 물의 양을 쌓는다
+  const SLOTS = [];
+  for (let y = 52; y < 262; y += 13) SLOTS.push({ y: y + (rand() - 0.5) * 6, m: 0, run: 0, el: S('circle', { class: 'drop', r: 0, cx: XM }, dropG) });
+  // 앞에서 본 거울의 작은 물방울 자리
+  const FD = [];
+  for (let i = 0; i < 90; i++) FD.push(S('circle', { class: 'fdot', cx: 350 + rand() * 110, cy: 52 + rand() * 202, r: 0.8 + rand() * 1.8 }, fdG));
+  for (let i = 0; i < rho * PER_G; i++) spawn(X0 + rand() * (XM - X0 - 10), Y0 + rand() * (Y1 - Y0), 1);
+
+  const speedAt = (T) => 36 + T * 1.6; // 화면 속 빠르기(px/s): 따뜻할수록 빠르다
+  function step(dt) {
+    const ex = SIM.condenseExcess(rho, mt);
+    const stick = ex > 0 ? SIM.clamp(ex / rho * 1.6, 0.08, 1) : 0;
+    const want = Math.round(rho * PER_G);
+    let live = parts.filter((p) => p.on).length;
+    // 샤워 쪽(왼쪽)에서 새 수증기가 들어오고, 넘치면 빠져나간다
+    if (live < want && rand() < dt * 24) { spawn(X0 + 2, Y0 + rand() * (Y1 - Y0), 1); live++; }
+    if (live > want + 2 && rand() < dt * 20) { const p = parts.find((q) => q.on && q.x < 120); if (p) p.on = false; }
+    for (const p of parts) {
+      if (!p.on) { p.el.style.display = 'none'; continue; }
+      const f = SIM.clamp((p.x - 220) / (XM - 220), 0, 1);
+      const sp = SIM.lerp(speedAt(AIR), speedAt(mt), f);
+      const a = (rand() - 0.5) * 0.9, c = Math.cos(a), s = Math.sin(a);
+      const vx = p.vx * c - p.vy * s, vy = p.vx * s + p.vy * c, n = Math.hypot(vx, vy) || 1;
+      p.vx = vx / n; p.vy = vy / n;
+      p.x += p.vx * sp * dt; p.y += p.vy * sp * dt;
+      if (p.y < Y0) { p.y = Y0; p.vy = Math.abs(p.vy); }
+      if (p.y > Y1) { p.y = Y1; p.vy = -Math.abs(p.vy); }
+      if (p.x < X0) { p.x = X0; p.vx = Math.abs(p.vx); }
+      if (p.x > XM - 4) {
+        if (rand() < stick) {
+          let best = SLOTS[0];
+          for (const sl of SLOTS) if (Math.abs(sl.y - p.y) < Math.abs(best.y - p.y)) best = sl;
+          best.m += 1; p.on = false; p.el.style.display = 'none'; continue;
+        }
+        p.x = XM - 4; p.vx = -Math.abs(p.vx);
+      }
+      p.el.style.display = '';
+      p.el.setAttribute('cx', p.x.toFixed(1)); p.el.setAttribute('cy', p.y.toFixed(1));
+    }
+    // 물방울: 증발하면 알갱이를 내보내고, 너무 커지면 흘러내린다
+    let total = 0;
+    for (let i = 0; i < SLOTS.length; i++) {
+      const sl = SLOTS[i];
+      if (ex < 0 && sl.m > 0) {
+        const lose = dt * (-ex) * 0.22;
+        const before = Math.floor(sl.m); sl.m = Math.max(0, sl.m - lose);
+        if (Math.floor(sl.m) < before) spawn(XM - 6, sl.y, -1);
+      }
+      if (sl.m > 18) { // 흘러내림: 아래 칸 물방울과 합쳐진다
+        const nx = SLOTS[i + 1];
+        if (nx) nx.m += sl.m * 0.9;
+        sl.m = 0;
+      }
+      total += sl.m;
+      const r = sl.m > 0.3 ? 1.6 + 1.9 * Math.sqrt(sl.m) : 0;
+      sl.el.setAttribute('r', r.toFixed(1)); sl.el.setAttribute('cx', (XM - r * 0.55).toFixed(1)); sl.el.setAttribute('cy', sl.y.toFixed(1));
+    }
+    const fog = SIM.clamp(total / 30, 0, 1);
+    $('fog').setAttribute('opacity', (fog * 0.88).toFixed(2));
+    const k = Math.round(fog * FD.length);
+    FD.forEach((d, i) => { d.style.display = i < k ? '' : 'none'; });
+  }
+
+  function info() {
+    const cap = SIM.satVaporDensity(mt), ex = rho - cap, dew = SIM.dewPointOf(rho);
+    const W = 344, sc = W / 30;
+    $('glass-warm').setAttribute('opacity', SIM.clamp(mt / 40, 0, 1).toFixed(2));
+    $('b1').setAttribute('width', (rho * sc).toFixed(1));
+    $('b2').setAttribute('width', (Math.min(cap, 30) * sc).toFixed(1));
+    if (ex > 0) { $('bover').setAttribute('x', (8 + cap * sc).toFixed(1)); $('bover').setAttribute('width', (ex * sc).toFixed(1)); }
+    else $('bover').setAttribute('width', 0);
+    $('b1t').innerHTML = `공기에 섞인 물 <tspan class="val">${rho}g</tspan>`;
+    $('b2t').innerHTML = cap > 30 ? `${mt}℃ 공기가 품을 수 있는 물 <tspan class="val">30g 넘게</tspan>`
+      : `${mt}℃ 공기가 품을 수 있는 물 <tspan class="val">${Math.round(cap)}g</tspan>`;
+    let msg;
+    if (ex > 0.5) msg = `거울 ${mt}℃ · <b>물방울이 맺혀요</b>`;
+    else if (ex < -0.5) msg = `거울 ${mt}℃ · <b>물방울이 다시 날아가요</b>`;
+    else msg = `거울 ${mt}℃ · <b>맺힐락 말락</b>`;
+    $('fog-read').innerHTML = msg;
+    $('fog-sub').textContent = ex > 0.5 ? `품지 못하고 넘친 물 ${Math.round(ex)}g쯤이 거울에 붙어요. 거울이 ${Math.round(dew)}℃보다 따뜻하면 맑아져요.`
+      : `거울이 ${Math.round(dew)}℃보다 차가워지면 김이 서리기 시작해요.`;
+  }
+
+  SB.slider($('mt'), { format: (v) => v + '℃', onInput(v) { mt = v; info(); } });
+  SB.slider($('rho'), { format: (v) => v + 'g', onInput(v) { rho = v; info(); } });
+  info();
+  // 처음 화면에도 조금 맺혀 있게 미리 돌려 둔다
+  for (let i = 0; i < 260; i++) step(1 / 30);
+  SB.loop($('fog-svg'), (dt) => step(dt));
+});
+</script>
+</body>
+</html>

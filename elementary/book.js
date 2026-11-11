@@ -38,7 +38,7 @@ window.SB_BOOK = {
    "unit": "물의 세 가지 모습: 증발·응결·끓음",
    "stamp": "응결",
    "time": "07:10",
-   "ready": false
+   "ready": true
   },
   {
    "num": 3,
@@ -48,7 +48,7 @@ window.SB_BOOK = {
    "unit": "분수, 크기 비교, 소수 맛보기",
    "stamp": "분수",
    "time": "07:30",
-   "ready": false
+   "ready": true
   },
   {
    "num": 4,
@@ -58,7 +58,7 @@ window.SB_BOOK = {
    "unit": "빛의 직진, 그림자, 해의 하루 움직임",
    "stamp": "그림자",
    "time": "08:20",
-   "ready": false
+   "ready": true
   },
   {
    "num": 5,
@@ -68,7 +68,7 @@ window.SB_BOOK = {
    "unit": "도형, 각, 넓이와 둘레",
    "stamp": "넓이",
    "time": "09:00",
-   "ready": false
+   "ready": true
   },
   {
    "num": 6,
@@ -78,7 +78,7 @@ window.SB_BOOK = {
    "unit": "자석의 극, 전기 회로",
    "stamp": "회로",
    "time": "10:40",
-   "ready": false
+   "ready": true
   },
   {
    "num": 7,
@@ -88,7 +88,7 @@ window.SB_BOOK = {
    "unit": "소화, 심장과 피, 숨쉬기",
    "stamp": "소화",
    "time": "12:20",
-   "ready": false
+   "ready": true
   },
   {
    "num": 8,
@@ -98,7 +98,7 @@ window.SB_BOOK = {
    "unit": "큰 수, 어림, 곱셈·나눗셈의 요령",
    "stamp": "어림",
    "time": "14:00",
-   "ready": false
+   "ready": true
   },
   {
    "num": 9,
@@ -108,7 +108,7 @@ window.SB_BOOK = {
    "unit": "식물의 한살이, 꺾은선그래프",
    "stamp": "새싹",
    "time": "15:00",
-   "ready": false
+   "ready": true
   },
   {
    "num": 10,
@@ -118,7 +118,7 @@ window.SB_BOOK = {
    "unit": "가능성, 표와 막대그래프",
    "stamp": "가능성",
    "time": "17:00",
-   "ready": false
+   "ready": true
   },
   {
    "num": 11,
@@ -128,7 +128,7 @@ window.SB_BOOK = {
    "unit": "비와 비율, 축척, 백분율",
    "stamp": "축척",
    "time": "18:30",
-   "ready": false
+   "ready": true
   },
   {
    "num": 12,
@@ -138,7 +138,7 @@ window.SB_BOOK = {
    "unit": "달의 위상, 지구의 자전, 태양계",
    "stamp": "달",
    "time": "21:00",
-   "ready": false
+   "ready": true
   }
  ]
 };

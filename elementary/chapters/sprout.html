@@ -1,0 +1,449 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "강낭콩은 날마다 똑같이 자랄까요? 햇빛과 물을 바꿔 가며 날마다 키를 재어 꺾은선그래프로 그려 보고, 느리게 시작해 쑥 자라다 멈추는 S자 성장과 식물의 한살이를 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강낭콩은 하루에 얼마나 자랄까요? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="강낭콩은 날마다 똑같이 자랄까요? 햇빛과 물을 바꿔 가며 날마다 키를 재어 꺾은선그래프로 그려 보고, 느리게 시작해 쑥 자라다 멈추는 S자 성장과 식물의 한살이를 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/sprout.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="강낭콩은 하루에 얼마나 자랄까요? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="강낭콩은 날마다 똑같이 자랄까요? 햇빛과 물을 바꿔 가며 날마다 키를 재어 꺾은선그래프로 그려 보고, 느리게 시작해 쑥 자라다 멈추는 S자 성장과 식물의 한살이를 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/sprout.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/sprout.html#chapter","name":"강낭콩은 하루에 얼마나 자랄까요?","headline":"강낭콩은 하루에 얼마나 자랄까요? · 초등 하루의 수학과 과학","description":"강낭콩은 날마다 똑같이 자랄까요? 햇빛과 물을 바꿔 가며 날마다 키를 재어 꺾은선그래프로 그려 보고, 느리게 시작해 쑥 자라다 멈추는 S자 성장과 식물의 한살이를 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/sprout.html","position":9,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"식물의 한살이, 꺾은선그래프","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"09. 강낭콩은 하루에 얼마나 자랄까요?","item":"https://school.euiyun.com/elementary/chapters/sprout.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  #plant-svg .day { font-size: 26px; }
+  #plant-svg .stage { font-size: 17px; fill: var(--accent); }
+  #plant-svg .rul { font-size: 13px; fill: var(--ink-soft); font-family: var(--font); font-weight: 400; }
+  #plant-svg .stem { fill: none; stroke: var(--life); stroke-width: 4; stroke-linecap: round; }
+  #plant-svg .root { fill: none; stroke: var(--ink-soft); stroke-width: 1.6; stroke-linecap: round; }
+  #plant-svg .leaf { fill: var(--wash-green); stroke: var(--life); stroke-width: 1.6; }
+  #plant-svg .cot { fill: var(--glow-soft); stroke: var(--ink); stroke-width: 1.6; }
+  #plant-svg .cot.old { opacity: .45; }
+  #plant-svg .flower { fill: var(--wash-pink); stroke: var(--ink); stroke-width: 1.2; }
+  #plant-svg .pod { fill: var(--wash-green); stroke: var(--ink); stroke-width: 1.6; }
+  #graph-svg .tick { font-size: 15px; fill: var(--ink-soft); font-family: var(--font); font-weight: 400; }
+  #graph-svg .axis-t { font-size: 16px; }
+  #graph-svg .grid { stroke: var(--rule); stroke-width: 1; }
+  #graph-svg .line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  #graph-svg .ghost { fill: none; stroke: var(--ink-faint); stroke-width: 2; stroke-dasharray: 5 5; }
+  #graph-svg .dot { fill: var(--card); stroke: var(--accent); stroke-width: 2; }
+  #graph-svg .steep { fill: none; stroke: var(--glow); stroke-width: 10; stroke-linecap: round; opacity: .55; }
+  #graph-svg .note { font-size: 16px; fill: var(--ink); paint-order: stroke; stroke: var(--card); stroke-width: 5px; stroke-linejoin: round; }
+  #graph-svg .ghost-t { font-size: 15px; fill: var(--ink-faint); }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="sprout">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">15:00</span><span class="chip science">과학</span><span>읽는 시간 9분</span></div>
+    <h1>강낭콩은 하루에 얼마나 자랄까요?</h1>
+    <p class="unit">식물의 한살이, 꺾은선그래프</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="햇빛이 드는 창가에 강낭콩 화분이 있고, 옆에 자가 세워져 있다. 책상 위 공책에는 날짜와 키를 적은 표가 있다. 고양이 두부가 화분에 코를 대고 냄새를 맡는다.">
+        <g filter="url(#sb-ink)">
+          <rect class="wash-cool" x="150" y="14" width="200" height="150" rx="3"/>
+          <path class="glow-halo" d="M200 164 L250 14 H350 L300 164 Z" opacity=".7"/>
+          <path class="ink" d="M150 14 H350 V164 H150 Z M250 14 V164 M150 89 H350"/>
+          <path class="ink" d="M120 170 H380"/>
+          <path class="wash-warm" d="M0 214 H480 V290 H0 Z"/>
+          <path class="ink" d="M0 214 H480"/>
+          <path class="ink-thin" d="M120 170 V176 H380 V170"/>
+          <!-- 화분과 새싹 -->
+          <path class="wash-warm" d="M214 126 H286 L278 168 H222 Z"/>
+          <path class="ink" d="M210 126 H290 M214 126 L222 168 H278 L286 126"/>
+          <path class="ink-thin" d="M218 134 H282"/>
+          <path class="ink" style="stroke:var(--life)" d="M250 126 C250 110 248 96 252 80"/>
+          <path class="wash-green" d="M252 82 C238 70 226 74 222 82 C232 88 244 88 252 82 Z M252 82 C262 66 276 66 282 72 C276 82 262 86 252 82 Z"/>
+          <path class="ink-thin" style="stroke:var(--life)" d="M252 82 C238 70 226 74 222 82 C232 88 244 88 252 82 Z M252 82 C262 66 276 66 282 72 C276 82 262 86 252 82 Z"/>
+          <!-- 자 -->
+          <rect class="fill-card" x="300" y="64" width="16" height="104"/>
+          <path class="ink" d="M300 64 H316 V168 H300 Z"/>
+          <path class="ink-thin" d="M300 76 h6 M300 88 h9 M300 100 h6 M300 112 h9 M300 124 h6 M300 136 h9 M300 148 h6 M300 160 h9"/>
+          <!-- 공책 -->
+          <path class="fill-card" d="M24 206 L44 176 H150 L132 206 Z"/>
+          <path class="ink" d="M24 206 L44 176 H150 L132 206 Z M42 186 H140 M36 196 H134 M84 176 L68 206"/>
+          <!-- 두부 -->
+          <path class="fill-card" d="M352 214 C346 184 352 160 372 152 C398 142 430 152 440 176 C450 196 446 210 446 214 Z"/>
+          <path class="ink" d="M352 214 C346 184 352 160 372 152 C398 142 430 152 440 176 C450 196 446 210 446 214"/>
+          <circle class="fill-card" cx="334" cy="150" r="22"/>
+          <path class="ink" d="M314 156 C308 134 326 124 340 128 C356 132 362 150 352 164 C344 174 322 172 314 156 Z"/>
+          <path class="fill-card" d="M322 132 L318 112 L334 126 Z M342 128 L354 110 L356 132 Z"/>
+          <path class="ink" d="M322 132 L318 112 L334 126 M342 128 L354 110 L356 132"/>
+          <path class="ink-thin" d="M322 150 q4 3 8 0 M338 148 q4 3 8 0 M316 160 l-3 1 M312 158 l-12 -2 M313 163 l-12 2"/>
+          <path class="ink" d="M440 196 C462 190 470 170 462 150"/>
+        </g>
+      </svg>
+    </figure>
+    <p>오후 3시, 지우는 창가의 강낭콩 키를 자로 재요. 어제는 3cm, 오늘은 5cm예요. 날마다 공책에 적어요.</p>
+    <p>두부가 화분에 코를 대고 새싹 냄새를 맡아요.</p>
+    <p class="question">강낭콩은 날마다 똑같이 자랄까요?</p>
+  </section>
+
+  <section class="predict card" id="p-sprout" data-id="sprout" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">강낭콩이 자라는 빠르기는?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 날마다 같다면 그래프가 곧은 선이 될 텐데, 정말 그럴까요?">날마다 똑같다</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 그런데 쑥 자란 다음에는 어떻게 될까요?">처음엔 느리다가 어느 날 쑥</button>
+      <button class="choice" data-v="c" data-echo="좋은 예상이에요. 싹이 트는 처음 며칠을 잘 보세요.">처음에 빠르다가 멈춘다</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="sprout-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>"하루 지나기"를 눌러 날마다 키를 재요. 잰 키가 점으로 찍혀 그래프가 돼요. 햇빛과 물을 바꾸면 그래프가 어떻게 달라질까요?</p>
+    <figure class="stage">
+      <svg class="drawing" id="plant-svg" viewBox="0 0 360 230" role="img" aria-label="화분 속 강낭콩. 날이 지나면 뿌리, 떡잎, 본잎, 꽃, 꼬투리가 차례로 나온다. 옆의 자로 키를 잰다.">
+        <g id="ruler"></g>
+        <g filter="url(#sb-ink)">
+          <path class="wash-warm" d="M56 172 H184 L172 222 H68 Z"/>
+          <path class="ink" d="M50 172 H190 M56 172 L68 222 H172 L184 172"/>
+        </g>
+        <g id="under"></g>
+        <g id="plant"></g>
+        <text id="pday" class="day" x="232" y="80" text-anchor="start"></text>
+        <text id="pstage" class="stage" x="232" y="108" text-anchor="start"></text>
+      </svg>
+      <svg class="drawing" id="graph-svg" viewBox="0 0 420 260" role="img" aria-label="날마다 잰 키를 이은 꺾은선그래프. 가로는 심은 뒤 지난 날, 세로는 키(cm).">
+        <g id="g-axis"></g>
+        <path id="ghost" class="ghost" d=""/>
+        <text id="ghost-t" class="ghost-t" x="0" y="0"></text>
+        <path id="steep" class="steep" d=""/>
+        <path id="line" class="line" d=""/>
+        <g id="dots"></g>
+        <text id="steep-t" class="note" x="0" y="0"></text>
+      </svg>
+    </figure>
+    <p class="readout" id="sp-read" aria-live="polite"></p>
+    <div class="controls">
+      <div class="btn-row">
+        <button class="btn primary" type="button" id="d1">하루 지나기</button>
+        <button class="btn" type="button" id="d5">닷새 지나기</button>
+        <button class="btn" type="button" id="auto" aria-pressed="false">저절로 넘기기</button>
+        <button class="btn" type="button" id="d0">처음부터</button>
+      </div>
+      <div class="slider">
+        <label for="light">하루에 햇빛 드는 시간 <output for="light"></output></label>
+        <input type="range" id="light" min="2" max="12" step="1" value="8">
+      </div>
+      <div class="slider">
+        <label for="water">물 주기 <output for="water"></output></label>
+        <input type="range" id="water" min="0" max="100" step="10" value="60">
+      </div>
+    </div>
+    <p class="simplified">실제로 잰 값이 아니라 모양을 보이려고 만든 모형이에요. 온도와 흙, 빛이 아주 적을 때 줄기가 가늘게 웃자라는 것은 뺐어요.</p>
+  </section>
+
+  <section class="flap" id="f-sprout" data-for="p-sprout" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 "처음엔 느리다가 어느 날 쑥"이에요.</b> 그리고 쑥 자란 뒤에는 다시 느려져요.</p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 400 190" role="img" aria-label="키 그래프가 S자 모양이다. 처음에는 거의 평평하고(느리게), 가운데는 가파르고(쑥), 끝에는 다시 평평하다(거의 멈춤).">
+          <g filter="url(#sb-ink)">
+            <rect class="wash-cool" x="40" y="20" width="96" height="136"/>
+            <rect class="glow-halo" x="136" y="20" width="120" height="136"/>
+            <rect class="wash-green" x="256" y="20" width="124" height="136"/>
+            <path class="ink" d="M40 20 V156 H380"/>
+          </g>
+          <path class="line" style="fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round" d="M40 156 C100 154 130 146 160 116 C190 84 210 46 260 34 C300 26 340 25 380 25"/>
+          <text x="88" y="178" font-size="21" text-anchor="middle">느리게</text>
+          <text x="196" y="178" font-size="21" text-anchor="middle" style="fill:var(--accent)">쑥!</text>
+          <text x="318" y="178" font-size="21" text-anchor="middle">거의 멈춤</text>
+          <text x="88" y="50" font-size="18" text-anchor="middle">뿌리·떡잎</text>
+          <text x="196" y="140" font-size="18" text-anchor="middle">본잎</text>
+          <text x="318" y="56" font-size="18" text-anchor="middle">꽃·꼬투리</text>
+        </svg>
+      </figure>
+      <p>싹이 트고 한동안은 뿌리를 내리느라 키가 조금씩 커요. 본잎이 늘어 햇빛을 많이 받으면 하루에 몇 cm씩 쑥 자라요. 꽃이 필 무렵에는 키가 거의 그대로예요.</p>
+      <p>날마다 잰 키를 점으로 찍고 선으로 이은 그래프를 <span class="term">꺾은선그래프</span>라고 해요. 선이 가파른 곳이 많이 자란 날이에요.</p>
+      <p>씨가 싹 트고 자라 꽃 피고, 열매 속에 다시 씨를 남기는 과정을 <span class="term">한살이</span>라고 해요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">식물은 흙을 먹고 자라요.</span><span class="no">아니에요</span></p>
+    <p>약 400년 전 헬몬트라는 사람이 버드나무를 흙 통에 심고 5년 동안 물만 주었어요. 나무는 약 74kg 늘었는데, 흙은 겨우 57g 줄었어요.</p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 400 110" role="img" aria-label="나무가 는 무게 약 74kg은 긴 막대, 흙이 준 무게 57g은 거의 보이지 않는 점.">
+        <g filter="url(#sb-ink)">
+          <rect class="wash-green" x="20" y="32" width="360" height="24"/>
+          <path class="ink" d="M20 32 H380 V56 H20 Z"/>
+          <rect class="fill-ink" x="20" y="84" width="2" height="18"/>
+        </g>
+        <text x="20" y="22" font-size="20">나무가 는 무게: 약 74kg</text>
+        <text x="32" y="99" font-size="20">흙이 준 무게: 57g (거의 안 보여요)</text>
+      </svg>
+    </figure>
+    <p>식물의 몸은 주로 뿌리로 빨아들인 물과, 잎이 공기에서 받아들인 이산화탄소로 만들어요. 흙에서는 아주 적은 양분만 얻어요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="fill-card" x="34" y="4" width="12" height="48"/><path class="ink" d="M34 4 H46 V52 H34 Z M34 12 h5 M34 20 h7 M34 28 h5 M34 36 h7 M34 44 h5"/><circle class="ink" cx="18" cy="14" r="6"/><path class="ink" d="M18 20 V38 M18 38 L12 52 M18 38 L24 52 M10 28 H26"/></g></svg>
+        <span>사람 키도 해마다 똑같이 크지 않아요. 아기 때와 사춘기에 쑥 커요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-warm" d="M8 30 H48 L44 52 H12 Z"/><path class="ink" d="M8 30 H48 L44 52 H12 Z"/><path class="ink-thin" d="M18 30 C18 20 16 12 20 6 M28 30 C28 18 30 12 26 4 M38 30 C38 22 40 14 36 8"/><path class="glow" d="M20 6 a3 2 0 1 0 .1 0 Z M26 4 a3 2 0 1 0 .1 0 Z M36 8 a3 2 0 1 0 .1 0 Z"/></g></svg>
+        <span>콩나물은 빛을 가리고 물만 주며 키워요. 그래서 줄기가 노랗고 길어요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="fill-card" x="6" y="6" width="44" height="44" rx="4"/><path class="ink" d="M6 6 H50 V50 H6 Z"/><path class="ink" style="stroke:var(--accent)" d="M12 40 L20 34 L28 20 L36 16 L44 26"/><circle class="ink-thin" cx="28" cy="20" r="2.5"/></g></svg>
+        <span>날씨 앱의 하루 기온 그래프도 꺾은선그래프예요. 오르내림이 한눈에 보여요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 싹이 트는 데 빛이 필요할까요?</summary>
+    <p>강낭콩 씨는 물과 알맞은 온도, 공기만 있으면 어두운 곳에서도 싹이 터요. 씨 속 떡잎에 처음 자랄 양분이 모여 있기 때문이에요.</p>
+    <p>그래서 해 보기에서 햇빛을 바꿔도 싹 트는 날은 그대로예요. 물을 바꾸면 싹 트는 날이 달라져요.</p>
+    <p>떡잎의 양분을 다 쓰면 떡잎은 쭈글쭈글해져 떨어져요. 그때부터는 본잎이 햇빛을 받아 양분을 만들어야 해서, 빛이 모자라면 덜 자라요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>꺾은선그래프는 높이보다 기울기를 먼저 읽어 보세요. "얼마나 많은가"와 "얼마나 빨리 느는가"는 다른 질문이에요. 새 제품을 쓰는 사람 수처럼 느리게 시작해 쑥 늘었다가 다시 느려지는 S자도 자주 보여요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">강낭콩은 느리게 시작해 쑥 자라고, 꽃 필 무렵 멈춰요.<br>꺾은선그래프에서 가파른 곳이 많이 자란 날이에요.</p>
+    <div class="quiz" data-stamp="sprout">
+      <div class="quiz-q" data-answer="0">
+        <p class="qtext">키 꺾은선그래프에서 하루에 가장 많이 자란 날은 어디일까요?</p>
+        <div class="opts">
+          <button class="opt">선이 가장 가파른 곳</button>
+          <button class="opt" data-hint="가장 높은 곳은 키가 가장 큰 날이에요. 그날 많이 자랐는지는 기울기를 봐야 해요.">선이 가장 높은 곳</button>
+          <button class="opt" data-hint="처음의 낮은 곳은 거의 평평했어요. 평평하면 거의 안 자란 거예요.">선이 가장 낮은 곳</button>
+        </div>
+        <p class="why">가파를수록 하루 사이에 키가 많이 달라졌다는 뜻이에요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">강낭콩 씨에서 가장 먼저 나오는 것은 무엇일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="떡잎보다 먼저 땅속에서 나오는 것이 있어요. 해 보기에서 하루씩 넘겨 봐요.">떡잎</button>
+          <button class="opt">뿌리</button>
+          <button class="opt" data-hint="꽃은 한살이의 뒤쪽에 나와요.">꽃</button>
+        </div>
+        <p class="why">뿌리가 먼저 나와 물을 빨아들이고, 그다음 떡잎이 흙 위로 올라와요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">식물의 몸을 이루는 재료는 주로 무엇일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="헬몬트의 버드나무가 74kg 늘 때 흙은 57g만 줄었어요.">흙</button>
+          <button class="opt">물과 공기 속 이산화탄소</button>
+          <button class="opt" data-hint="비료는 적은 양의 양분을 보태 줄 뿐이에요.">비료</button>
+        </div>
+        <p class="why">뿌리로 받은 물과 잎으로 받은 이산화탄소가 식물 몸의 대부분이 돼요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const MAXD = 60, MAXH = 50;
+  // 화분 그림: 흙 위 y=172, 1cm = 3px
+  const SOIL = 172, PX = 3, CX = 120;
+  // 그래프: 가로 0~60일, 세로 0~50cm
+  const GX = 52, GW = 350, GY = 24, GH = 186;
+  const gx = (d) => GX + (d / MAXD) * GW, gy = (h) => GY + GH - (h / MAXH) * GH;
+  const STAGE = { seed: '씨가 물을 머금어요', root: '뿌리가 먼저 나와요', cotyledon: '떡잎이 나와요', leaves: '본잎이 늘어요', flower: '꽃이 펴요', pod: '꼬투리가 열려요' };
+  const WATER = (w) => (w <= 20 ? '거의 안 줌' : w <= 40 ? '조금' : w <= 70 ? '알맞게' : '너무 많이');
+
+  let day = 0, model = null, ghost = null, lightS = null, waterS = null, auto = false, acc = 0;
+
+  // 자
+  (() => {
+    const g = $('ruler');
+    S('rect', { x: 196, y: SOIL - 46 * PX, width: 18, height: 46 * PX, class: 'fill-card' }, g);
+    S('rect', { x: 196, y: SOIL - 46 * PX, width: 18, height: 46 * PX, class: 'ink-thin' }, g);
+    for (let c = 0; c <= 45; c++) {
+      const y = SOIL - c * PX, len = c % 10 === 0 ? 10 : c % 5 === 0 ? 7 : 4;
+      S('line', { x1: 196, y1: y, x2: 196 + len, y2: y, class: 'ink-thin' }, g);
+      if (c && c % 10 === 0) S('text', { x: 191, y: y + 4, class: 'rul', 'text-anchor': 'end', text: c }, g);
+    }
+    S('text', { x: 205, y: SOIL - 46 * PX - 6, class: 'rul', 'text-anchor': 'middle', text: 'cm' }, g);
+  })();
+
+  // 그래프 축
+  (() => {
+    const g = $('g-axis');
+    for (let h = 0; h <= MAXH; h += 10) {
+      S('line', { x1: GX, y1: gy(h), x2: GX + GW, y2: gy(h), class: 'grid' }, g);
+      S('text', { x: GX - 8, y: gy(h) + 5, class: 'tick', 'text-anchor': 'end', text: h }, g);
+    }
+    for (let d = 0; d <= MAXD; d += 10) S('text', { x: gx(d), y: GY + GH + 20, class: 'tick', 'text-anchor': 'middle', text: d }, g);
+    S('path', { d: `M${GX} ${GY - 6} V${GY + GH} H${GX + GW + 6}`, class: 'ink' }, g);
+    S('text', { x: GX - 8, y: GY - 10, class: 'axis-t', 'text-anchor': 'start', text: '키(cm)' }, g);
+    S('text', { x: GX + GW, y: GY + GH + 42, class: 'axis-t', 'text-anchor': 'end', text: '심은 뒤 지난 날(일)' }, g);
+  })();
+
+  // 끝이 뾰족한 잎 한 장: 밑동 (x, y)에서 각도 ang(도) 방향으로 길이 L
+  function leaflet(g, x, y, ang, L) {
+    const a = ang * Math.PI / 180, dx = Math.cos(a), dy = Math.sin(a), nx = -dy, ny = dx, w = L * 0.36;
+    const tx = x + dx * L, ty = y + dy * L, mx = x + dx * L * 0.42, my = y + dy * L * 0.42;
+    S('path', { d: `M${x} ${y} Q${mx + nx * w} ${my + ny * w} ${tx} ${ty} Q${mx - nx * w} ${my - ny * w} ${x} ${y} Z`, class: 'leaf' }, g);
+    S('line', { x1: x, y1: y, x2: x + dx * L * 0.85, y2: y + dy * L * 0.85, class: 'stem', style: 'stroke-width:1' }, g);
+  }
+  // 세 장짜리 본잎: 잎자루 끝에서 가운데 잎 하나, 양옆 잎 둘
+  function leaf(g, x, y, dir, size) {
+    const base = dir > 0 ? -28 : 208, bx = x + Math.cos(base * Math.PI / 180) * size * 0.7, by = y + Math.sin(base * Math.PI / 180) * size * 0.7;
+    S('line', { x1: x, y1: y, x2: bx, y2: by, class: 'stem', style: 'stroke-width:1.8' }, g);
+    leaflet(g, bx, by, base + dir * 62, size * 0.62);
+    leaflet(g, bx, by, base - dir * 62, size * 0.62);
+    leaflet(g, bx, by, base, size * 0.85);
+  }
+
+  function drawPlant() {
+    const g = $('plant'), u = $('under'); g.textContent = ''; u.textContent = '';
+    // 땅속: 씨와 뿌리
+    const st = SIM.beanStage(model, day), h = model.height(day);
+    if (st === 'seed' || st === 'root') S('path', { d: 'M108 192 C106 184 118 180 124 186 C128 182 136 186 132 194 C128 200 112 200 108 192 Z', class: 'cot' }, u);
+    const rootDays = Math.max(0, day - (model.sprout - 2));
+    if (rootDays > 0) {
+      const L = Math.min(20, 6 + rootDays * 2.5);
+      S('path', { d: `M120 196 C118 ${200 + L * 0.4} 124 ${200 + L * 0.7} 120 ${196 + L}`, class: 'root' }, u);
+      for (let i = 1; i <= Math.min(3, Math.floor(rootDays / 2)); i++) {
+        const y = 198 + i * 5, s = i % 2 ? 1 : -1;
+        S('path', { d: `M120 ${y} q${s * 8} 3 ${s * 14} 8`, class: 'root' }, u);
+      }
+    }
+    if (st === 'seed' || st === 'root') return;
+    // 줄기
+    const top = SOIL - Math.max(h, 0.6) * PX;
+    const bend = Math.min(8, h * 0.6);
+    S('path', { d: `M${CX} ${SOIL + 14} C${CX} ${SOIL} ${CX - bend} ${(SOIL + top) / 2} ${CX} ${top}`, class: 'stem' }, g);
+    // 떡잎: 처음에 위로 올라오고, 키가 크면 시들어 작아진다
+    const cy = SOIL - Math.min(h, 4) * PX - 2, old = h > 16, s = old ? 0.7 : 1;
+    if (h < 26) S('ellipse', { cx: CX - 9 * s, cy, rx: 10 * s, ry: 6.5 * s, class: 'cot' + (old ? ' old' : '') }, g);
+    if (h < 26) S('ellipse', { cx: CX + 9 * s, cy, rx: 10 * s, ry: 6.5 * s, class: 'cot' + (old ? ' old' : '') }, g);
+    // 본잎: 6cm 위로 6cm마다 한 쌍씩, 양옆을 번갈아
+    let k = 0;
+    for (let c = 7; c <= h - 1; c += 6, k++) {
+      const y = SOIL - c * PX, dir = k % 2 ? 1 : -1, size = Math.min(22, 12 + (h - c) * 0.8);
+      leaf(g, CX, y, dir, size);
+    }
+    if (h > 4) leaf(g, CX, top + 4, k % 2 ? 1 : -1, Math.min(12, 6 + h * 0.3));
+    // 꽃과 꼬투리: 위쪽 마디 몇 군데
+    const spots = [0.62, 0.78, 0.9].map((f) => SOIL - h * f * PX);
+    if (st === 'flower' || st === 'pod') {
+      spots.forEach((y, i) => {
+        const x = CX + (i % 2 ? 14 : -14);
+        if (st === 'pod' && i < 2) {
+          const dx = i % 2 ? 1 : -1;
+          S('path', { d: `M${x} ${y} C${x + dx * 6} ${y + 10} ${x + dx * 6} ${y + 26} ${x + dx * 2} ${y + 34} C${x + dx * 10} ${y + 26} ${x + dx * 12} ${y + 10} ${x} ${y} Z`, class: 'pod' }, g);
+        } else {
+          for (let p = 0; p < 5; p++) {
+            const a = (p / 5) * Math.PI * 2;
+            S('circle', { cx: x + Math.cos(a) * 4, cy: y + Math.sin(a) * 4, r: 3.4, class: 'flower' }, g);
+          }
+        }
+      });
+    }
+  }
+
+  function drawGraph() {
+    const rec = SIM.beanRecord(model, day);
+    const pts = rec.h.map((h, d) => `${gx(d).toFixed(1)} ${gy(h).toFixed(1)}`);
+    $('line').setAttribute('d', day ? 'M' + pts.join(' L') : '');
+    const dots = $('dots'); dots.textContent = '';
+    rec.h.forEach((h, d) => S('circle', { cx: gx(d), cy: gy(h), r: day > 20 ? 2.4 : 3.2, class: 'dot' }, dots));
+    // 지금까지 가장 많이 자란 날
+    let best = 0;
+    for (let d = 1; d <= day; d++) if (rec.grow[d] > rec.grow[best]) best = d;
+    const st = $('steep'), stt = $('steep-t');
+    if (best && rec.grow[best] >= 0.5) {
+      st.setAttribute('d', `M${gx(best - 1)} ${gy(rec.h[best - 1])} L${gx(best)} ${gy(rec.h[best])}`);
+      const x = gx(best), y = gy(rec.h[best]);
+      stt.setAttribute('x', Math.min(x + 10, GX + GW - 4)); stt.setAttribute('y', Math.max(y + 22, GY + 16));
+      stt.setAttribute('text-anchor', x > GX + GW - 150 ? 'end' : 'start');
+      stt.textContent = `가장 많이 자란 날: ${best}일째 +${rec.grow[best]}cm`;
+    } else { st.setAttribute('d', ''); stt.textContent = ''; }
+    // 바꾸기 전 조건
+    if (ghost && day) {
+      const gr = SIM.beanRecord(ghost, day);
+      $('ghost').setAttribute('d', 'M' + gr.h.map((h, d) => `${gx(d).toFixed(1)} ${gy(h).toFixed(1)}`).join(' L'));
+      const t = $('ghost-t'); t.textContent = '처음 조건';
+      t.setAttribute('x', gx(day) - 4); t.setAttribute('y', gy(gr.h[day]) - 8); t.setAttribute('text-anchor', 'end');
+    } else { $('ghost').setAttribute('d', ''); $('ghost-t').textContent = ''; }
+    return rec;
+  }
+
+  function draw() {
+    if (!model) return;
+    drawPlant();
+    const rec = drawGraph();
+    const st = SIM.beanStage(model, day);
+    $('pday').textContent = day + '일째';
+    $('pstage').textContent = STAGE[st];
+    const h = rec.h[day];
+    $('sp-read').innerHTML = !day ? '씨를 심었어요. 하루씩 넘겨 봐요'
+      : h === 0 ? `<b>${day}일째</b> · 아직 흙 위로 안 나왔어요`
+      : `<b>${day}일째</b> · 키 <b>${h}cm</b> · ${rec.grow[day] >= 0.1 ? '하루에 +' + rec.grow[day] + 'cm' : '거의 그대로'}`;
+    $('d1').disabled = day >= MAXD; $('d5').disabled = day >= MAXD; $('d0').disabled = day === 0 && !ghost;
+  }
+
+  function setModel() {
+    const next = SIM.beanModel(lightS.value, waterS.value);
+    if (model && day && (model.light !== next.light || model.water !== next.water) && !ghost) ghost = model;
+    model = next; draw();
+  }
+  function go(n) { day = SIM.clamp(day + n, 0, MAXD); draw(); }
+
+  const anim = SB.loop($('sprout-lab'), (dt) => {
+    if (!auto) return;
+    acc += dt;
+    if (acc > 0.22) { acc = 0; if (day >= MAXD) toggleAuto(false); else go(1); }
+  });
+  function toggleAuto(on) {
+    auto = on; acc = 0;
+    $('auto').setAttribute('aria-pressed', on ? 'true' : 'false');
+    $('auto').textContent = on ? '멈추기' : '저절로 넘기기';
+    if (on && day >= MAXD) { day = 0; draw(); }
+  }
+
+  $('d1').addEventListener('click', () => go(1));
+  $('d5').addEventListener('click', () => go(5));
+  $('d0').addEventListener('click', () => { day = 0; ghost = null; toggleAuto(false); draw(); });
+  $('auto').addEventListener('click', () => toggleAuto(!auto));
+  lightS = SB.slider($('light'), { format: (v) => v + '시간', onInput: () => model && setModel() });
+  waterS = SB.slider($('water'), { format: WATER, onInput: () => model && setModel() });
+  model = SIM.beanModel(lightS.value, waterS.value);
+  draw();
+});
+</script>
+</body>
+</html>

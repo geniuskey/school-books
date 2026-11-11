@@ -1,0 +1,412 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "보름달이 뜨는 날 해·지구·달은 어떻게 서 있을까요? 달을 직접 끌어 지구 둘레를 돌리며, 늘 반쪽만 햇빛을 받는 달이 왜 날마다 다른 모양으로 보이는지 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>달은 왜 날마다 모양이 바뀔까요? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="보름달이 뜨는 날 해·지구·달은 어떻게 서 있을까요? 달을 직접 끌어 지구 둘레를 돌리며, 늘 반쪽만 햇빛을 받는 달이 왜 날마다 다른 모양으로 보이는지 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/moon.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="달은 왜 날마다 모양이 바뀔까요? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="보름달이 뜨는 날 해·지구·달은 어떻게 서 있을까요? 달을 직접 끌어 지구 둘레를 돌리며, 늘 반쪽만 햇빛을 받는 달이 왜 날마다 다른 모양으로 보이는지 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/moon.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/moon.html#chapter","name":"달은 왜 날마다 모양이 바뀔까요?","headline":"달은 왜 날마다 모양이 바뀔까요? · 초등 하루의 수학과 과학","description":"보름달이 뜨는 날 해·지구·달은 어떻게 서 있을까요? 달을 직접 끌어 지구 둘레를 돌리며, 늘 반쪽만 햇빛을 받는 달이 왜 날마다 다른 모양으로 보이는지 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/moon.html","position":12,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"달의 위상, 지구의 자전, 태양계","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"12. 달은 왜 날마다 모양이 바뀔까요?","item":"https://school.euiyun.com/elementary/chapters/moon.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  body { --sky: #243150; --star: #f3ead2; --moon-lit: #f7ecc8; --moon-dark: #34405e; --mare: rgba(140, 118, 78, .32); --night: #3b3f55; --roof: #141a2c; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) body { --sky: #121828; --star: #e9dfc4; --moon-lit: #f3dfa0; --moon-dark: #242d44; --mare: rgba(120, 98, 58, .34); --night: #0b0d14; --roof: #06080e; }
+  }
+  :root[data-theme="dark"] body { --sky: #121828; --star: #e9dfc4; --moon-lit: #f3dfa0; --moon-dark: #242d44; --mare: rgba(120, 98, 58, .34); --night: #0b0d14; --roof: #06080e; }
+  svg .sky { fill: var(--sky); }
+  svg .star { fill: var(--star); }
+  svg .moon-lit { fill: var(--moon-lit); }
+  svg .moon-dark { fill: var(--moon-dark); }
+  svg .mare { fill: var(--mare); }
+  svg .night { fill: var(--night); }
+  svg .roof { fill: var(--roof); }
+  svg.drawing text.sun-text { fill: #3a2a08; }
+  svg .ray { stroke: var(--glow-soft); stroke-width: 2; }
+  #moon-svg { touch-action: none; }
+  #moon-svg .face { fill: none; stroke: var(--accent); stroke-width: 3.2; stroke-linecap: round; }
+  #moon-svg .lbl { font-size: 17px; }
+  #moon-svg .lgd { font-size: 15px; }
+  #moon-svg #grip .knob { fill: none; stroke: var(--ink-faint); stroke-dasharray: 3 4; stroke-width: 1.6; }
+  #moon-svg #grip:focus-visible .knob { stroke: var(--accent); stroke-width: 3; }
+  #phase-svg .sky-text { font-size: 17px; fill: var(--star); }
+  .presets .btn { min-width: 0; padding-left: 12px; padding-right: 12px; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="moon">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">21:00</span><span class="chip science">과학</span><span>읽는 시간 9분</span></div>
+    <h1>달은 왜 날마다 모양이 바뀔까요?</h1>
+    <p class="unit">달의 위상, 지구의 자전, 태양계</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="밤 9시 지우의 방. 창밖에 반달보다 조금 더 통통한 달이 떠 있다. 고양이 두부가 창틀에 앉아 달을 올려다보고, 지우는 침대에 누워 창을 바라본다.">
+        <defs><clipPath id="win-clip"><rect x="64" y="34" width="172" height="152"/></clipPath></defs>
+        <rect class="sky" x="64" y="34" width="172" height="152"/>
+        <g clip-path="url(#win-clip)" id="scene-stars"></g>
+        <circle class="glow-halo" cx="184" cy="82" r="34" opacity=".55"/>
+        <circle class="moon-dark" cx="184" cy="82" r="21"/>
+        <path class="moon-lit" d="M184 61 A21 21 0 0 1 184 103 A13.5 21 0 0 1 184 61 Z"/>
+        <g filter="url(#sb-ink)">
+          <path class="ink" d="M64 34 H236 V186 H64 Z M150 34 V186 M64 110 H236"/>
+          <path class="wash-pink" d="M40 24 C52 70 34 120 48 200 H76 C66 140 82 80 70 24 Z"/>
+          <path class="ink" d="M40 24 C52 70 34 120 48 200 M70 24 C82 80 66 140 76 200 M52 60 C56 100 50 140 58 196"/>
+          <path class="wash-pink" d="M260 24 C248 70 266 120 252 200 H224 C234 140 218 80 230 24 Z"/>
+          <path class="ink" d="M260 24 C248 70 266 120 252 200 M230 24 C218 80 234 140 224 200 M248 60 C244 100 250 140 242 196"/>
+          <path class="ink" d="M30 20 H270"/>
+          <rect class="wash-warm" x="44" y="186" width="212" height="12"/>
+          <path class="ink" d="M44 186 H256 V198 H44 Z"/>
+          <path class="fill-card" d="M92 186 C88 164 94 150 110 148 C126 150 132 164 128 186 Z"/>
+          <path class="ink" d="M92 186 C88 164 94 150 110 148 C126 150 132 164 128 186"/>
+          <circle class="fill-card" cx="110" cy="140" r="14"/>
+          <path class="fill-card" d="M98 136 L99 118 L110 128 L121 118 L122 136 Z"/>
+          <path class="ink" d="M97 138 C96 130 98 124 99 118 L108 127 C109 127 111 127 112 127 L121 118 C122 124 124 130 123 138 C122 148 116 154 110 154 C104 154 98 148 97 138"/>
+          <path class="ink" d="M126 184 C138 186 142 198 136 210 C132 218 140 224 146 218"/>
+          <path class="ink-thin" d="M102 168 C104 176 104 180 102 186 M118 168 C116 176 116 180 118 186"/>
+          <path class="ink" d="M288 270 V200 M470 270 V170"/>
+          <path class="ink" d="M470 170 C470 160 452 160 452 170 V200"/>
+          <path class="fill-card" d="M288 200 H470 V238 H288 Z"/>
+          <path class="wash-warm" d="M292 206 C320 188 370 196 398 204 C412 196 426 196 436 200 V236 H292 Z"/>
+          <path class="ink" d="M288 238 H470 M292 206 C320 188 370 196 398 204 C412 196 426 196 436 200"/>
+          <path class="ink-thin" d="M320 214 C340 210 360 212 380 218 M310 226 C340 222 372 226 400 230"/>
+          <ellipse class="fill-card" cx="434" cy="194" rx="26" ry="10"/>
+          <ellipse class="ink-thin" cx="434" cy="194" rx="26" ry="10"/>
+          <circle class="fill-card" cx="426" cy="182" r="16"/>
+          <circle class="ink" cx="426" cy="182" r="16"/>
+          <path class="fill-ink" d="M440 186 C446 166 418 158 410 176 C418 170 432 170 440 186 Z"/>
+          <circle class="fill-ink" cx="415" cy="185" r="1.8"/>
+          <circle class="fill-ink" cx="423" cy="186" r="1.8"/>
+          <path class="ink-thin" d="M416 192 q3 1.5 5 0"/>
+          <path class="ink-thin" d="M16 270 H480"/>
+          <path class="ink-soft" d="M410 170 C360 150 280 120 214 96"/>
+        </g>
+      </svg>
+    </figure>
+    <p>밤 9시, 이제 잘 시간이에요. 불을 끄니 창밖이 환해요. 어제보다 조금 더 통통해진 달이 떠 있어요.</p>
+    <p>두부가 창틀에 올라가 달을 한참 올려다봐요. 꼬리 끝만 살랑살랑 움직여요.</p>
+    <p class="question">달은 왜 날마다 모양이 바뀔까요?</p>
+  </section>
+
+  <section class="predict card" id="p-moon" data-id="moon" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">보름달이 뜨는 날, 해·지구·달은 어떻게 서 있을까요?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 그런데 달이 가운데 오면 밝은 쪽이 해만 바라봐요. 그날은 오히려 달이 안 보여요.">달이 가운데</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 왜 그런지 달을 직접 옮겨 봐요.">지구가 가운데</button>
+      <button class="choice" data-v="c" data-echo="좋은 예상이에요. 셋이 직각으로 서면 반쪽만 보이는 반달이 돼요. 해 보기에서 확인해 봐요.">셋이 직각</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="moon-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>달이 모양을 바꾸는 까닭은 중학교에서 자세히 배워요. 오늘은 한 걸음 먼저, 우주에서 내려다봐요.</p>
+    <p>달을 잡고 지구 둘레로 돌려 봐요. 아래 밤하늘에 지우가 보는 달 모양이 나와요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="moon-svg" viewBox="0 0 360 304" role="img" aria-label="위에서 내려다본 해, 지구, 달. 햇빛은 왼쪽에서 오고, 달은 지구 둘레의 길을 따라 끌어 옮길 수 있다.">
+        <g id="rays"></g>
+        <g id="ray-flows"></g>
+        <path class="glow-halo" d="M0 58 A92 92 0 0 1 0 242 Z"/>
+        <path class="glow" d="M0 92 A58 58 0 0 1 0 208 Z"/>
+        <text class="lbl sun-text" x="18" y="156">해</text>
+        <circle class="ink-soft" cx="206" cy="150" r="106" fill="none"/>
+        <text class="lgd" x="206" y="78" text-anchor="middle" style="fill:var(--ink-faint)">달이 도는 길</text>
+        <line id="sight" class="ink-soft" x1="206" y1="150" x2="100" y2="150"/>
+        <g filter="url(#sb-ink)">
+          <circle class="glow-halo" cx="206" cy="150" r="21"/>
+          <path class="night" d="M206 129 A21 21 0 0 1 206 171 Z"/>
+          <circle class="ink" cx="206" cy="150" r="21"/>
+        </g>
+        <text class="lbl" x="206" y="194" text-anchor="middle">지구</text>
+        <g id="grip" aria-label="달의 자리">
+          <circle class="hit" r="28"/>
+          <circle class="knob" r="21"/>
+          <circle class="moon-dark" r="13"/>
+          <path class="moon-lit" d="M0 -13 A13 13 0 0 0 0 13 Z"/>
+          <circle class="ink-thin" r="13"/>
+          <path id="face" class="face" d=""/>
+        </g>
+        <g transform="translate(14 292)">
+          <rect class="moon-lit" x="0" y="-11" width="22" height="12" rx="3"/>
+          <rect class="ink-thin" x="0" y="-11" width="22" height="12" rx="3"/>
+          <text class="lgd" x="30" y="0">햇빛 받는 반쪽</text>
+          <path class="face" d="M168 -10 a8 8 0 0 0 0 12" style="fill:none;stroke:var(--accent);stroke-width:3.2"/>
+          <text class="lgd" x="180" y="0">지구 쪽을 보는 반쪽</text>
+        </g>
+      </svg>
+      <svg class="drawing" id="phase-svg" viewBox="0 0 360 172" role="img" aria-label="지우가 본 밤하늘의 달 모양">
+        <defs>
+          <clipPath id="lit-clip"><path id="lit-clip-path" d=""/></clipPath>
+          <radialGradient id="moon-glow"><stop offset=".55" style="stop-color:var(--moon-lit);stop-opacity:.35"/><stop offset="1" style="stop-color:var(--moon-lit);stop-opacity:0"/></radialGradient>
+          <clipPath id="sky-clip"><rect x="0" y="0" width="360" height="172" rx="12"/></clipPath>
+        </defs>
+        <rect class="sky" x="0" y="0" width="360" height="172" rx="12"/>
+        <g id="phase-stars" clip-path="url(#sky-clip)"></g>
+        <circle id="halo" cx="180" cy="80" r="78" fill="url(#moon-glow)"/>
+        <circle class="moon-dark" cx="180" cy="80" r="50"/>
+        <path id="lit" class="moon-lit" d=""/>
+        <g id="maria" clip-path="url(#lit-clip)"></g>
+        <circle cx="180" cy="80" r="50" fill="none" style="stroke:var(--star);stroke-opacity:.35;stroke-width:1.2"/>
+        <path class="roof" clip-path="url(#sky-clip)" d="M0 172 V150 H34 V138 L52 126 L70 138 V150 H96 V144 H126 V156 H170 V142 L196 130 L222 142 V156 H262 V140 H298 V150 H330 V136 H346 V150 H360 V172 Z"/>
+        <text class="sky-text" x="16" y="28">지우가 본 달</text>
+        <text id="lunar" class="sky-text" x="344" y="28" text-anchor="end"></text>
+      </svg>
+    </figure>
+    <p class="readout" id="moon-read" aria-live="polite"></p>
+    <div class="controls">
+      <div class="btn-row">
+        <button class="btn" type="button" id="back">하루 뒤로</button>
+        <button class="btn primary" type="button" id="play" aria-pressed="false">날짜 흘려 보기</button>
+        <button class="btn" type="button" id="fwd">하루 앞으로</button>
+      </div>
+      <div class="btn-row presets" role="group" aria-label="달 모양 바로 가기">
+        <button class="btn" type="button" data-t="40">초승달</button>
+        <button class="btn" type="button" data-t="90">상현달</button>
+        <button class="btn" type="button" data-t="180">보름달</button>
+        <button class="btn" type="button" data-t="270">하현달</button>
+        <button class="btn" type="button" data-t="320">그믐달</button>
+      </div>
+    </div>
+    <p class="simplified">해는 실제로 훨씬 크고 아주 멀리 있어요. 크기와 거리, 달 궤도의 기울기는 실제와 달라요. 우리나라에서 본 모습이에요.</p>
+  </section>
+
+  <section class="flap" id="f-moon" data-for="p-moon" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 지구가 가운데예요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 360 132" role="img" aria-label="왼쪽부터 해, 지구, 달이 한 줄로 선다. 달의 햇빛 받는 반쪽이 지구를 똑바로 향한다.">
+          <path class="glow-halo" d="M0 6 A60 60 0 0 1 0 126 Z"/>
+          <path class="glow" d="M0 30 A36 36 0 0 1 0 102 Z"/>
+          <path class="ray" d="M70 40 H330 M70 92 H330" style="fill:none"/>
+          <g filter="url(#sb-ink)">
+            <circle class="glow-halo" cx="168" cy="66" r="19"/>
+            <path class="night" d="M168 47 A19 19 0 0 1 168 85 Z"/>
+            <circle class="ink" cx="168" cy="66" r="19"/>
+            <circle class="moon-dark" cx="300" cy="66" r="14"/>
+            <path class="moon-lit" d="M300 52 A14 14 0 0 0 300 80 Z"/>
+            <circle class="ink-thin" cx="300" cy="66" r="14"/>
+          </g>
+          <path class="ink-thin" style="stroke:var(--accent)" d="M190 66 H278 M270 61 l8 5 -8 5"/>
+          <text x="12" y="73" font-size="20" class="sun-text">해</text>
+          <text x="168" y="118" font-size="19" text-anchor="middle">지구</text>
+          <text x="300" y="112" font-size="19" text-anchor="middle">달</text>
+          <text x="234" y="24" font-size="19" text-anchor="middle" style="fill:var(--accent)">밝은 반쪽이 다 보여요</text>
+        </svg>
+      </figure>
+      <p>달은 스스로 빛을 내지 않아요. 햇빛을 받는 반쪽만 밝게 빛나요.</p>
+      <p>보름날에는 해, 지구, 달이 이 차례로 거의 한 줄에 서요. 그래서 달의 밝은 반쪽이 지구를 똑바로 바라봐요.</p>
+      <p>달은 약 한 달에 한 번 지구 둘레를 돌아요. 이렇게 다른 천체 둘레를 도는 것을 <span class="term">공전</span>이라고 해요. 도는 동안 밝은 반쪽이 보이는 만큼 모양이 달라져요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">달 모양은 지구 그림자가 가려서 생겨요.</span><span class="no">아니에요</span></p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 150" role="img" aria-label="지구 그림자는 해 반대쪽으로 길게 뻗는다. 반달일 때 달은 그림자에서 멀리 떨어져 있다.">
+        <path class="glow-halo" d="M0 14 A62 62 0 0 1 0 138 Z"/>
+        <path class="glow" d="M0 40 A36 36 0 0 1 0 112 Z"/>
+        <path class="night" d="M150 58 L350 66 V86 L150 94 Z" opacity=".55"/>
+        <g filter="url(#sb-ink)">
+          <circle class="glow-halo" cx="150" cy="76" r="18"/>
+          <path class="night" d="M150 58 A18 18 0 0 1 150 94 Z"/>
+          <circle class="ink" cx="150" cy="76" r="18"/>
+          <circle class="moon-dark" cx="150" cy="132" r="12"/>
+          <path class="moon-lit" d="M150 120 A12 12 0 0 0 150 144 Z"/>
+          <circle class="ink-thin" cx="150" cy="132" r="12"/>
+        </g>
+        <text x="10" y="83" font-size="20" class="sun-text">해</text>
+        <text x="262" y="52" font-size="20" text-anchor="middle">지구 그림자</text>
+        <text x="172" y="139" font-size="20">반달은 그림자 밖</text>
+      </svg>
+    </figure>
+    <p>반달일 때 달은 지구 그림자에서 멀리 떨어져 있어요. 어두운 반쪽은 햇빛이 닿지 않는 달의 밤이에요.</p>
+    <p>지구 그림자가 달을 가리는 것은 월식 때뿐이에요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="sky" x="2" y="4" width="52" height="48" rx="6"/><circle class="moon-lit" cx="36" cy="18" r="9"/><circle class="star" cx="12" cy="14" r="1.4"/><circle class="star" cx="20" cy="26" r="1"/><path class="roof" d="M2 52 V42 C12 36 20 36 28 40 C36 34 46 36 54 42 V52 Z"/></g></svg>
+        <span>추석과 정월 대보름은 음력 15일이에요. 그래서 늘 보름달이 떠요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="wash-cool" x="4" y="6" width="48" height="44" rx="6"/><circle class="fill-card" cx="32" cy="24" r="11"/><path class="ink-thin" d="M32 13 A11 11 0 0 0 32 35 Z" style="fill:var(--ink-faint);opacity:.3"/><circle class="ink-thin" cx="32" cy="24" r="11"/><path class="ink" d="M4 44 H52"/></g></svg>
+        <span>상현달은 낮 12시쯤 떠요. 오후 파란 하늘에서도 하얀 반달이 보여요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><circle class="glow-halo" cx="28" cy="30" r="14"/><path class="night" d="M28 16 A14 14 0 0 1 28 44 Z"/><circle class="ink" cx="28" cy="30" r="14"/><path class="ink-thin accent" style="stroke:var(--accent)" d="M10 14 a24 24 0 0 1 36 0 l-1 -6 M46 14 l-6 1"/></g></svg>
+        <span>달이 동쪽에서 떠 서쪽으로 지는 건 지구의 <span class="term">자전</span> 때문이에요. 지구가 하루에 한 바퀴 스스로 도는 거예요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 지구 그림자는 언제 달을 가릴까요?</summary>
+    <p>보름날 해, 지구, 달이 정말 똑바로 한 줄에 서면 달이 지구 그림자 속에 들어가요. 이것이 월식이에요. 월식 때 달은 까맣게 사라지지 않고 붉게 보여요. 지구 공기를 지나며 꺾인 붉은 햇빛이 달에 닿기 때문이에요.</p>
+    <p>달이 도는 길은 지구가 해를 도는 길보다 약 5도 기울어 있어요. 그래서 보름날에도 달은 대개 그림자 위나 아래로 비껴가요. 월식이 보름마다 일어나지 않는 까닭이에요.</p>
+    <p>달은 지구를 한 바퀴 돌 때 스스로도 한 바퀴 돌아요. 그래서 지구에서는 늘 같은 얼굴만 보여요. 해 보기의 달 무늬가 언제나 같은 자리에 있는 것도 그래서예요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>갯벌 체험이나 바다낚시 날을 고를 때 물때표를 보죠. 바닷물이 가장 크게 들고 나는 사리는 보름과 그믐 무렵, 그 하루 이틀 뒤에 와요. 달력의 음력 날짜만 봐도 달 모양과 물때를 짐작할 수 있어요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">달은 늘 반쪽만 햇빛을 받아요.<br>그 밝은 반쪽이 지구에서 얼마나 보이느냐가 달 모양이에요.</p>
+    <div class="quiz" data-stamp="moon">
+      <div class="quiz-q" data-answer="0">
+        <p class="qtext">저녁 하늘에 오른쪽 반이 밝은 반달이 떴어요. 이 달의 이름은?</p>
+        <div class="opts">
+          <button class="opt">상현달</button>
+          <button class="opt" data-hint="하현달은 왼쪽 반이 밝아요. 해 보기에서 하현달 버튼을 눌러 봐요.">하현달</button>
+          <button class="opt" data-hint="그믐달은 왼쪽이 가늘게 빛나는 눈썹 모양이에요.">그믐달</button>
+        </div>
+        <p class="why">차오르는 반달은 오른쪽이 밝은 상현달, 음력 8일쯤이에요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">반달일 때 달의 어두운 반쪽은 왜 어두울까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="반달일 때 지구 그림자는 달과 다른 쪽으로 뻗어 있어요.">지구 그림자에 가려서</button>
+          <button class="opt">햇빛이 닿지 않는 쪽이라서</button>
+          <button class="opt" data-hint="달은 늘 둥근 공 모양이에요. 보이지 않을 뿐이에요.">달이 반만 남아서</button>
+        </div>
+        <p class="why">달은 늘 반쪽만 햇빛을 받아요. 나머지 반쪽은 달의 밤이에요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">보름달에서 다음 보름달까지는 얼마쯤 걸릴까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="일주일이면 보름달에서 하현달까지예요.">일주일쯤</button>
+          <button class="opt">한 달쯤</button>
+          <button class="opt" data-hint="1년이면 보름달을 열두 번쯤 볼 수 있어요.">1년쯤</button>
+        </div>
+        <p class="why">약 29.5일이에요. 음력 한 달이 바로 이 길이예요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+    <p class="muted" style="text-align:center">지우의 하루가 끝났어요. 두부도 꼬리를 말고 눈을 감아요. 잘 자요.</p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const EX = 206, EY = 150, OR = 106, PX = 180, PY = 80, PR = 50, DAY = 360 / SIM.SYNODIC;
+  const svg = $('moon-svg');
+
+  // 별: 같은 씨앗이라 새로고침해도 같은 자리
+  function stars(parent, n, seed, box) {
+    const r = SIM.rng(seed);
+    for (let i = 0; i < n; i++) {
+      const x = box[0] + r() * box[2], y = box[1] + r() * box[3];
+      if (Math.hypot(x - box[4], y - box[5]) < box[6]) continue;
+      S('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: (0.6 + r() * 1.1).toFixed(2), class: 'star', opacity: (0.45 + r() * 0.5).toFixed(2) }, parent);
+    }
+  }
+  stars($('scene-stars'), 22, 12, [64, 34, 172, 150, 184, 82, 34]);
+  stars($('phase-stars'), 46, 21, [0, 0, 360, 140, PX, PY, 70]);
+
+  // 햇빛: 왼쪽에서 오는 평행한 빛
+  [36, 94, 206, 264].forEach((y, i) => {
+    const d = `M92 ${y} H352`;
+    S('path', { d, class: 'ray', fill: 'none' }, $('rays'));
+    const f = SB.flow($('ray-flows'), { path: d, n: 3, kind: 'glow', r: 2.6, speed: 55 });
+    f.phase = [0, 47, 21, 68][i]; f.place();
+  });
+
+  // 달의 바다(무늬): 달 반지름에 대한 비율, 북쪽이 위
+  [[-0.30, -0.38, 0.24, 0.20], [0.18, -0.33, 0.15, 0.14], [0.31, -0.03, 0.20, 0.17], [0.67, -0.22, 0.10, 0.12],
+   [0.52, 0.26, 0.10, 0.16], [-0.56, 0.05, 0.25, 0.38], [-0.18, 0.40, 0.18, 0.13], [0.30, 0.40, 0.08, 0.08]]
+    .forEach(([x, y, rx, ry]) => S('ellipse', { cx: PX + x * PR, cy: PY + y * PR, rx: rx * PR, ry: ry * PR, class: 'mare' }, $('maria')));
+
+  // 지구에서 본 밝은 부분: 바깥 반원 + 경계선(가로 반지름 R·|cos θ|인 반타원)
+  function litPath(ph) {
+    if (ph.lit < 0.004) return '';
+    const rx = (PR * Math.abs(ph.tx)).toFixed(2), top = `${PX} ${PY - PR}`, bot = `${PX} ${PY + PR}`;
+    if (ph.waxing) return `M${top} A${PR} ${PR} 0 0 1 ${bot} A${rx} ${PR} 0 0 ${ph.tx > 0 ? 0 : 1} ${top} Z`;
+    return `M${top} A${PR} ${PR} 0 0 0 ${bot} A${rx} ${PR} 0 0 ${ph.tx > 0 ? 1 : 0} ${top} Z`;
+  }
+
+  let theta = 120, playing = false;
+  function draw() {
+    const ph = SIM.moonPhase(theta), a = SIM.rad(ph.theta);
+    const mx = EX - OR * Math.cos(a), my = EY + OR * Math.sin(a);
+    $('grip').setAttribute('transform', `translate(${mx.toFixed(1)} ${my.toFixed(1)})`);
+    $('sight').setAttribute('x2', mx.toFixed(1)); $('sight').setAttribute('y2', my.toFixed(1));
+    // 지구 쪽을 보는 반쪽: 달에서 지구를 향한 방향 ±90도
+    const ux = (EX - mx) / OR, uy = (EY - my) / OR, R = 17;
+    const p = { x: -uy * R, y: ux * R }, q = { x: uy * R, y: -ux * R };
+    $('face').setAttribute('d', `M${p.x.toFixed(1)} ${p.y.toFixed(1)} A${R} ${R} 0 0 0 ${q.x.toFixed(1)} ${q.y.toFixed(1)}`);
+    const d = litPath(ph);
+    $('lit').setAttribute('d', d); $('lit-clip-path').setAttribute('d', d);
+    $('halo').style.opacity = (0.15 + 0.85 * ph.lit).toFixed(2);
+    $('lunar').textContent = `음력 ${ph.lunarDay}일쯤`;
+    const where = ph.name === '보이지 않는 달' ? '달이 해와 같은 쪽에 있어요' : ph.name === '보름달' ? '해 반대쪽, 밝은 반쪽이 다 보여요'
+      : ph.waxing ? '오른쪽부터 밝아지며 차올라요' : '오른쪽부터 어두워지며 기울어요';
+    $('moon-read').innerHTML = `<b>${ph.name}</b> · ${where}`;
+    const g = $('grip');
+    g.setAttribute('aria-valuenow', ph.lunarDay);
+    g.setAttribute('aria-valuetext', `${ph.name}, 음력 ${ph.lunarDay}일쯤`);
+  }
+  function set(t) { theta = ((t % 360) + 360) % 360; draw(); }
+
+  const grip = $('grip');
+  grip.setAttribute('aria-valuemin', 1); grip.setAttribute('aria-valuemax', 30);
+  SB.drag(grip, {
+    svg, area: svg,
+    onStart() { stop(); },
+    onMove(pt) {
+      const dx = pt.x - EX, dy = pt.y - EY;
+      if (Math.hypot(dx, dy) < 8) return;
+      set(SIM.deg(Math.atan2(dy, -dx)));
+    },
+    onKey(dx, dy) { stop(); set(theta + (dx || -dy) * DAY); }
+  });
+
+  const play = $('play');
+  function stop() { playing = false; play.setAttribute('aria-pressed', 'false'); play.textContent = '날짜 흘려 보기'; }
+  play.addEventListener('click', () => {
+    playing = !playing;
+    play.setAttribute('aria-pressed', String(playing));
+    play.textContent = playing ? '멈추기' : '날짜 흘려 보기';
+  });
+  SB.loop($('moon-lab'), (dt) => { if (playing && dt) set(theta + dt * DAY * 3); });
+  $('fwd').addEventListener('click', () => { stop(); set(theta + DAY); });
+  $('back').addEventListener('click', () => { stop(); set(theta - DAY); });
+  document.querySelectorAll('.presets .btn').forEach((b) => b.addEventListener('click', () => { stop(); set(Number(b.dataset.t)); }));
+  draw();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "토스트 2분의 1과 4분의 2, 어느 쪽이 더 클까요? 토스트를 직접 똑같이 나누고 겹쳐 보며 분모·분자의 뜻, 크기가 같은 분수, 분모가 10인 분수와 소수를 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>토스트를 똑같이 나누려면? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="토스트 2분의 1과 4분의 2, 어느 쪽이 더 클까요? 토스트를 직접 똑같이 나누고 겹쳐 보며 분모·분자의 뜻, 크기가 같은 분수, 분모가 10인 분수와 소수를 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/toast.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="토스트를 똑같이 나누려면? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="토스트 2분의 1과 4분의 2, 어느 쪽이 더 클까요? 토스트를 직접 똑같이 나누고 겹쳐 보며 분모·분자의 뜻, 크기가 같은 분수, 분모가 10인 분수와 소수를 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/toast.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/toast.html#chapter","name":"토스트를 똑같이 나누려면?","headline":"토스트를 똑같이 나누려면? · 초등 하루의 수학과 과학","description":"토스트 2분의 1과 4분의 2, 어느 쪽이 더 클까요? 토스트를 직접 똑같이 나누고 겹쳐 보며 분모·분자의 뜻, 크기가 같은 분수, 분모가 10인 분수와 소수를 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/toast.html","position":3,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"분수, 크기 비교, 소수 맛보기","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"03. 토스트를 똑같이 나누려면?","item":"https://school.euiyun.com/elementary/chapters/toast.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  #toast-svg .crumb { fill: var(--wash-warm); }
+  #toast-svg .piece { cursor: pointer; }
+  #toast-svg .piece rect { fill: transparent; }
+  #toast-svg .piece.on.a rect { fill: var(--accent); fill-opacity: .32; }
+  #toast-svg .piece.on.b rect { fill: var(--water); fill-opacity: .32; }
+  #toast-svg .piece:focus { outline: none; }
+  #toast-svg .piece:focus-visible rect { stroke: var(--accent); stroke-width: 3; }
+  #toast-svg .cut { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-dasharray: 6 4; }
+  #toast-svg .bite { fill: var(--accent); opacity: .5; }
+  #toast-svg .ov rect { fill: none; stroke: var(--water); stroke-width: 3.5; stroke-dasharray: 7 5; }
+  #toast-svg .ov { transition: transform .7s cubic-bezier(.4, .1, .2, 1), opacity .4s; pointer-events: none; }
+  #toast-svg .name { font-size: 26px; text-anchor: middle; }
+  #line-svg .fr { font-size: 25px; text-anchor: middle; }
+  #line-svg .dec { font-size: 16px; text-anchor: middle; fill: var(--ink-soft); }
+  #line-svg .a { fill: var(--accent); }
+  #line-svg .b { fill: var(--water); }
+  #line-svg .bar-a { stroke: var(--accent); stroke-width: 8; stroke-linecap: round; opacity: .55; }
+  #line-svg .bar-b { stroke: var(--water); stroke-width: 8; stroke-linecap: round; opacity: .55; }
+  .cut-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cut-ctl { display: flex; align-items: center; justify-content: center; gap: 4px; flex-wrap: nowrap; }
+  .cut-ctl .btn { min-width: 44px; width: 44px; padding-left: 0; padding-right: 0; font-size: 1.3rem; flex: none; }
+  .cut-ctl .n { font-family: var(--hand); font-weight: 700; font-size: 1.25rem; min-width: 3em; text-align: center; white-space: nowrap; }
+  .cut-ctl .who { display: none; color: var(--ink-soft); min-width: 2.6em; }
+  @media (max-width: 420px) { .cut-ctl .who { display: inline; } }
+  .cut-ctl .n.a { color: var(--accent); }
+  .cut-ctl .n.b { color: var(--water); }
+  @media (max-width: 420px) { .cut-row { grid-template-columns: 1fr; gap: 4px; } }
+  .toast-sub { text-align: center; color: var(--ink-soft); font-size: .95rem; margin: -4px 0 4px; min-height: 1.4em; }
+  .frac-t { white-space: nowrap; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="toast">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">07:30</span><span class="chip math">수학</span><span>읽는 시간 9분</span></div>
+    <h1>토스트를 똑같이 나누려면?</h1>
+    <p class="unit">분수, 크기 비교, 소수 맛보기</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="아침 식탁. 지우의 접시에는 반으로 자른 토스트 한 조각, 아빠의 접시에는 넷으로 자른 토스트 두 조각이 있다. 고양이 두부는 식탁 아래에서 부스러기를 본다.">
+        <g filter="url(#sb-ink)">
+          <circle class="fill-card" cx="240" cy="52" r="24"/>
+          <circle class="ink" cx="240" cy="52" r="24"/>
+          <path class="ink" d="M240 52 L230 62 M240 52 V71"/>
+          <path class="ink-thin" d="M240 30 v3 M262 52 h-3 M240 74 v-3 M218 52 h3"/>
+          <path class="wash-warm" d="M10 168 H470 V184 H10 Z"/>
+          <path class="ink" d="M10 168 H470 M10 184 H470 M40 184 V290 M440 184 V290"/>
+          <ellipse class="fill-card" cx="150" cy="150" rx="86" ry="22"/>
+          <ellipse class="ink" cx="150" cy="150" rx="86" ry="22"/>
+          <ellipse class="fill-card" cx="330" cy="150" rx="86" ry="22"/>
+          <ellipse class="ink" cx="330" cy="150" rx="86" ry="22"/>
+          <path class="wash-warm" d="M104 148 V98 C104 82 118 78 128 84 C134 74 150 76 152 88 V148 Z"/>
+          <path class="ink" d="M104 148 V98 C104 82 118 78 128 84 C134 74 150 76 152 88 V148 Z"/>
+          <path class="ink-thin" d="M110 146 V100 C110 90 118 86 126 90"/>
+          <path class="wash-warm" d="M282 148 V122 H322 V148 Z M326 148 V122 H366 V148 Z"/>
+          <path class="wash-warm" d="M282 116 V98 C282 84 294 80 302 86 L322 86 V116 Z M326 116 V86 H346 C354 80 366 84 366 98 V116 Z"/>
+          <path class="ink" d="M282 148 V122 H322 V148 Z M326 148 V122 H366 V148 Z"/>
+          <path class="ink" d="M282 116 V98 C282 84 294 80 302 86 L322 86 V116 Z"/>
+          <path class="ink" d="M326 116 V86 H346 C354 80 366 84 366 98 V116 Z"/>
+                    <circle class="fill-card" cx="60" cy="96" r="26"/>
+          <circle class="ink" cx="60" cy="96" r="26"/>
+          <path class="fill-ink" d="M34 94 C30 66 86 62 86 92 C78 78 48 76 34 94 Z"/>
+          <circle class="fill-ink" cx="72" cy="98" r="2.2"/>
+          <path class="ink-thin" d="M70 108 q4 2 8 -1"/>
+          <path class="ink" d="M76 118 C86 120 94 128 100 140"/>
+          <path class="wash-pink" d="M20 168 C20 140 34 124 60 122 C84 124 96 140 98 168 Z"/>
+          <path class="ink" d="M20 168 C20 140 34 124 60 122 C84 124 96 140 98 168"/>
+          <path class="fill-card" d="M356 286 C352 262 362 246 380 246 C400 246 410 262 406 286 Z"/>
+          <path class="ink" d="M356 286 C352 262 362 246 380 246 C400 246 410 262 406 286"/>
+          <circle class="fill-card" cx="364" cy="236" r="15"/>
+          <circle class="ink" cx="364" cy="236" r="15"/>
+          <path class="ink" d="M352 229 L351 215 L360 222 M368 222 L377 215 L377 229"/>
+          <circle class="fill-ink" cx="357" cy="238" r="2"/><circle class="fill-ink" cx="369" cy="238" r="2"/>
+          <path class="ink" d="M406 282 C424 282 432 270 428 256"/>
+          <circle class="fill-ink" cx="318" cy="276" r="2"/><circle class="fill-ink" cx="330" cy="282" r="1.6"/><circle class="fill-ink" cx="310" cy="284" r="1.4"/>
+        </g>
+        <text x="150" y="206" font-size="17" text-anchor="middle" style="fill:var(--ink-soft)">지우: 반으로 자른 1조각</text>
+        <text x="330" y="206" font-size="17" text-anchor="middle" style="fill:var(--ink-soft)">아빠: 넷으로 자른 2조각</text>
+      </svg>
+    </figure>
+    <p>아침 7시 30분, 똑같은 식빵 두 장이 구워졌어요. 지우 토스트는 반으로 잘라 한 조각을 먹기로 했어요.</p>
+    <p>아빠 토스트는 넷으로 잘라 두 조각을 먹어요. 지우가 "아빠는 두 조각이니까 더 많잖아요!" 해요. 두부는 식탁 아래에서 부스러기만 노려봐요.</p>
+    <p class="question">반으로 자른 한 조각과 넷으로 자른 두 조각, 누가 더 많이 먹을까요?</p>
+  </section>
+
+  <section class="predict card" id="p-toast" data-id="toast" data-answer="c" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">토스트 2분의 1과 4분의 2 중 어느 쪽이 클까요?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 조각이 크긴 해요. 그런데 아빠는 두 조각이에요.">2분의 1</button>
+      <button class="choice" data-v="b" data-echo="좋은 예상이에요. 조각 수는 많아요. 그런데 한 조각의 크기가 작아요.">4분의 2</button>
+      <button class="choice" data-v="c" data-echo="예상이 맞았어요! 정말 같은지 겹쳐서 확인해 볼까요?">같아요</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="toast-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>버튼으로 토스트를 몇 조각으로 나눌지 정하고, 먹을 조각을 눌러 골라요. 그다음 아빠 토스트를 지우 토스트 위에 겹쳐 봐요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="toast-svg" viewBox="0 0 480 262" role="group" aria-label="토스트 두 장. 조각을 눌러 먹을 조각을 고른다.">
+        <g id="toastA"></g>
+        <g id="toastB" transform="translate(240 0)"></g>
+        <g id="ov" class="ov"></g>
+        <text class="name" x="120" y="256">지우</text>
+        <text class="name" x="360" y="256">아빠</text>
+      </svg>
+    </figure>
+    <div class="cut-row">
+      <div class="cut-ctl"><span class="who">지우</span><button class="btn" type="button" id="aM" aria-label="지우 토스트 조각 줄이기">−</button><span class="n a" id="aN" aria-live="polite"></span><button class="btn" type="button" id="aP" aria-label="지우 토스트 조각 늘리기">+</button></div>
+      <div class="cut-ctl"><span class="who">아빠</span><button class="btn" type="button" id="bM" aria-label="아빠 토스트 조각 줄이기">−</button><span class="n b" id="bN" aria-live="polite"></span><button class="btn" type="button" id="bP" aria-label="아빠 토스트 조각 늘리기">+</button></div>
+    </div>
+    <p class="readout" id="toast-read" aria-live="polite"></p>
+    <p class="toast-sub" id="toast-sub"></p>
+    <figure class="stage">
+      <svg class="drawing" id="line-svg" viewBox="0 0 480 128" role="img" aria-label="0부터 1까지의 수직선. 두 토스트의 먹는 양이 표시된다.">
+        <line class="bar-a" id="barA" x1="30" y1="62" x2="30" y2="62"/>
+        <line class="bar-b" id="barB" x1="30" y1="74" x2="30" y2="74"/>
+        <path class="ink" d="M30 68 H450 M30 56 V80 M450 56 V80"/>
+        <g id="ticks"></g>
+        <text x="14" y="76" font-size="22" text-anchor="middle">0</text>
+        <text x="466" y="76" font-size="22" text-anchor="middle">1</text>
+        <g id="mkA"></g>
+        <g id="mkB"></g>
+      </svg>
+    </figure>
+    <div class="btn-row">
+      <button class="btn primary" type="button" id="ovBtn" aria-pressed="false">아빠 토스트 겹쳐 보기</button>
+    </div>
+    <p class="simplified">토스트는 똑같은 정사각형으로 봤어요. 빵 가장자리 모양과 두께는 뺐어요. 1부터 12조각까지, 똑같이 자르기 쉬운 수만 골랐어요.</p>
+  </section>
+
+  <section class="flap" id="f-toast" data-for="p-toast" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 "같아요"예요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 360 150" role="img" aria-label="반으로 자른 토스트의 한 조각을 다시 반으로 자르면 넷으로 자른 두 조각이 된다. 칠한 넓이는 같다.">
+          <g filter="url(#sb-ink)">
+            <rect class="wash-warm" x="20" y="20" width="100" height="100"/>
+            <rect style="fill:var(--accent);fill-opacity:.3" x="20" y="20" width="50" height="100"/>
+            <path class="ink" d="M20 20 H120 V120 H20 Z M70 20 V120"/>
+            <rect class="wash-warm" x="240" y="20" width="100" height="100"/>
+            <rect style="fill:var(--water);fill-opacity:.3" x="240" y="20" width="50" height="100"/>
+            <path class="ink" d="M240 20 H340 V120 H240 Z M290 20 V120"/>
+            <path class="ink-thin" style="stroke:var(--water)" d="M240 70 H340"/>
+          </g>
+          <path class="ink-thin accent" style="stroke:var(--accent)" d="M140 70 H220 l-8 -5 M220 70 l-8 5"/>
+          <text x="180" y="58" font-size="16" text-anchor="middle">한 번 더 반으로</text>
+          <text x="70" y="142" font-size="18" text-anchor="middle">2분의 1</text>
+          <text x="290" y="142" font-size="18" text-anchor="middle">4분의 2</text>
+        </svg>
+      </figure>
+      <p>반으로 자른 조각을 가로로 한 번 더 자르면 네 조각 중 두 조각이 돼요. 조각 수는 두 배, 한 조각은 반이라 먹는 양은 그대로예요.</p>
+      <p>4분의 2에서 4는 몇 조각으로 나눴는지를 나타내요. 이 수를 <span class="term">분모</span>라고 해요. 2는 그중 몇 조각인지 나타내는 <span class="term">분자</span>예요.</p>
+      <p>분모와 분자를 똑같이 두 배로 하면 크기가 같은 분수가 돼요. 2분의 1, 4분의 2, 8분의 4는 모두 토스트의 절반이에요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">분모가 큰 분수가 더 커요.</span><span class="no">아니에요</span></p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 120" role="img" aria-label="4조각 중 한 조각과 8조각 중 한 조각. 8조각 중 한 조각이 더 작다.">
+        <g filter="url(#sb-ink)">
+          <rect class="wash-warm" x="40" y="12" width="80" height="80"/>
+          <rect style="fill:var(--accent-soft)" x="40" y="12" width="40" height="40"/>
+          <path class="ink" d="M40 12 H120 V92 H40 Z M80 12 V92 M40 52 H120"/>
+          <rect class="wash-warm" x="240" y="12" width="80" height="80"/>
+          <rect style="fill:var(--accent-soft)" x="240" y="12" width="20" height="40"/>
+          <path class="ink" d="M240 12 H320 V92 H240 Z M260 12 V92 M280 12 V92 M300 12 V92 M240 52 H320"/>
+        </g>
+        <text x="80" y="114" font-size="18" text-anchor="middle">4분의 1</text>
+        <text x="280" y="114" font-size="18" text-anchor="middle">8분의 1</text>
+        <text x="180" y="58" font-size="22" text-anchor="middle" style="fill:var(--accent)">더 커요 ←</text>
+      </svg>
+    </figure>
+    <p>분모는 몇 조각으로 나눴는지예요. 같은 토스트를 많이 나눌수록 한 조각은 작아져요.</p>
+    <p>그래서 8분의 1은 4분의 1보다 작아요. 분자가 1로 같을 때는 분모가 작을수록 더 큰 조각이에요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><circle class="wash-warm" cx="28" cy="28" r="22"/><path class="glow-halo" d="M28 28 L28 6 A22 22 0 0 1 43.6 12.4 Z"/><circle class="ink" cx="28" cy="28" r="22"/><path class="ink-thin" d="M28 6 V50 M6 28 H50 M12.4 12.4 L43.6 43.6 M43.6 12.4 L12.4 43.6"/></g></svg>
+        <span>피자 8조각 중 1조각은 8분의 1이에요. 두 조각을 먹으면 4분의 1판이에요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><circle class="fill-card" cx="28" cy="28" r="20"/><path class="glow-halo" d="M28 28 V8 A20 20 0 0 1 28 48 Z"/><circle class="ink" cx="28" cy="28" r="20"/><path class="ink" d="M28 28 V12 M28 28 V44"/></g></svg>
+        <span>30분은 1시간의 2분의 1이에요. 그래서 "반 시간"이라고도 해요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="fill-card" d="M18 8 H38 V14 L44 22 V50 H12 V22 L18 14 Z"/><path class="water-halo" d="M12 36 H44 V50 H12 Z"/><path class="ink" d="M18 8 H38 V14 L44 22 V50 H12 V22 L18 14 Z"/><path class="ink-thin" d="M12 36 H44"/></g></svg>
+        <span>1L 우유를 반 마시면 0.5L가 남아요. 10분의 5와 같은 양이에요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 토스트를 10조각으로 나누면?</summary>
+    <p>토스트를 똑같이 10조각으로 나누면 한 조각은 10분의 1이에요. 10분의 1은 소수로 0.1이라고 쓰고 "영 점 일"이라고 읽어요.</p>
+    <p>세 조각이면 10분의 3, 곧 0.3이에요. 해 보기에서 토스트를 10조각으로 나누면 수직선 아래에 소수가 함께 나와요.</p>
+    <p>2분의 1을 10조각 토스트로 바꾸면 다섯 조각이에요. 그래서 2분의 1은 10분의 5, 곧 0.5와 크기가 같아요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>"3분의 1 할인"과 "4분의 1 할인" 중 더 많이 깎아 주는 쪽은 3분의 1이에요. 분모가 작은 쪽이 한 조각이 커요. 요리법을 반으로 줄일 때도 "4분의 3컵의 반은 8분의 3컵"처럼 분수를 다시 나눠요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">조각 수가 두 배면 한 조각은 반.<br>그래서 2분의 1과 4분의 2는 같은 양이에요.</p>
+    <div class="quiz" data-stamp="toast">
+      <div class="quiz-q" data-answer="2">
+        <p class="qtext">2분의 1과 크기가 같은 분수는 무엇일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="분모만 두 배가 되면 한 조각만 작아져요. 분자도 두 배가 되어야 해요.">4분의 1</button>
+          <button class="opt" data-hint="3분의 2는 세 조각 중 두 조각이라 절반보다 많아요.">3분의 2</button>
+          <button class="opt">6분의 3</button>
+        </div>
+        <p class="why">여섯 조각 중 세 조각은 토스트의 절반이에요.</p>
+      </div>
+      <div class="quiz-q" data-answer="0">
+        <p class="qtext">5분의 1과 8분의 1 중 더 큰 것은 무엇일까요?</p>
+        <div class="opts">
+          <button class="opt">5분의 1</button>
+          <button class="opt" data-hint="8조각으로 나누면 5조각으로 나눌 때보다 한 조각이 작아져요.">8분의 1</button>
+          <button class="opt" data-hint="둘 다 한 조각이지만 조각의 크기가 달라요.">같아요</button>
+        </div>
+        <p class="why">덜 나눌수록 한 조각이 커요. 5분의 1이 더 커요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">10분의 7을 소수로 쓰면 무엇일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="10분의 1이 0.1이에요. 7은 7개, 0.1이 7개면?">7.10</button>
+          <button class="opt">0.7</button>
+          <button class="opt" data-hint="0.07은 100조각 중 7조각이에요. 10조각으로 나눴죠?">0.07</button>
+        </div>
+        <p class="why">10분의 1인 0.1이 7개라 0.7이에요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const CUTS = SIM.TOAST_CUTS;
+  const X = 42, Y = 52, W = 156; // 토스트 안쪽(속살) 정사각형
+  const t = { a: { n: 2, on: new Set([0]) }, b: { n: 4, on: new Set([0, 1]) } };
+  let overlay = false;
+  const crust = `M30 64 C26 30 62 22 82 32 C100 16 140 16 158 32 C178 22 214 30 210 64 V216 C210 222 206 226 200 226 H40 C34 226 30 222 30 216 Z`;
+
+  // 조각 칸: 세로줄부터 채우는 순서(왼쪽 칸이 먼저). 그래야 2분의 1과 4분의 2가 같은 자리를 칠한다.
+  function cells(n) {
+    const [r, c] = SIM.toastGrid(n), w = W / c, h = W / r, out = [];
+    for (let j = 0; j < c; j++) for (let i = 0; i < r; i++) out.push({ x: X + j * w, y: Y + i * h, w, h });
+    return out;
+  }
+
+  function drawToast(key) {
+    const g = $(key === 'a' ? 'toastA' : 'toastB'), st = t[key];
+    g.textContent = '';
+    const art = S('g', { filter: 'url(#sb-ink)' }, g);
+    S('path', { d: crust, class: 'wash-warm' }, art);
+    S('path', { d: crust, class: 'ink' }, art);
+    S('rect', { x: X, y: Y, width: W, height: W, class: 'crumb' }, art);
+    S('rect', { x: X, y: Y, width: W, height: W, class: 'ink-thin' }, art);
+    cells(st.n).forEach((c, i) => {
+      const on = st.on.has(i);
+      const p = S('g', { class: `piece ${key}${on ? ' on' : ''}`, tabindex: 0, role: 'button', 'aria-pressed': on, 'aria-label': `${st.n}조각 중 ${i + 1}번째 조각` }, g);
+      S('rect', { x: c.x + 1, y: c.y + 1, width: c.w - 2, height: c.h - 2 }, p);
+      const toggle = () => { st.on.has(i) ? st.on.delete(i) : st.on.add(i); update(); setTimeout(() => { const q = g.querySelectorAll('.piece')[i]; if (q) q.focus({ preventScroll: true }); }); };
+      p.addEventListener('click', toggle);
+      p.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    });
+    const [r, c] = SIM.toastGrid(st.n);
+    let d = '';
+    for (let j = 1; j < c; j++) d += `M${X + j * W / c} ${Y - 6} V${Y + W + 6} `;
+    for (let i = 1; i < r; i++) d += `M${X - 6} ${Y + i * W / r} H${X + W + 6} `;
+    if (d) S('path', { d, class: 'cut' }, g);
+  }
+
+  function drawOverlay() {
+    const g = $('ov'); g.textContent = '';
+    const cs = cells(t.b.n);
+    t.b.on.forEach((i) => { const c = cs[i]; S('rect', { x: c.x + 1, y: c.y + 1, width: c.w - 2, height: c.h - 2 }, g); });
+    g.style.transform = overlay ? 'translate(0px, 0px)' : 'translate(240px, 0px)';
+    g.style.opacity = overlay ? 1 : 0;
+    $('toastB').style.opacity = overlay ? 0.45 : 1;
+  }
+
+  const word = (a, b) => `${b}분의 ${a}`;
+  function marker(g, a, b, cls, below) {
+    g.textContent = '';
+    const x = 30 + 420 * a / b, y0 = below ? 80 : 56;
+    S('path', { d: below ? `M${x} ${y0} l-7 10 h14 z` : `M${x} ${y0} l-7 -10 h14 z`, class: cls }, g);
+    const dec = SIM.tenthsText(a, b), lx = SIM.clamp(x, 92, 388);
+    const label = word(a, b) + (dec != null && a && a !== b ? ' = ' + dec : '');
+    S('text', { x: lx, y: below ? 116 : 36, class: 'fr ' + cls, text: label }, g);
+  }
+
+  function clampSel(st) { // 조각 수가 바뀌면 먹던 조각 수를 그대로 두고 왼쪽부터 다시 고른다
+    const k = Math.min(st.on.size, st.n); st.on = new Set(Array.from({ length: k }, (_, i) => i));
+  }
+  function bump(key, dir) {
+    const st = t[key], i = CUTS.indexOf(st.n), j = SIM.clamp(i + dir, 0, CUTS.length - 1);
+    if (i === j) return;
+    st.n = CUTS[j]; clampSel(st); update();
+  }
+
+  function update() {
+    drawToast('a'); drawToast('b'); drawOverlay();
+    const A = t.a, B = t.b, a = A.on.size, b = B.on.size;
+    $('aN').textContent = A.n + '조각'; $('bN').textContent = B.n + '조각';
+    $('aM').disabled = A.n === CUTS[0]; $('aP').disabled = A.n === CUTS[CUTS.length - 1];
+    $('bM').disabled = B.n === CUTS[0]; $('bP').disabled = B.n === CUTS[CUTS.length - 1];
+    // 수직선: 눈금은 두 분모로 함께 나눈다
+    const tg = $('ticks'); tg.textContent = '';
+    for (const [d, cls, y0, y1] of [[A.n, 'a', 56, 68], [B.n, 'b', 68, 80]]) {
+      for (let k = 1; k < d; k++) { const x = 30 + 420 * k / d; S('line', { x1: x, y1: y0, x2: x, y2: y1, class: 'ink-thin', style: `stroke:var(${cls === 'a' ? '--accent' : '--water'})` }, tg); }
+    }
+    $('barA').setAttribute('x2', 30 + 420 * a / A.n); $('barB').setAttribute('x2', 30 + 420 * b / B.n);
+    marker($('mkA'), a, A.n, 'a', false);
+    marker($('mkB'), b, B.n, 'b', true);
+    const cmp = SIM.fracCompare(a, A.n, b, B.n);
+    const sa = `<span class="frac-t">${word(a, A.n)}</span>`, sb = `<span class="frac-t">${word(b, B.n)}</span>`;
+    $('toast-read').innerHTML = cmp === 0 ? `${sa} = ${sb} · <b>같아요</b>` : cmp > 0 ? `${sa} &gt; ${sb} · <b>지우가 많아요</b>` : `${sa} &lt; ${sb} · <b>아빠가 많아요</b>`;
+    let sub = '';
+    if (!a || !b) sub = '먹을 조각을 눌러 골라 봐요.';
+    else if (cmp === 0 && A.n !== B.n) sub = '조각 수는 달라도 먹는 양은 같아요. 겹쳐 보면 딱 맞아요.';
+    else if (a === b && A.n !== B.n) sub = '조각 수가 같으면 덜 나눈 쪽 조각이 커요.';
+    else if (A.n === B.n) sub = '똑같이 나눴으니 조각 수만 비교하면 돼요.';
+    else sub = '분모가 다르면 겹쳐 보거나 수직선에서 비교해요.';
+    $('toast-sub').textContent = sub;
+  }
+
+  $('aM').addEventListener('click', () => bump('a', -1));
+  $('aP').addEventListener('click', () => bump('a', 1));
+  $('bM').addEventListener('click', () => bump('b', -1));
+  $('bP').addEventListener('click', () => bump('b', 1));
+  $('ovBtn').addEventListener('click', () => {
+    overlay = !overlay;
+    $('ovBtn').setAttribute('aria-pressed', overlay);
+    $('ovBtn').textContent = overlay ? '아빠 토스트 떼어 놓기' : '아빠 토스트 겹쳐 보기';
+    drawOverlay();
+  });
+  update();
+});
+</script>
+</body>
+</html>

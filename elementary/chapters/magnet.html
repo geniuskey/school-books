@@ -1,0 +1,470 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "전지·전선·전구로 불을 켜려면 전선을 어떻게 이어야 할까요? 집게를 직접 물려 회로를 완성하고, 쇠 클립·알루미늄 포일·10원 동전 가운데 무엇이 전기가 통하고 무엇이 자석에 붙는지 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>자석 필통은 왜 딸깍 붙을까요? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="전지·전선·전구로 불을 켜려면 전선을 어떻게 이어야 할까요? 집게를 직접 물려 회로를 완성하고, 쇠 클립·알루미늄 포일·10원 동전 가운데 무엇이 전기가 통하고 무엇이 자석에 붙는지 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/magnet.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="자석 필통은 왜 딸깍 붙을까요? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="전지·전선·전구로 불을 켜려면 전선을 어떻게 이어야 할까요? 집게를 직접 물려 회로를 완성하고, 쇠 클립·알루미늄 포일·10원 동전 가운데 무엇이 전기가 통하고 무엇이 자석에 붙는지 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/magnet.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/magnet.html#chapter","name":"자석 필통은 왜 딸깍 붙을까요?","headline":"자석 필통은 왜 딸깍 붙을까요? · 초등 하루의 수학과 과학","description":"전지·전선·전구로 불을 켜려면 전선을 어떻게 이어야 할까요? 집게를 직접 물려 회로를 완성하고, 쇠 클립·알루미늄 포일·10원 동전 가운데 무엇이 전기가 통하고 무엇이 자석에 붙는지 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/magnet.html","position":6,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"자석의 극, 전기 회로","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"06. 자석 필통은 왜 딸깍 붙을까요?","item":"https://school.euiyun.com/elementary/chapters/magnet.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  #bulb-svg { touch-action: none; }
+  #bulb-svg .wire { fill: none; stroke-width: 4; stroke-linecap: round; }
+  #bulb-svg .wire-a { stroke: var(--water); }
+  #bulb-svg .wire-b { stroke: var(--heat); }
+  #bulb-svg .spot { fill: none; stroke: var(--ink-faint); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  #bulb-svg .spot.near { stroke: var(--accent); stroke-width: 2.5; stroke-dasharray: none; }
+  #bulb-svg .lbl { font-size: 17px; text-anchor: middle; }
+  #bulb-svg .pole { font-size: 24px; text-anchor: middle; dominant-baseline: central; }
+  #bulb-svg #fil { transition: stroke .2s; }
+  #bulb-svg.lit #fil { stroke: var(--glow); stroke-width: 3; }
+  #bulb-svg #halo { opacity: 0; transition: opacity .25s; }
+  #bulb-svg.lit #halo { opacity: 1; }
+  #bulb-svg #glass-fill { opacity: 0; transition: opacity .25s; }
+  #bulb-svg.lit #glass-fill { opacity: .9; }
+  #bulb-svg .handle .knob.a { stroke: var(--water); }
+  #bulb-svg .handle .knob.b { stroke: var(--heat); }
+  #bulb-svg #click { opacity: 0; transition: opacity .2s; }
+  #bulb-svg.stuck #click { opacity: 1; }
+  #mats .btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--ink); }
+  #lab-read { font-size: 1.4rem; }
+  #mag-read { text-align: center; color: var(--ink-soft); margin: -4px 0 6px; min-height: 1.5em; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="magnet">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">10:40</span><span class="chip science">과학</span><span>읽는 시간 9분</span></div>
+    <h1>자석 필통은 왜 딸깍 붙을까요?</h1>
+    <p class="unit">자석의 극, 전기 회로</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 260" role="img" aria-label="과학 시간의 책상. 칠판에는 전지와 전구를 이은 회로 그림이 있고, 책상 위에는 딸깍 닫힌 자석 필통과 건전지, 전구 끼우개, 둘둘 감긴 전선 두 가닥이 놓여 있다.">
+        <g filter="url(#sb-ink)">
+          <rect class="wash-green" x="26" y="18" width="232" height="112" rx="3"/>
+          <path class="ink" d="M26 18 H258 V130 H26 Z M18 136 H266"/>
+          <path class="ink-thin" d="M70 50 H120 M146 50 H214 V104 H70 V50 M120 40 V60 M128 44 V56 M128 50 H146"/>
+          <circle class="ink-thin" cx="142" cy="104" r="11"/>
+          <path class="ink-thin" d="M134 96 L150 112 M150 96 L134 112"/>
+          <path class="ink-thin" d="M112 36 h6 M115 33 v6 M132 38 h6"/>
+          <rect class="wash-cool" x="302" y="22" width="150" height="96" rx="3"/>
+          <path class="ink" d="M302 22 H452 V118 H302 Z M377 22 V118 M302 70 H452"/>
+          <path class="ink" d="M10 204 H470"/>
+          <path class="wash-warm" d="M10 204 H470 V222 H10 Z"/>
+          <path class="ink" d="M10 222 H470 M34 222 V258 M446 222 V258"/>
+          <rect class="wash-pink" x="40" y="166" width="164" height="38" rx="7"/>
+          <path class="ink" d="M47 166 H197 A7 7 0 0 1 204 173 V197 A7 7 0 0 1 197 204 H47 A7 7 0 0 1 40 197 V173 A7 7 0 0 1 47 166 Z"/>
+          <path class="ink-thin" d="M40 178 H204"/>
+          <rect class="fill-card" x="112" y="172" width="22" height="13" rx="2"/>
+          <path class="ink" d="M112 172 h22 v13 h-22 z"/>
+          <path class="ink-thin" d="M123 172 v13"/>
+          <circle class="fill-card" cx="74" cy="191" r="9"/>
+          <path class="ink-thin" d="M66 187 L67 179 L72 183 M76 183 L81 179 L82 187 M66 187 A9 9 0 1 0 82 187"/>
+          <path class="fill-ink" d="M70 190 h1.6 v1.6 h-1.6 z M77 190 h1.6 v1.6 h-1.6 z"/>
+          <path class="ink-thin accent" d="M118 160 l-4 -8 M123 158 v-9 M128 160 l4 -8"/>
+          <rect class="wash-cool" x="246" y="182" width="84" height="22" rx="5"/>
+          <rect class="wash-warm" x="312" y="182" width="18" height="22"/>
+          <path class="ink" d="M251 182 H330 V204 H251 A5 5 0 0 1 246 199 V187 A5 5 0 0 1 251 182 Z M312 182 V204 M330 188 h6 v10 h-6"/>
+          <rect class="wash-warm" x="356" y="192" width="58" height="12" rx="3"/>
+          <path class="ink" d="M359 192 H411 A3 3 0 0 1 414 195 V204 H356 V195 A3 3 0 0 1 359 192 Z"/>
+          <path class="ink-thin" d="M377 192 V184 H393 V192 M377 188 H393"/>
+          <path class="fill-card" d="M377 184 C366 176 368 152 385 151 C402 152 404 176 393 184 Z"/>
+          <path class="ink" d="M377 184 C366 176 368 152 385 151 C402 152 404 176 393 184 Z"/>
+          <path class="ink-thin" d="M381 184 L382 172 Q385 166 388 172 L389 184"/>
+          <path class="ink" style="stroke:var(--water)" d="M424 202 c-14 0 -16 -14 0 -14 c16 0 14 -14 0 -14 c-14 0 -16 -14 0 -14 c16 0 14 -14 -2 -14"/>
+          <path class="ink" style="stroke:var(--heat)" d="M452 202 c-12 0 -14 -12 0 -12 c14 0 12 -12 0 -12 c-12 0 -14 -12 0 -12"/>
+        </g>
+        <text x="146" y="153" font-size="19" style="fill:var(--accent)">딸깍</text>
+      </svg>
+    </figure>
+    <p>10시 40분, 과학 시간이에요. 지우가 필통 뚜껑을 닫자 딸깍 하고 붙어요. 뚜껑에 붙인 두부 얼굴 스티커가 살짝 흔들려요.</p>
+    <p>선생님이 건전지 하나, 전구 하나, 전선 두 가닥을 나눠 주셨어요.</p>
+    <p class="question">전구에 불을 켜려면 전선을 어떻게 이어야 할까요?</p>
+  </section>
+
+  <section class="predict card" id="p-magnet" data-id="magnet" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">전지·전선·전구로 불을 켜려면 전선을 어떻게 이을까요?</p>
+    <div class="choices cols-2">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 전기가 전지에서 나오기만 하면 될 것 같죠. 해 보기에서 두 전선을 한쪽 끝에 함께 물려 봐요.">두 전선을 모두 전지 한쪽 끝에</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 왜 꼭 두 끝이어야 하는지 볼까요?">전지 두 끝을 전구에 이어 한 바퀴</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="bulb-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>전선 끝의 집게를 끌어 전지의 (+)극이나 (−)극에 물려 봐요. 키보드로는 집게를 고르고 Enter를 누르면 차례로 물려요.</p>
+    <p>오른쪽 집게 사이에 끼울 물건도 바꿔 봐요. 위에 매단 자석이 그 물건을 끌어당기는지도 보여요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="bulb-svg" viewBox="0 0 460 340" role="img" aria-label="전구 끼우개에서 파란 전선과 빨간 전선이 나온다. 빨간 전선은 시험대의 두 집게 사이에 끼운 물건을 지나 끝 집게로 이어진다. 두 끝 집게를 아래 건전지의 두 극에 물릴 수 있다. 시험대 위에는 막대자석이 실에 매달려 있다.">
+        <circle id="halo" class="glow-halo" cx="200" cy="62" r="60"/>
+        <g filter="url(#sb-ink)">
+          <path id="glass-fill" class="glow-halo" d="M184 92 C164 78 166 34 200 32 C234 34 236 78 216 92 Z"/>
+          <path class="ink" d="M184 92 C164 78 166 34 200 32 C234 34 236 78 216 92 Z"/>
+          <rect class="fill-card" x="184" y="92" width="32" height="16"/>
+          <path class="ink" d="M184 92 h32 v16 h-32 z"/>
+          <path class="ink-thin" d="M184 97 l32 3 M184 102 l32 3"/>
+          <rect class="wash-warm" x="156" y="108" width="88" height="24" rx="4"/>
+          <path class="ink" d="M160 108 H240 A4 4 0 0 1 244 112 V128 A4 4 0 0 1 240 132 H160 A4 4 0 0 1 156 128 V112 A4 4 0 0 1 160 108 Z"/>
+          <circle class="fill-card" cx="170" cy="120" r="5"/><circle class="ink-thin" cx="170" cy="120" r="5"/>
+          <circle class="fill-card" cx="230" cy="120" r="5"/><circle class="ink-thin" cx="230" cy="120" r="5"/>
+          <rect class="wash-cool" x="150" y="270" width="132" height="36" rx="6"/>
+          <rect class="wash-warm" x="282" y="270" width="18" height="36"/>
+          <path class="ink" d="M156 270 H300 V306 H156 A6 6 0 0 1 150 300 V276 A6 6 0 0 1 156 270 Z M282 270 V306 M300 280 h8 v16 h-8"/>
+        </g>
+        <path id="fil" class="ink-thin" d="M192 92 L194 70 Q200 58 206 70 L208 92"/>
+        <text class="pole" x="291" y="288">+</text>
+        <text class="pole" x="164" y="288">−</text>
+        <text class="lbl" x="222" y="294">건전지</text>
+        <circle id="spot-P" class="spot" cx="324" cy="288" r="16"/>
+        <circle id="spot-N" class="spot" cx="132" cy="288" r="16"/>
+        <text class="lbl" x="324" y="328">(+)극</text>
+        <text class="lbl" x="132" y="328">(−)극</text>
+        <path id="wire-tc" class="wire wire-b" d="M230 120 C280 120 300 176 334 176"/>
+        <path id="wire-a" class="wire wire-a" d=""/>
+        <path id="wire-b" class="wire wire-b" d=""/>
+        <line id="string" class="ink-thin" x1="372" y1="0" x2="372" y2="94"/>
+        <g id="magnet">
+          <rect class="wash-pink" x="342" y="94" width="30" height="16"/>
+          <rect class="wash-cool" x="372" y="94" width="30" height="16"/>
+          <path class="ink" d="M342 94 H402 V110 H342 Z M372 94 V110"/>
+          <text class="lbl" x="357" y="108" font-size="14">N</text>
+          <text class="lbl" x="387" y="108" font-size="14">S</text>
+        </g>
+        <g id="mat"></g>
+        <g>
+          <path class="fill-card" d="M334 169 L352 172 L352 180 L334 183 Z"/>
+          <path class="ink" d="M334 169 L352 172 L352 180 L334 183 Z M338 176 h10"/>
+          <path class="fill-card" d="M410 169 L392 172 L392 180 L410 183 Z"/>
+          <path class="ink" d="M410 169 L392 172 L392 180 L410 183 Z M406 176 h-10"/>
+        </g>
+        <text class="lbl" x="362" y="202" font-size="15" style="fill:var(--ink-soft)">끼운 물건</text>
+        <text id="click" x="410" y="150" font-size="17" style="fill:var(--accent)">딸깍</text>
+        <g id="flows"></g>
+        <path id="loop" d="" fill="none" stroke="none"/>
+        <g id="hA" aria-label="파란 전선 집게"><circle class="hit" r="36"/><circle class="knob a" r="12"/><circle class="fill-ink" r="3"/></g>
+        <g id="hB" aria-label="빨간 전선 집게"><circle class="hit" r="36"/><circle class="knob b" r="12"/><circle class="fill-ink" r="3"/></g>
+      </svg>
+    </figure>
+    <p class="readout" id="lab-read" aria-live="polite"></p>
+    <p id="mag-read" aria-live="polite"></p>
+    <div class="controls">
+      <div class="btn-row" id="mats" role="group" aria-label="집게 사이에 끼울 물건">
+        <button class="btn" type="button" data-mat="clip">쇠 클립</button>
+        <button class="btn" type="button" data-mat="foil">알루미늄 포일</button>
+        <button class="btn" type="button" data-mat="coin">10원 동전</button>
+        <button class="btn" type="button" data-mat="stick">나무젓가락</button>
+        <button class="btn" type="button" data-mat="eraser">지우개</button>
+      </div>
+      <div class="btn-row"><button class="btn" type="button" id="unclip">집게 모두 떼기</button></div>
+    </div>
+    <p class="simplified">전선과 전지 속에서 전기를 막는 정도(저항)는 뺐어요. 전구는 켜짐과 꺼짐만 보여 줘요.</p>
+  </section>
+
+  <section class="flap" id="f-magnet" data-for="p-magnet" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 전지의 두 끝을 전구에 이어 한 바퀴가 되게 하는 거예요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 420 176" role="img" aria-label="왼쪽: 전지 (+)극에서 나온 전선이 전구를 지나 (−)극으로 돌아오는 한 바퀴 길, 전구가 켜진다. 오른쪽: 두 전선이 모두 (+)극에 닿아 돌아올 길이 없고, 전구가 꺼져 있다.">
+          <circle class="glow-halo" cx="105" cy="44" r="30"/>
+          <g filter="url(#sb-ink)">
+            <circle class="fill-card" cx="105" cy="44" r="16"/><circle class="ink" cx="105" cy="44" r="16"/>
+            <path class="ink-thin" style="stroke:var(--glow)" d="M99 56 L100 44 Q105 36 110 44 L111 56"/>
+            <rect class="wash-cool" x="64" y="118" width="72" height="22" rx="4"/>
+            <rect class="wash-warm" x="124" y="118" width="12" height="22"/>
+            <path class="ink" d="M68 118 H136 V140 H68 A4 4 0 0 1 64 136 V122 A4 4 0 0 1 68 118 Z M136 124 h5 v10 h-5"/>
+            <path class="ink" style="stroke:var(--heat)" d="M141 129 C176 129 170 62 113 56"/>
+            <path class="ink" style="stroke:var(--water)" d="M97 56 C40 62 30 129 64 129"/>
+            <circle class="fill-card" cx="315" cy="44" r="16"/><circle class="ink" cx="315" cy="44" r="16"/>
+            <path class="ink-thin" d="M309 56 L310 44 Q315 36 320 44 L321 56"/>
+            <rect class="wash-cool" x="274" y="118" width="72" height="22" rx="4"/>
+            <rect class="wash-warm" x="334" y="118" width="12" height="22"/>
+            <path class="ink" d="M278 118 H346 V140 H278 A4 4 0 0 1 274 136 V122 A4 4 0 0 1 278 118 Z M346 124 h5 v10 h-5"/>
+            <path class="ink" style="stroke:var(--heat)" d="M351 129 C386 129 380 62 323 56"/>
+            <path class="ink" style="stroke:var(--water)" d="M307 56 C250 64 236 156 300 156 C340 156 362 152 352 134"/>
+          </g>
+          <text x="140" y="113" font-size="15" text-anchor="middle">+</text>
+          <text x="58" y="113" font-size="15" text-anchor="middle">−</text>
+          <text x="105" y="170" font-size="17" text-anchor="middle" style="fill:var(--ok)">한 바퀴: 켜져요</text>
+          <text x="315" y="176" font-size="17" text-anchor="middle" style="fill:var(--ink-faint)">돌아올 길이 없어요</text>
+          <text x="262" y="113" font-size="15" text-anchor="middle">−</text>
+          <text x="346" y="113" font-size="15" text-anchor="middle">+</text>
+        </svg>
+      </figure>
+      <p>전기는 전지의 (+)극에서 나와 전구를 지나 (−)극으로 돌아와야 흘러요. 두 전선을 한쪽 끝에만 물리면 돌아올 길이 없어요.</p>
+      <p>이렇게 끊긴 곳 없이 한 바퀴 이어진 길을 <span class="term">전기 회로</span>라고 해요.</p>
+      <p>길 중간에 끼운 물건도 회로의 한 부분이에요. 쇠 클립, 알루미늄 포일, 10원 동전은 전기가 잘 통해요. 나무젓가락과 지우개는 통하지 않아 길이 끊겨요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">자석은 모든 금속을 끌어당겨요.</span><span class="no">아니에요</span></p>
+    <p>해 보기에서 알루미늄 포일과 10원 동전은 전기는 통했지만 자석에 붙지 않았어요.</p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 190" role="img" aria-label="표. 쇠 클립은 전기가 통하고 자석에 붙는다. 알루미늄 포일과 10원 동전은 전기가 통하지만 자석에 붙지 않는다. 나무젓가락과 지우개는 둘 다 아니다.">
+        <g filter="url(#sb-ink)">
+          <rect class="glow-halo" x="10" y="34" width="340" height="30"/>
+          <path class="ink-thin" d="M10 34 H350 M10 64 H350 M10 94 H350 M10 124 H350 M10 154 H350 M10 184 H350 M170 8 V184 M260 8 V184"/>
+        </g>
+        <text x="215" y="25" font-size="16" text-anchor="middle">전기가 통해요</text>
+        <text x="305" y="25" font-size="16" text-anchor="middle">자석에 붙어요</text>
+        <text x="20" y="55" font-size="17">쇠 클립</text>
+        <text x="20" y="85" font-size="17">알루미늄 포일</text>
+        <text x="20" y="115" font-size="17">10원 동전</text>
+        <text x="20" y="145" font-size="17">나무젓가락</text>
+        <text x="20" y="175" font-size="17">지우개</text>
+        <g class="ink" style="stroke:var(--ok)" stroke-width="3">
+          <path d="M206 49 l6 6 l12 -13 M296 49 l6 6 l12 -13 M206 79 l6 6 l12 -13 M206 109 l6 6 l12 -13"/>
+        </g>
+        <path class="ink-soft" d="M297 79 h16 M297 109 h16 M207 139 h16 M297 139 h16 M207 169 h16 M297 169 h16"/>
+      </svg>
+    </figure>
+    <p>자석에 붙는 것은 철 같은 몇 가지 금속뿐이에요. 그래서 필통 몸통 쪽에는 자석이나 얇은 쇠판이 숨어 있어요. 딸깍 소리는 둘이 붙는 소리예요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="fill-card" x="12" y="4" width="32" height="48" rx="3"/><path class="ink" d="M12 4 H44 V52 H12 Z M12 22 H44 M38 10 v8 M38 28 v12"/><path class="ink-thin accent" d="M15 7 V49" stroke-dasharray="3 3"/></g></svg>
+        <span>냉장고 문 가장자리 고무 속에는 긴 자석이 들어 있어요. 그래서 문이 꼭 닫혀요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="glow-halo" d="M42 14 L54 6 V50 L42 42 Z"/><rect class="fill-card" x="6" y="20" width="36" height="16" rx="3"/><path class="ink" d="M6 20 H42 V36 H6 Z M42 18 V38"/><rect class="wash-warm" x="18" y="16" width="10" height="6" rx="2"/><path class="ink-thin" d="M18 16 h10 v6 h-10 z"/></g></svg>
+        <span>손전등 스위치는 회로의 끊긴 곳을 이었다 끊었다 해요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="wash-cool" x="10" y="16" width="18" height="32" rx="3"/><path class="ink" d="M10 16 h18 v32 h-18 z M10 22 h18 M10 42 h18"/><rect class="wash-pink" x="30" y="4" width="20" height="10"/><path class="ink" d="M30 4 h20 v10 h-20 z M40 4 V14"/><path class="ink-thin accent" d="M20 14 C24 8 30 10 34 14 M34 14 l-1 -5 M34 14 l-5 0"/></g></svg>
+        <span>재활용장은 자석으로 철 캔만 골라내요. 알루미늄 캔은 남아요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 자석의 두 끝, N극과 S극</summary>
+    <p>막대자석은 양 끝에서 끌어당기는 힘이 가장 세요. 이 두 끝을 <span class="term">극</span>이라고 하고, N극과 S극이 있어요.</p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 120" role="img" aria-label="위: 한 자석의 S극과 다른 자석의 N극이 마주 보면 서로 끌어당긴다. 아래: S극과 S극이 마주 보면 서로 밀어낸다.">
+        <g filter="url(#sb-ink)">
+          <rect class="wash-pink" x="20" y="16" width="50" height="24"/><rect class="wash-cool" x="70" y="16" width="50" height="24"/><path class="ink" d="M20 16 H120 V40 H20 Z M70 16 V40"/>
+          <rect class="wash-pink" x="180" y="16" width="50" height="24"/><rect class="wash-cool" x="230" y="16" width="50" height="24"/><path class="ink" d="M180 16 H280 V40 H180 Z M230 16 V40"/>
+          <rect class="wash-pink" x="20" y="74" width="50" height="24"/><rect class="wash-cool" x="70" y="74" width="50" height="24"/><path class="ink" d="M20 74 H120 V98 H20 Z M70 74 V98"/>
+          <rect class="wash-cool" x="180" y="74" width="50" height="24"/><rect class="wash-pink" x="230" y="74" width="50" height="24"/><path class="ink" d="M180 74 H280 V98 H180 Z M230 74 V98"/>
+        </g>
+        <text x="45" y="34" font-size="16" text-anchor="middle">N</text><text x="95" y="34" font-size="16" text-anchor="middle">S</text>
+        <text x="205" y="34" font-size="16" text-anchor="middle">N</text><text x="255" y="34" font-size="16" text-anchor="middle">S</text>
+        <text x="45" y="92" font-size="16" text-anchor="middle">N</text><text x="95" y="92" font-size="16" text-anchor="middle">S</text>
+        <text x="205" y="92" font-size="16" text-anchor="middle">S</text><text x="255" y="92" font-size="16" text-anchor="middle">N</text>
+        <path class="ink" style="stroke:var(--accent)" d="M128 28 h14 l-5 -5 M142 28 l-5 5 M172 28 h-14 l5 -5 M158 28 l5 5"/>
+        <path class="ink" style="stroke:var(--accent)" d="M138 86 h-12 l5 -5 M126 86 l5 5 M162 86 h12 l-5 -5 M174 86 l-5 5"/>
+        <text x="320" y="33" font-size="16" text-anchor="middle">당겨요</text>
+        <text x="320" y="91" font-size="16" text-anchor="middle">밀어요</text>
+      </svg>
+    </figure>
+    <p>다른 극끼리는 끌어당기고, 같은 극끼리는 밀어내요. 필통 뚜껑과 몸통에 자석이 하나씩 있다면 마주 보는 쪽이 서로 다른 극이 되게 넣어요. 몸통에 쇠판만 있다면 어느 극이든 끌려와요.</p>
+    <p>전지에도 (+)극과 (−)극이 있어요. 같은 "극"이라는 말을 쓰지만, 자석의 극과는 다른 것이에요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>리모컨이 갑자기 안 되면 건전지 방향부터 봐요. 두 개 가운데 하나만 거꾸로 넣어도 두 전지가 서로 반대로 밀어 전기가 거의 흐르지 않아요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">전기는 끊긴 곳 없는 한 바퀴 길로만 흘러요.<br>자석은 철 같은 몇 가지 금속만 끌어당겨요.</p>
+    <div class="quiz" data-stamp="magnet">
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">두 전선을 모두 전지의 (+)극에 물리면 전구는 어떻게 될까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="전기가 (−)극으로 돌아올 길이 있을까요? 해 보기에서 두 집게를 같은 극에 물려 봐요.">켜져요</button>
+          <button class="opt">켜지지 않아요</button>
+          <button class="opt" data-hint="두 전선이 같은 곳에 닿으면 한 바퀴가 되지 않아요.">더 밝게 켜져요</button>
+        </div>
+        <p class="why">(−)극으로 돌아오는 길이 없어 한 바퀴가 되지 않아요.</p>
+      </div>
+      <div class="quiz-q" data-answer="2">
+        <p class="qtext">회로 중간에 끼웠을 때 전구가 켜지는 물건은?</p>
+        <div class="opts">
+          <button class="opt" data-hint="나무는 전기가 통하지 않아요.">나무젓가락</button>
+          <button class="opt" data-hint="고무로 된 지우개는 전기가 통하지 않아요.">지우개</button>
+          <button class="opt">알루미늄 포일</button>
+        </div>
+        <p class="why">알루미늄은 금속이라 전기가 잘 통해요. 자석에는 붙지 않지만요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">자석에 붙는 것은 무엇일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="10원 동전은 금속이지만 자석에 붙지 않았어요.">10원 동전</button>
+          <button class="opt">쇠 클립</button>
+          <button class="opt" data-hint="재활용장에서도 알루미늄 캔은 자석에 끌려가지 않아요.">알루미늄 캔</button>
+        </div>
+        <p class="why">쇠(철)는 자석에 붙어요. 금속이라고 다 붙지는 않아요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const svg = $('bulb-svg');
+  const T = { P: { x: 324, y: 288 }, N: { x: 132, y: 288 } };
+  const SP = { x: 170, y: 120 }, TP = { x: 230, y: 120 }, C1 = { x: 334, y: 176 }, C2 = { x: 410, y: 176 };
+  const HOME = { a: { x: 64, y: 226 }, b: { x: 420, y: 262 } };
+  const st = { a: null, b: null, pa: { ...HOME.a }, pb: { ...HOME.b }, mat: 'clip' };
+  const NAME = { P: '(+)극', N: '(−)극' };
+  const josa = (w, a, b) => { const c = w.charCodeAt(w.length - 1) - 0xac00; return w + (c >= 0 && c % 28 ? a : b); };
+
+  // 끼울 물건 그림
+  const MAT = {
+    clip: '<path class="ink" d="M348 171 H394 A5 5 0 0 1 394 181 H354 A3 3 0 0 1 354 175 H390"/>',
+    foil: '<path class="wash-cool" d="M346 170 L356 167 L366 171 L376 166 L386 170 L398 168 V184 L388 186 L378 182 L366 186 L356 182 L346 184 Z"/><path class="ink-thin" d="M346 170 L356 167 L366 171 L376 166 L386 170 L398 168 V184 L388 186 L378 182 L366 186 L356 182 L346 184 Z M358 172 l6 8 M378 170 l-4 10"/>',
+    coin: '<circle class="wash-warm" cx="372" cy="176" r="21"/><circle class="ink" cx="372" cy="176" r="21"/><circle class="ink-thin" cx="372" cy="176" r="16"/><text x="372" y="182" font-size="15" text-anchor="middle">10</text>',
+    stick: '<rect class="wash-warm" x="330" y="172" width="86" height="8" rx="3"/><path class="ink-thin" d="M333 172 H413 A3 3 0 0 1 413 180 H333 A3 3 0 0 1 333 172 Z"/>',
+    eraser: '<rect class="fill-card" x="350" y="165" width="44" height="22" rx="3"/><rect class="wash-cool" x="362" y="165" width="22" height="22"/><path class="ink" d="M353 165 H391 A3 3 0 0 1 394 168 V184 A3 3 0 0 1 391 187 H353 A3 3 0 0 1 350 184 V168 A3 3 0 0 1 353 165 Z M362 165 V187 M384 165 V187"/>'
+  };
+
+  // 곡선 조각: {p0, c1, c2, p1}
+  const seg = (p0, c1, c2, p1) => ({ p0, c1, c2, p1 });
+  const line = (a, b) => seg(a, a, b, b);
+  const rev = (s) => seg(s.p1, s.c2, s.c1, s.p0);
+  const f = (p) => `${p.x.toFixed(1)} ${p.y.toFixed(1)}`;
+  const dOf = (list) => list.length ? `M${f(list[0].p0)}` + list.map((s) => ` C${f(s.c1)} ${f(s.c2)} ${f(s.p1)}`).join('') : '';
+  const wireA = (h) => seg(SP, { x: SP.x - 10, y: SP.y + 70 }, { x: h.x, y: h.y - 70 }, h);
+  const wireB = (h) => seg(C2, { x: C2.x + 30, y: C2.y + 40 }, { x: h.x + 10, y: h.y - 60 }, h);
+  const wireTC = seg(TP, { x: 280, y: 120 }, { x: 300, y: 176 }, C1);
+
+  const flow = SB.flow($('flows'), { path: $('loop'), n: 16, kind: 'glow', r: 3.4, speed: 70 });
+  let magY = 0, magTarget = 0, magRaf = 0;
+  function moveMagnet() {
+    cancelAnimationFrame(magRaf);
+    const step = () => {
+      magY += (magTarget - magY) * 0.25;
+      if (Math.abs(magTarget - magY) < 0.4) magY = magTarget;
+      $('magnet').setAttribute('transform', `translate(0 ${magY.toFixed(1)})`);
+      $('string').setAttribute('y2', (94 + magY).toFixed(1));
+      if (magY !== magTarget) magRaf = requestAnimationFrame(step);
+    };
+    step();
+  }
+
+  function posOf(k) {
+    const t = st[k];
+    if (!t) return k === 'a' ? st.pa : st.pb;
+    const p = { ...T[t] };
+    if (k === 'b' && st.a === t) p.y -= 28; // 두 집게가 한 극에: 겹치지 않게
+    return p;
+  }
+
+  function draw() {
+    const pa = posOf('a'), pb = posOf('b');
+    $('hA').setAttribute('transform', `translate(${f(pa)})`);
+    $('hB').setAttribute('transform', `translate(${f(pb)})`);
+    $('wire-a').setAttribute('d', dOf([wireA(pa)]));
+    $('wire-b').setAttribute('d', dOf([wireB(pb)]));
+    $('mat').innerHTML = st.mat ? MAT[st.mat] : '';
+    const r = SIM.bulbLab(st.a, st.b, st.mat);
+    svg.classList.toggle('lit', r.lit);
+    // 전류가 흐르는 길: (+)극에서 나와 전구를 지나 (−)극으로, 전지 속을 지나 다시 (+)극으로
+    if (r.lit) {
+      let list = [rev(wireB(pb)), line(C2, C1), rev(wireTC), line(TP, { x: 208, y: 94 }), line({ x: 208, y: 94 }, { x: 200, y: 62 }),
+        line({ x: 200, y: 62 }, { x: 192, y: 94 }), line({ x: 192, y: 94 }, SP), wireA(pa), line(pa, pb)];
+      if (st.a === 'P') list = list.reverse().map(rev);
+      $('loop').setAttribute('d', dOf(list));
+    } else $('loop').setAttribute('d', '');
+    flow.g.style.display = r.lit ? '' : 'none';
+    flow.rate = r.lit ? 1 : 0;
+    flow.place();
+    const m = st.mat ? SIM.MATERIALS[st.mat].name : null;
+    const msg = {
+      lit: '<b>불이 켜졌어요!</b> 한 바퀴가 이어졌어요',
+      openAB: '집게 두 개를 전지에 물려 봐요',
+      openA: '파란 전선이 전지에 닿지 않았어요',
+      openB: '빨간 전선이 전지에 닿지 않았어요',
+      same: `두 전선이 모두 <b>${NAME[st.a] || ''}</b>에 물렸어요. 돌아올 길이 없어요`,
+      insulator: `<b>${m || ''}</b>에서 길이 끊겼어요`,
+      gap: '집게 사이가 비어 길이 끊겼어요'
+    }[r.reason];
+    $('lab-read').innerHTML = msg;
+    $('mag-read').textContent = m ? `${josa(m, '은', '는')} 자석에 ${r.magnetic ? '붙어요' : '붙지 않아요'}. 전기는 ${r.conducts ? '통해요' : '통하지 않아요'}.` : '';
+    magTarget = r.magnetic ? 58 : 0;
+    svg.classList.toggle('stuck', r.magnetic);
+    moveMagnet();
+    for (const k of ['a', 'b']) {
+      const h = $(k === 'a' ? 'hA' : 'hB'), t = st[k];
+      h.setAttribute('aria-valuetext', t ? NAME[t] + '에 물림' : '아무 데도 안 물림');
+    }
+    document.querySelectorAll('#mats .btn').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mat === st.mat)));
+  }
+
+  const near = (p) => {
+    let best = null, bd = 38;
+    for (const k of ['P', 'N']) { const d = SIM.dist(p.x, p.y, T[k].x, T[k].y); if (d < bd) { bd = d; best = k; } }
+    return best;
+  };
+  const showNear = (k) => { for (const t of ['P', 'N']) $('spot-' + t).classList.toggle('near', k === t); };
+  const clampP = (p) => ({ x: SIM.clamp(p.x, 18, 442), y: SIM.clamp(p.y, 150, 322) });
+
+  for (const k of ['a', 'b']) {
+    const h = $(k === 'a' ? 'hA' : 'hB'), pk = 'p' + k;
+    h.setAttribute('aria-valuemin', 0); h.setAttribute('aria-valuemax', 2);
+    SB.drag(h, {
+      svg,
+      onStart() { if (st[k]) { st[pk] = posOf(k); st[k] = null; } },
+      onMove(p) { st[pk] = clampP(p); showNear(near(st[pk])); draw(); },
+      onEnd() { const t = near(st[pk]); if (t) st[k] = t; showNear(null); draw(); },
+      onKey(dx, dy) {
+        if (st[k]) { st[pk] = posOf(k); st[k] = null; }
+        st[pk] = clampP({ x: st[pk].x + dx * 12, y: st[pk].y + dy * 12 });
+        const t = near(st[pk]); if (t) st[k] = t;
+        draw();
+      }
+    });
+    // Enter·스페이스: 안 물림 → (−)극 → (+)극 → 안 물림
+    h.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      st[k] = st[k] === null ? 'N' : st[k] === 'N' ? 'P' : null;
+      if (!st[k]) st[pk] = { ...HOME[k] };
+      draw();
+    });
+  }
+  document.querySelectorAll('#mats .btn').forEach((b) => b.addEventListener('click', () => { st.mat = b.dataset.mat; draw(); }));
+  $('unclip').addEventListener('click', () => { st.a = st.b = null; st.pa = { ...HOME.a }; st.pb = { ...HOME.b }; draw(); });
+  draw();
+});
+</script>
+</body>
+</html>

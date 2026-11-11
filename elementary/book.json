@@ -9,7 +9,7 @@
   "path": "elementary/",
   "repo": "https://github.com/geniuskey/school-books",
   "field": "school",
-  "status": "writing",
+  "status": "published",
   "domain": "school.euiyun.com",
   "level": "초등 3–6학년 · 어른",
   "minutes": "8~10분",
@@ -75,7 +75,7 @@
           "text": "물이 얼 때, 얼음이 녹을 때, 물이 증발할 때와 끓을 때, 수증기가 응결할 때의 변화를 관찰할 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 3,
@@ -98,7 +98,7 @@
           "text": "분모가 10인 진분수와 연결하여 소수 한 자리 수를 이해하고 읽고 쓸 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 4,
@@ -121,7 +121,7 @@
           "text": "태양 고도 측정기로 하루 동안 태양 고도, 그림자 길이, 기온을 측정하여 이들의 관계를 찾을 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 5,
@@ -148,7 +148,7 @@
           "text": "직사각형과 정사각형의 넓이를 구하는 방법을 이해하고, 이를 구할 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 6,
@@ -171,7 +171,7 @@
           "text": "전지와 전구, 전선을 연결하여 전구에 불을 켜보고, 불이 켜지는 전기 회로의 특징을 말할 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 7,
@@ -190,7 +190,7 @@
           "text": "소화, 순환, 호흡, 배설 기관의 구조와 기능을 알아보고, 우리 몸의 여러 기관이 서로 관련되어 있음을 설명할 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 8,
@@ -217,7 +217,7 @@
           "text": "곱하는 수가 한 자리 수 또는 두 자리 수인 곱셈의 계산 원리를 이해하고 그 계산을 할 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 9,
@@ -240,7 +240,7 @@
           "text": "자료를 수집하여 꺾은선그래프로 나타내고 해석할 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 10,
@@ -263,7 +263,7 @@
           "text": "자료를 수집하여 그림그래프나 막대그래프로 나타내고 해석할 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 11,
@@ -291,7 +291,7 @@
           "text": "수학과 성취기준에 '축척'이 직접 나오지 않음(고교 직무 수학 해설에만). 비·비율로 연결하고 사회과 지도 읽기와의 대응은 확인 필요"
         }
       ],
-      "ready": false
+      "ready": true
     },
     {
       "num": 12,
@@ -318,7 +318,7 @@
           "text": "태양계 구성원을 알고, 태양과 행성을 조사할 수 있다."
         }
       ],
-      "ready": false
+      "ready": true
     }
   ]
 }

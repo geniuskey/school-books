@@ -1,0 +1,331 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "길이가 같은 줄로 둘러싼 두 네모, 안에 든 타일 수도 같을까요? 줄 길이를 그대로 둔 채 네모 모양을 바꿔 보며 둘레와 넓이가 어떻게 다른지, 타일을 빨리 세는 법을 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>교실 바닥에 타일이 몇 장 깔려 있을까요? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="길이가 같은 줄로 둘러싼 두 네모, 안에 든 타일 수도 같을까요? 줄 길이를 그대로 둔 채 네모 모양을 바꿔 보며 둘레와 넓이가 어떻게 다른지, 타일을 빨리 세는 법을 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/tiles.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="교실 바닥에 타일이 몇 장 깔려 있을까요? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="길이가 같은 줄로 둘러싼 두 네모, 안에 든 타일 수도 같을까요? 줄 길이를 그대로 둔 채 네모 모양을 바꿔 보며 둘레와 넓이가 어떻게 다른지, 타일을 빨리 세는 법을 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/tiles.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/tiles.html#chapter","name":"교실 바닥에 타일이 몇 장 깔려 있을까요?","headline":"교실 바닥에 타일이 몇 장 깔려 있을까요? · 초등 하루의 수학과 과학","description":"길이가 같은 줄로 둘러싼 두 네모, 안에 든 타일 수도 같을까요? 줄 길이를 그대로 둔 채 네모 모양을 바꿔 보며 둘레와 넓이가 어떻게 다른지, 타일을 빨리 세는 법을 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/tiles.html","position":5,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"도형, 각, 넓이와 둘레","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"05. 교실 바닥에 타일이 몇 장 깔려 있을까요?","item":"https://school.euiyun.com/elementary/chapters/tiles.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  #tile-svg { touch-action: none; }
+  #tile-svg .cell { fill: none; stroke: var(--rule); stroke-width: 1.2; }
+  #tile-svg .tile { fill: var(--wash-warm); stroke: var(--ink-faint); stroke-width: 1; }
+  #tile-svg .tile.row1 { fill: var(--glow-soft); }
+  #tile-svg .rope { fill: none; stroke: var(--accent); stroke-width: 4; stroke-linejoin: round; }
+  #tile-svg .lbl { font-size: 18px; fill: var(--ink-soft); }
+  #bar-svg .bar { fill: var(--wash-warm); stroke: var(--ink-faint); stroke-width: 1.2; }
+  #bar-svg .bar.on { fill: var(--accent); stroke: var(--accent); }
+  #bar-svg .n { font-size: 17px; text-anchor: middle; }
+  #bar-svg .n.on { fill: var(--accent); }
+  #bar-svg .k { font-size: 15px; text-anchor: middle; fill: var(--ink-soft); }
+  .rope-row .btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
+  .lab .sub-read { text-align: center; color: var(--ink-soft); margin: -4px 0 6px; font-size: .95rem; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="tiles">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">09:00</span><span class="chip math">수학</span><span>읽는 시간 9분</span></div>
+    <h1>교실 바닥에 타일이 몇 장 깔려 있을까요?</h1>
+    <p class="unit">도형, 각, 넓이와 둘레</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="타일이 깔린 교실 바닥. 같은 길이의 줄로 만든 길쭉한 네모와 반듯한 네모가 놓여 있고, 지우가 칠판 옆에 서서 내려다본다.">
+        <defs><clipPath id="scene-clip"><rect x="0" y="0" width="480" height="290"/></clipPath></defs>
+        <g clip-path="url(#scene-clip)">
+          <g filter="url(#sb-ink)">
+            <path class="wash-cool" d="M0 0 H480 V134 H0 Z" style="opacity:.55"/>
+            <path class="wash-green" d="M150 46 H330 V110 H150 Z"/>
+            <path class="ink" d="M150 46 H330 V110 H150 Z M144 116 H336"/>
+            <path class="ink-thin" d="M168 66 q10 -8 20 0 t20 0 M168 86 h50 M240 70 h60 M240 88 h40"/>
+            <path class="fill-card" d="M28 30 H112 V112 H28 Z"/>
+            <path class="ink" d="M28 30 H112 V112 H28 Z M70 30 V112 M28 71 H112"/>
+            <path class="wash-warm" d="M0 134 H480 V290 H0 Z"/>
+            <path class="ink" d="M0 134 H480"/>
+          </g>
+          <path class="ink-thin" style="opacity:.45" d="M-426.7 290 L-6.9 132.6 M-385 290 L8.5 132.6 M-343.3 290 L24 132.6 M-301.7 290 L39.4 132.6 M-260 290 L54.8 132.6 M-218.3 290 L70.2 132.6 M-176.7 290 L85.7 132.6 M-135 290 L101.1 132.6 M-93.3 290 L116.5 132.6 M-51.7 290 L132 132.6 M-10 290 L147.4 132.6 M31.7 290 L162.8 132.6 M73.3 290 L178.3 132.6 M115 290 L193.7 132.6 M156.7 290 L209.1 132.6 M198.3 290 L224.6 132.6 M240 290 L240 132.6 M281.7 290 L255.4 132.6 M323.3 290 L270.9 132.6 M365 290 L286.3 132.6 M406.7 290 L301.7 132.6 M448.3 290 L317.2 132.6 M490 290 L332.6 132.6 M531.7 290 L348 132.6 M573.3 290 L363.5 132.6 M615 290 L378.9 132.6 M656.7 290 L394.3 132.6 M698.3 290 L409.8 132.6 M740 290 L425.2 132.6 M781.7 290 L440.6 132.6 M823.3 290 L456 132.6 M865 290 L471.5 132.6 M906.7 290 L486.9 132.6 M-1426.7 290 L1906.7 290 M-1188.6 254.3 L1668.6 254.3 M-1010 227.5 L1490 227.5 M-871.1 206.7 L1351.1 206.7 M-760 190 L1240 190 M-669.1 176.4 L1149.1 176.4 M-593.3 165 L1073.3 165 M-529.2 155.4 L1009.2 155.4 M-474.3 147.1 L954.3 147.1 M-426.7 140 L906.7 140"/>
+          <path class="glow-halo" d="M25.7 254.3 L97.1 254.3 L173.3 140 L140 140 Z M275.7 254.3 L454.3 254.3 L365 165 L260.8 165 Z"/>
+          <path style="fill:none;stroke:var(--accent);stroke-width:3;stroke-linejoin:round" d="M25.7 254.3 L97.1 254.3 L173.3 140 L140 140 Z M275.7 254.3 L454.3 254.3 L365 165 L260.8 165 Z"/>
+          <g filter="url(#sb-ink)">
+            <path class="fill-card" d="M390 92 C390 86 410 86 410 92 L412 124 H388 Z"/>
+            <path class="ink" d="M390 92 C390 86 410 86 410 92 L412 124 H388 Z M394 124 V147 M406 124 V147 M389 147 h8 M403 147 h8"/>
+            <path class="ink" d="M390 96 L380 116 M410 96 L418 114"/>
+            <circle class="fill-card" cx="400" cy="76" r="11"/>
+            <circle class="ink" cx="400" cy="76" r="11"/>
+            <path class="fill-ink" d="M389 76 C387 61 413 61 411 74 C404 68 395 68 389 76 Z"/>
+            <path class="ink-thin" d="M395 81 q2 2 4 0 M401 81 q2 2 4 0"/>
+          </g>
+        </g>
+      </svg>
+    </figure>
+    <p>9시, 1교시는 수학이에요. 지우는 교실 바닥 타일을 하나씩 세다가 방법을 바꿨어요. 한 줄에 24장, 그런 줄이 20줄이니 모두 480장이에요.</p>
+    <p>선생님이 길이가 똑같은 줄 두 개를 주셨어요. 한 모둠은 길쭉한 네모를, 다른 모둠은 반듯한 네모를 바닥에 만들었어요.</p>
+    <p class="question">줄 길이가 같으면, 그 안에 든 타일 수도 같을까요?</p>
+  </section>
+
+  <section class="predict card" id="p-tiles" data-id="tiles" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">같은 길이의 줄로 둘러싼 두 네모, 안에 든 타일 수도 같을까?</p>
+    <div class="choices cols-2">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 줄 길이가 같으니 그럴 것 같죠. 모양을 바꿔 가며 세어 봐요.">같다</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 얼마나 달라지는지 직접 바꿔 봐요.">다를 수 있다</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="tiles-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>빨간 손잡이를 끌어 네모 모양을 바꿔 봐요. 줄 길이는 그대로예요. 줄 위 빛나는 구슬은 타일 한 변마다 하나씩이에요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="tile-svg" viewBox="0 0 400 380" role="img" aria-label="타일 바닥 위의 줄 네모. 손잡이를 끌면 줄 길이는 그대로인 채 가로와 세로가 바뀌고, 안의 타일 수가 바뀐다.">
+        <g id="cells"></g>
+        <g id="tiles"></g>
+        <path id="rope" class="rope" d=""/>
+        <g id="beads"></g>
+        <text id="lbl-top" class="lbl" text-anchor="middle"></text>
+        <text id="lbl-left" class="lbl" text-anchor="end"></text>
+        <g id="grip" aria-label="네모의 오른쪽 아래 모서리">
+          <circle class="hit" r="30"/>
+          <circle class="knob" r="13"/>
+        </g>
+      </svg>
+    </figure>
+    <p class="readout" id="t-read" aria-live="polite"></p>
+    <p class="sub-read" id="t-sub"></p>
+    <div class="controls">
+      <div class="btn-row rope-row" role="group" aria-label="줄 길이">
+        <button class="btn" type="button" data-p="12">줄 12칸</button>
+        <button class="btn" type="button" data-p="16">줄 16칸</button>
+        <button class="btn" type="button" data-p="20" aria-pressed="true">줄 20칸</button>
+      </div>
+    </div>
+    <figure>
+      <svg class="drawing" id="bar-svg" viewBox="0 0 400 190" role="img" aria-label="같은 줄로 만들 수 있는 네모들의 타일 수 막대. 가운데 정사각형이 가장 많다.">
+        <g id="bars"></g>
+      </svg>
+      <figcaption>이 줄로 만들 수 있는 네모를 모두 늘어놓았어요. 막대 높이가 타일 수예요.</figcaption>
+    </figure>
+    <p class="simplified">줄 길이는 타일 한 변이 몇 개인지로 셌어요. 네모의 변은 타일 금을 따라가요.</p>
+  </section>
+
+  <section class="flap" id="f-tiles" data-for="p-tiles" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 "다를 수 있다"예요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 380 160" role="img" aria-label="줄 20칸으로 만든 두 네모. 가로 8 세로 2는 타일 16장, 가로 5 세로 5는 타일 25장.">
+          <rect class="wash-warm" x="30" y="26" width="144" height="36"/>
+          <path class="ink-thin" style="opacity:.55" d="M48 26 V62 M66 26 V62 M84 26 V62 M102 26 V62 M120 26 V62 M138 26 V62 M156 26 V62 M30 44 H174"/>
+          <rect x="30" y="26" width="144" height="36" style="fill:none;stroke:var(--accent);stroke-width:3"/>
+          <rect class="wash-warm" x="250" y="26" width="90" height="90"/>
+          <path class="ink-thin" style="opacity:.55" d="M268 26 V116 M286 26 V116 M304 26 V116 M322 26 V116 M250 44 H340 M250 62 H340 M250 80 H340 M250 98 H340"/>
+          <rect x="250" y="26" width="90" height="90" style="fill:none;stroke:var(--accent);stroke-width:3"/>
+          <text x="102" y="16" font-size="16" text-anchor="middle">8장씩 2줄</text>
+          <text x="295" y="16" font-size="16" text-anchor="middle">5장씩 5줄</text>
+          <text x="102" y="92" font-size="18" text-anchor="middle">둘레 20칸</text>
+          <text x="102" y="116" font-size="18" text-anchor="middle" style="fill:var(--accent)">넓이 16장</text>
+          <text x="295" y="140" font-size="18" text-anchor="middle">둘레 20칸</text>
+          <text x="295" y="158" font-size="18" text-anchor="middle" style="fill:var(--accent)">넓이 25장</text>
+        </svg>
+      </figure>
+      <p>네모를 한 바퀴 둘러싼 길이를 <span class="term">둘레</span>라고 해요. 네모 안을 채운 타일 수처럼, 평면이 차지하는 크기는 <span class="term">넓이</span>라고 해요.</p>
+      <p>두 네모 모두 둘레는 20칸이에요. 하지만 넓이는 16장과 25장이에요. 정사각형에 가까울수록 넓어요.</p>
+      <p>넓이는 하나씩 세지 않아도 돼요. 한 줄에 놓인 장 수에 줄 수를 곱하면 돼요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">둘레가 같으면 넓이도 같아요.</span><span class="no">아니에요</span></p>
+    <p>아주 길쭉하게 만들면 둘레는 그대로인데 넓이는 확 줄어요.</p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 130" role="img" aria-label="둘레가 똑같이 20칸인 두 네모. 한 줄로 길게 놓은 9장과 반듯한 25장.">
+        <rect class="wash-warm" x="20" y="40" width="162" height="18"/>
+        <path class="ink-thin" style="opacity:.55" d="M38 40 V58 M56 40 V58 M74 40 V58 M92 40 V58 M110 40 V58 M128 40 V58 M146 40 V58 M164 40 V58"/>
+        <rect x="20" y="40" width="162" height="18" style="fill:none;stroke:var(--accent);stroke-width:3"/>
+        <rect class="wash-warm" x="232" y="10" width="90" height="90"/>
+        <path class="ink-thin" style="opacity:.55" d="M250 10 V100 M268 10 V100 M286 10 V100 M304 10 V100 M232 28 H322 M232 46 H322 M232 64 H322 M232 82 H322"/>
+        <rect x="232" y="10" width="90" height="90" style="fill:none;stroke:var(--accent);stroke-width:3"/>
+        <text x="101" y="86" font-size="17" text-anchor="middle">둘레 20칸, 9장</text>
+        <text x="277" y="124" font-size="17" text-anchor="middle">둘레 20칸, 25장</text>
+      </svg>
+    </figure>
+    <p>거꾸로 넓이가 같아도 둘레는 다를 수 있어요. 타일 12장을 한 줄로 놓으면 둘레가 26칸, 4장씩 3줄로 놓으면 14칸이에요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-warm" d="M6 6 H50 V50 H6 Z"/><path class="ink" d="M6 6 H50 V50 H6 Z M28 6 V50 M6 28 H50"/><path class="ink-thin" style="stroke:var(--accent)" d="M34 28 A6 6 0 0 1 28 34 M22 28 A6 6 0 0 1 28 22"/></g></svg>
+        <span>정사각형 타일 네 장이 한 점에 모여요. 90도가 넷이라 딱 한 바퀴, 360도예요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="glow-halo" d="M28 8 L40 15 V29 L28 36 L16 29 V15 Z"/><path class="ink" d="M28 8 L40 15 V29 L28 36 L16 29 V15 Z M40 29 L52 36 V50 M16 29 L4 36 V50 M28 36 V50"/></g></svg>
+        <span>벌집 칸은 정육각형이에요. 120도 세 개가 모여 360도라 빈틈이 없어요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-cool" d="M6 18 L28 8 L50 18 L28 28 Z"/><path class="ink" d="M6 18 L28 8 L50 18 L28 28 Z"/><path class="ink" style="stroke:var(--accent)" d="M6 18 V40 L28 50 L50 40 V18"/></g></svg>
+        <span>방에 깔 장판은 넓이로, 벽 아래 두를 걸레받이는 둘레로 사요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 정오각형 타일은 왜 없을까요?</summary>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 180" role="img" aria-label="정오각형 세 장을 한 점에 모으면 36도의 틈이 남는다.">
+        <g filter="url(#sb-ink)">
+          <path class="wash-warm" d="M180 92 L141.2 63.8 L156 18.1 L204 18.1 L218.8 63.8 Z M180 92 L218.8 63.8 L257.7 92 L242.8 137.7 L194.8 137.7 Z M180 92 L194.8 137.7 L156 165.9 L117.2 137.7 L132 92 Z"/>
+          <path class="ink" d="M180 92 L141.2 63.8 L156 18.1 L204 18.1 L218.8 63.8 Z M180 92 L218.8 63.8 L257.7 92 L242.8 137.7 L194.8 137.7 Z M180 92 L194.8 137.7 L156 165.9 L117.2 137.7 L132 92 Z"/>
+          <path class="heat-halo" d="M180 92 L132 92 L141.2 63.8 Z"/>
+        </g>
+        <text x="96" y="80" font-size="17" style="fill:var(--heat)" text-anchor="end">36도 틈</text>
+        <path class="ink-thin" style="stroke:var(--accent)" d="M192.9 82.6 A16 16 0 0 1 184.9 107.2"/>
+        <text x="200" y="102" font-size="16" style="fill:var(--accent)">108도</text>
+      </svg>
+    </figure>
+    <p>정오각형 한 각은 108도예요. 세 장을 모으면 324도라 36도 틈이 생겨요. 네 장이면 432도라 겹쳐요.</p>
+    <p>한 가지 정다각형만으로 바닥을 빈틈없이 덮을 수 있는 것은 정삼각형, 정사각형, 정육각형 세 가지뿐이에요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>울타리나 몰딩 값은 둘레로, 바닥재나 벽지 값은 넓이로 정해져요. 같은 길이의 울타리로 가장 넓은 텃밭을 두르려면 정사각형에 가깝게 만드는 게 유리해요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">둘레는 둘러싼 길이, 넓이는 안을 채운 크기.<br>둘레가 같아도 넓이는 다를 수 있어요.</p>
+    <div class="quiz" data-stamp="tiles">
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">한 줄에 5장씩 3줄 깔면 타일은 모두 몇 장일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="5와 3을 더했네요. 5장짜리 줄이 3개 있어요.">8장</button>
+          <button class="opt">15장</button>
+          <button class="opt" data-hint="둘레를 센 것 같아요. 안을 채운 타일 수를 세어 봐요.">16장</button>
+        </div>
+        <p class="why">5장씩 3줄이니 5 + 5 + 5 = 15장이에요.</p>
+      </div>
+      <div class="quiz-q" data-answer="2">
+        <p class="qtext">둘레가 16칸인 네모 중 타일이 가장 많이 들어가는 것은?</p>
+        <div class="opts">
+          <button class="opt" data-hint="길쭉하면 넓이가 작아요. 7장뿐이에요.">가로 7, 세로 1</button>
+          <button class="opt" data-hint="15장이에요. 더 반듯하게 만들 수 있어요.">가로 5, 세로 3</button>
+          <button class="opt">가로 4, 세로 4</button>
+        </div>
+        <p class="why">둘레가 같으면 정사각형에 가까울수록 넓어요. 4 × 4 = 16장이에요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">정사각형 타일 네 장의 모서리가 한 점에 모였어요. 모인 각을 모두 더하면?</p>
+        <div class="opts">
+          <button class="opt" data-hint="한 장의 모서리는 직각, 90도예요. 네 장이 모였어요.">180도</button>
+          <button class="opt">360도</button>
+          <button class="opt" data-hint="그건 한 장의 모서리 각이에요.">90도</button>
+        </div>
+        <p class="why">90도가 네 개라 360도, 한 바퀴예요. 그래서 빈틈없이 맞아요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const C = 34, X0 = 52, Y0 = 44, N = 9;
+  const svg = $('tile-svg'), grip = $('grip');
+  let p = 20, w = 8, beads = null;
+
+  for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) S('rect', { x: X0 + i * C, y: Y0 + j * C, width: C, height: C, class: 'cell' }, $('cells'));
+
+  function makeBeads() {
+    if (beads) { beads.anim.stop(); beads.g.remove(); }
+    beads = SB.flow($('beads'), { path: $('rope'), n: p, kind: 'glow', r: 3.2, speed: 20 });
+  }
+
+  function drawBars() {
+    const g = $('bars'); g.textContent = '';
+    const list = SIM.rectsWithPerimeter(p).flatMap((r) => (r[0] === r[1] ? [r] : [r, [r[1], r[0], r[2]]]))
+      .sort((a, b) => a[0] - b[0]);
+    const bw = Math.min(40, 360 / list.length), base = 140, k = 4.4, x0 = 200 - (bw * list.length) / 2;
+    list.forEach((r, i) => {
+      const x = x0 + i * bw, h = r[2] * k, on = r[0] === w;
+      S('rect', { x: x + 4, y: base - h, width: bw - 8, height: h, class: 'bar' + (on ? ' on' : '') }, g);
+      S('text', { x: x + bw / 2, y: base - h - 6, class: 'n' + (on ? ' on' : ''), text: r[2] }, g);
+      S('text', { x: x + bw / 2, y: base + 20, class: 'k', text: r[0] + '×' + r[1] }, g);
+    });
+    S('line', { x1: x0, y1: base, x2: x0 + bw * list.length, y2: base, class: 'ink-thin' }, g);
+    S('text', { x: 200, y: base + 44, class: 'k', text: '가로×세로 (줄 ' + p + '칸)' }, g);
+  }
+
+  function draw() {
+    const [ww, hh, area] = SIM.rectForPerimeter(p, w);
+    w = ww;
+    const g = $('tiles'); g.textContent = '';
+    for (let j = 0; j < hh; j++) for (let i = 0; i < ww; i++)
+      S('rect', { x: X0 + i * C + 2, y: Y0 + j * C + 2, width: C - 4, height: C - 4, rx: 2, class: 'tile' + (j === 0 ? ' row1' : '') }, g);
+    const x1 = X0 + ww * C, y1 = Y0 + hh * C;
+    $('rope').setAttribute('d', `M${X0} ${Y0} H${x1} V${y1} H${X0} Z`);
+    beads.place();
+    grip.setAttribute('transform', `translate(${x1} ${y1})`);
+    const top = $('lbl-top'); top.setAttribute('x', X0 + ww * C / 2); top.setAttribute('y', Y0 - 12); top.textContent = '한 줄에 ' + ww + '장';
+    const left = $('lbl-left'); left.setAttribute('x', X0 - 8); left.setAttribute('y', Y0 + hh * C / 2 + 6); left.textContent = hh + '줄';
+    $('t-read').innerHTML = `${ww}장씩 ${hh}줄 = 타일 <b>${area}장</b>`;
+    const best = SIM.widestRect(p);
+    $('t-sub').textContent = `둘레는 그대로 ${p}칸` + (area === best[2] ? ' · 이 줄로 만들 수 있는 가장 넓은 네모예요' : '');
+    grip.setAttribute('aria-valuenow', ww);
+    grip.setAttribute('aria-valuetext', `가로 ${ww}칸, 세로 ${hh}칸, 타일 ${area}장`);
+    drawBars();
+  }
+  function setW(v) { w = SIM.clamp(Math.round(v), 1, p / 2 - 1); draw(); }
+
+  SB.drag(grip, {
+    svg, area: svg,
+    onMove(pt) {
+      // 끈 길이를 지키는(가로 + 세로 = 줄의 반) 모양 중 손가락에 가장 가까운 것
+      const a = (pt.x - X0) / C, b = (pt.y - Y0) / C;
+      setW((a - b + p / 2) / 2);
+    },
+    onKey(dx, dy) { setW(w + (dx || -dy)); }
+  });
+  grip.setAttribute('aria-valuemin', 1); grip.setAttribute('aria-valuemax', 9);
+  document.querySelectorAll('[data-p]').forEach((b) => b.addEventListener('click', () => {
+    p = Number(b.dataset.p);
+    document.querySelectorAll('[data-p]').forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    grip.setAttribute('aria-valuemax', p / 2 - 1);
+    makeBeads(); setW(w);
+  }));
+  makeBeads(); draw();
+});
+</script>
+</body>
+</html>

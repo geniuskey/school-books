@@ -1,0 +1,415 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "주사위 두 개를 굴리면 합이 7일 때와 12일 때 중 어느 쪽이 자주 나올까요? 수백 번 굴려 막대그래프를 쌓고, 36칸 표로 그 까닭을 확인하며 가능성을 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보드게임에서 7이 제일 잘 나오는 이유 · 초등 하루의 수학과 과학</title>
+<meta name="description" content="주사위 두 개를 굴리면 합이 7일 때와 12일 때 중 어느 쪽이 자주 나올까요? 수백 번 굴려 막대그래프를 쌓고, 36칸 표로 그 까닭을 확인하며 가능성을 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/dice.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="보드게임에서 7이 제일 잘 나오는 이유 · 초등 하루의 수학과 과학">
+<meta property="og:description" content="주사위 두 개를 굴리면 합이 7일 때와 12일 때 중 어느 쪽이 자주 나올까요? 수백 번 굴려 막대그래프를 쌓고, 36칸 표로 그 까닭을 확인하며 가능성을 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/dice.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/dice.html#chapter","name":"보드게임에서 7이 제일 잘 나오는 이유","headline":"보드게임에서 7이 제일 잘 나오는 이유 · 초등 하루의 수학과 과학","description":"주사위 두 개를 굴리면 합이 7일 때와 12일 때 중 어느 쪽이 자주 나올까요? 수백 번 굴려 막대그래프를 쌓고, 36칸 표로 그 까닭을 확인하며 가능성을 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/dice.html","position":10,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"가능성, 표와 막대그래프","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"10. 보드게임에서 7이 제일 잘 나오는 이유","item":"https://school.euiyun.com/elementary/chapters/dice.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  .die-face { fill: var(--card); stroke: var(--ink); stroke-width: 2.4; }
+  .die-pip { fill: var(--ink); }
+  #dice-stage .sum-big { font-size: 40px; text-anchor: middle; dominant-baseline: central; fill: var(--accent); }
+  #dice-stage .op { font-size: 30px; text-anchor: middle; dominant-baseline: central; fill: var(--ink-soft); }
+  #bars .bar { fill: var(--water-soft); stroke: var(--water); stroke-width: 1.6; }
+  #bars .bar.sel { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2.4; }
+  #bars .ghost { fill: none; stroke: var(--ink-faint); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  #bars .cnt { font-size: 14px; text-anchor: middle; fill: var(--ink-soft); }
+  #bars .xl { font-size: 17px; text-anchor: middle; }
+  #bars .xl.sel { fill: var(--accent); }
+  #bars .col { cursor: pointer; }
+  #bars .col:focus { outline: none; }
+  #bars .col:focus-visible .bar { stroke-width: 3.4; }
+  #grid36 .cell { fill: var(--paper); stroke: var(--rule); stroke-width: 1; }
+  #grid36 .heat-c { fill: var(--water); }
+  #grid36 .cell.sel { stroke: var(--accent); stroke-width: 2.6; }
+  #grid36 .ct { font-size: 15px; text-anchor: middle; dominant-baseline: central; fill: var(--ink-soft); pointer-events: none; }
+  #grid36 .ct.sel { fill: var(--accent); }
+  #grid36 .last { fill: none; stroke: var(--glow); stroke-width: 3.5; }
+  #grid36 .hd { font-size: 14px; text-anchor: middle; fill: var(--ink-faint); }
+  #grid36 .cellg { cursor: pointer; }
+  .figrow { display: grid; gap: 10px; }
+  @media (min-width: 640px) { .figrow { grid-template-columns: 1fr 1fr; align-items: start; } }
+  .figrow h3 { font-size: .95rem; margin: 0 0 4px; color: var(--ink-soft); font-family: var(--font); font-weight: 600; text-align: center; }
+  #sel-read { text-align: center; font-size: .95rem; color: var(--ink-soft); margin: 4px 0 0; min-height: 2.6em; }
+  #sel-read b { color: var(--accent); }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="dice">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">17:00</span><span class="chip math">수학</span><span>읽는 시간 9분</span></div>
+    <h1>보드게임에서 7이 제일 잘 나오는 이유</h1>
+    <p class="unit">가능성, 표와 막대그래프</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="거실 바닥의 보드게임판 앞에서 지우가 주사위 두 개를 굴린다. 고양이 두부가 굴러가는 주사위를 앞발로 건드리려 한다.">
+        <g filter="url(#sb-ink)">
+          <!-- 창문과 저녁 햇빛 -->
+          <rect class="wash-warm" x="330" y="22" width="120" height="96" rx="3"/>
+          <path class="ink" d="M330 22 H450 V118 H330 Z M390 22 V118 M330 70 H450"/>
+          <circle class="glow-halo" cx="420" cy="96" r="16"/>
+          <path class="ink-thin" d="M320 124 H460"/>
+          <!-- 바닥 -->
+          <path class="ink-thin" d="M14 196 H466" style="stroke:var(--ink-faint)"/>
+          <!-- 게임판(비스듬히) -->
+          <path class="fill-card" d="M118 182 L330 170 L360 246 L96 262 Z"/>
+          <path class="wash-cool" d="M136 190 L316 180 L338 238 L118 250 Z"/>
+          <path class="ink" d="M118 182 L330 170 L360 246 L96 262 Z"/>
+          <path class="ink-thin" d="M136 190 L316 180 L338 238 L118 250 Z M172 188 L160 248 M208 186 L200 246 M244 184 L240 244 M280 182 L280 242 M131 210 L323 199 M126 230 L331 218"/>
+          <circle class="fill-accent" cx="221" cy="214" r="5"/>
+          <path class="fill-ink" d="M286 204 l6 -12 l6 12 z"/>
+          <!-- 지우 -->
+          <circle class="fill-card" cx="70" cy="128" r="24"/>
+          <circle class="ink" cx="70" cy="128" r="24"/>
+          <path class="fill-ink" d="M46 132 C42 100 98 98 94 132 C90 116 80 110 70 110 C60 110 50 116 46 132 Z"/>
+          <circle class="fill-ink" cx="64" cy="130" r="2"/><circle class="fill-ink" cx="80" cy="130" r="2"/>
+          <path class="ink-thin" d="M66 140 q6 4 12 0"/>
+          <path class="fill-card" d="M50 152 C40 166 38 196 42 214 H102 C104 192 100 166 90 152 Z"/>
+          <path class="ink" d="M50 152 C40 166 38 196 42 214 H102 C104 192 100 166 90 152"/>
+          <path class="ink" d="M90 166 C110 168 130 160 148 150"/>
+          <circle class="fill-card" cx="152" cy="148" r="6"/><circle class="ink-thin" cx="152" cy="148" r="6"/>
+          <!-- 구르는 주사위 둘 -->
+          <g transform="translate(176 120) rotate(-14)">
+            <rect class="die-face" x="-17" y="-17" width="34" height="34" rx="7"/>
+            <circle class="die-pip" cx="-8" cy="-8" r="3.4"/><circle class="die-pip" cx="0" cy="0" r="3.4"/><circle class="die-pip" cx="8" cy="8" r="3.4"/>
+          </g>
+          <g transform="translate(226 140) rotate(18)">
+            <rect class="die-face" x="-17" y="-17" width="34" height="34" rx="7"/>
+            <circle class="die-pip" cx="-8" cy="-8" r="3.4"/><circle class="die-pip" cx="8" cy="-8" r="3.4"/><circle class="die-pip" cx="-8" cy="8" r="3.4"/><circle class="die-pip" cx="8" cy="8" r="3.4"/>
+          </g>
+          <path class="ink-thin" style="stroke:var(--accent)" d="M150 110 q8 -10 18 -12 M196 154 q10 6 22 4 M244 124 q8 -6 10 -16"/>
+          <!-- 두부 -->
+          <path class="fill-card" d="M372 196 C366 168 380 146 404 146 C428 146 444 166 440 196 Z"/>
+          <path class="ink" d="M372 196 C366 168 380 146 404 146 C428 146 444 166 440 196 M380 156 L378 132 L394 148 M414 148 L430 132 L430 156"/>
+          <path class="ink-thin" d="M390 166 q4 -4 8 0 M410 166 q4 -4 8 0 M402 174 l2 2 l2 -2"/>
+          <path class="ink" d="M372 182 C350 176 332 162 316 150"/>
+          <ellipse class="fill-card" cx="312" cy="148" rx="9" ry="7"/><ellipse class="ink-thin" cx="312" cy="148" rx="9" ry="7"/>
+          <path class="ink" d="M440 186 C462 182 466 160 456 150"/>
+        </g>
+      </svg>
+    </figure>
+    <p>저녁 5시, 지우는 엄마와 보드게임을 해요. 주사위 두 개를 굴려 나온 눈을 더한 만큼 말을 옮겨요.</p>
+    <p>엄마는 늘 7칸 앞 땅을 먼저 사요. 두부는 굴러가는 주사위를 앞발로 톡 건드려요.</p>
+    <p class="question">주사위 두 개의 합, 7과 12 중 어느 쪽이 더 잘 나올까요?</p>
+  </section>
+
+  <section class="predict card" id="p-dice" data-id="dice" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">주사위 두 개의 합으로 더 잘 나오는 것은?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 주사위 한 개라면 모든 눈이 똑같이 나와요. 두 개를 더하면 어떻게 될까요?">둘 다 같아요</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 얼마나 차이 나는지 직접 굴려 봐요.">7</button>
+      <button class="choice" data-v="c" data-echo="좋은 예상이에요. 12는 가장 큰 합이라 눈에 띄죠. 직접 굴려서 세어 봐요.">12</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="dice-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>주사위를 굴려 봐요. 나온 합이 막대그래프에 한 칸씩 쌓이고, 아래 36칸 표에도 표시돼요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="dice-stage" viewBox="0 0 360 108" role="img" aria-label="방금 굴린 주사위 두 개와 그 합">
+        <g id="die1" transform="translate(70 54)"></g>
+        <text class="op" x="135" y="54">+</text>
+        <g id="die2" transform="translate(200 54)"></g>
+        <text class="op" x="262" y="54">=</text>
+        <text class="sum-big" id="sum-big" x="314" y="54">?</text>
+      </svg>
+    </figure>
+    <p class="readout" id="dice-read" aria-live="polite"></p>
+    <div class="controls">
+      <div class="btn-row">
+        <button class="btn primary" type="button" id="r1">한 번 굴리기</button>
+        <button class="btn" type="button" id="r10">10번</button>
+        <button class="btn" type="button" id="r100">100번</button>
+        <button class="btn" type="button" id="r0">처음으로</button>
+      </div>
+    </div>
+    <div class="figrow">
+      <figure>
+        <h3>합마다 나온 횟수</h3>
+        <svg class="drawing" id="bars" viewBox="0 0 360 236" role="group" aria-label="합 2부터 12까지 나온 횟수 막대그래프. 막대를 누르면 그 합이 되는 칸이 표에 표시된다."></svg>
+      </figure>
+      <figure>
+        <h3>첫째 눈과 둘째 눈의 36칸 표</h3>
+        <svg class="drawing" id="grid36" viewBox="0 0 300 300" role="group" aria-label="첫째 주사위 눈(세로)과 둘째 주사위 눈(가로)의 36칸 표. 칸마다 합이 적혀 있고, 많이 나온 칸일수록 진하다."></svg>
+      </figure>
+    </div>
+    <p id="sel-read" aria-live="polite"></p>
+    <p class="simplified">컴퓨터가 고른 무작위 눈이에요. 주사위는 여섯 면이 똑같이 나온다고 봐요. 점선은 36칸 표대로라면 나올 만큼이에요.</p>
+  </section>
+
+  <section class="flap" id="f-dice" data-for="p-dice" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 7이에요.</b></p>
+      <figure>
+        <svg class="drawing" id="proof36" viewBox="0 0 360 262" role="img" aria-label="36칸 표에서 합이 7인 칸은 대각선으로 6칸, 합이 12인 칸은 오른쪽 아래 한 칸뿐이다."></svg>
+      </figure>
+      <p>첫째 눈 6가지와 둘째 눈 6가지를 짝지으면 모두 36칸이에요. 칸마다 나올 가능성은 똑같아요.</p>
+      <p>합이 7인 칸은 1과 6, 2와 5, 3과 4처럼 6칸이에요. 12는 6과 6, 한 칸뿐이에요.</p>
+      <p>그래서 7은 36번에 6번쯤, 12는 36번에 1번쯤 나와요. 어떤 일이 일어날 것 같은 정도를 <span class="term">가능성</span>이라고 해요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">6이 세 번 나왔으니, 이번엔 6이 잘 안 나와요.</span><span class="no">아니에요</span></p>
+    <figure>
+      <svg class="drawing" id="myth-dice" viewBox="0 0 360 96" role="img" aria-label="6, 6, 6이 나온 뒤에도 다음 번에는 여섯 눈이 모두 똑같이 6번에 1번꼴로 나온다."></svg>
+    </figure>
+    <p>주사위는 앞에서 무엇이 나왔는지 기억하지 못해요. 6이 연달아 나와도 다음 번 6의 가능성은 여전히 6번에 1번이에요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><ellipse class="glow-halo" cx="28" cy="30" rx="20" ry="18"/><ellipse class="ink" cx="28" cy="30" rx="20" ry="18"/><ellipse class="ink-thin" cx="28" cy="30" rx="14" ry="12"/><path class="ink-thin" d="M24 24 h8 M22 30 h12 M24 36 h8"/></g></svg>
+        <span>축구 경기 시작 전 동전 던지기. 앞면과 뒷면은 반반이에요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-cool" d="M8 28 C8 14 48 14 48 28 Z"/><path class="ink" d="M8 28 C8 14 48 14 48 28 C42 24 36 24 34 28 C30 24 26 24 22 28 C18 24 12 24 8 28 M28 28 V44 q0 5 -5 5 q-4 0 -4 -4"/><path class="ink-thin" style="stroke:var(--water)" d="M14 36 v4 M42 34 v4 M38 44 v4"/></g></svg>
+        <span>일기예보의 "비 올 확률"도 비가 올 가능성을 수로 나타낸 거예요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-warm" d="M10 26 H46 V48 H10 Z"/><path class="ink" d="M10 26 H46 V48 H10 Z M20 26 q8 -4 16 0"/><path class="fill-card" d="M22 6 l12 2 l-3 18 l-12 -2 z"/><path class="ink-thin" d="M22 6 l12 2 l-3 18 l-12 -2 z M24 12 h7 M23 17 h6"/></g></svg>
+        <span>반 친구 25명 중 한 명을 뽑으면, 내가 뽑힐 가능성은 25번에 1번이에요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 주사위가 셋이면?</summary>
+    <p>약 400년 전 이탈리아의 과학자 갈릴레이가 이런 질문을 받았어요. "주사위 셋의 합 9와 10은 만드는 방법이 똑같이 여섯 가지인데, 왜 10이 더 자주 나오나요?"</p>
+    <p>갈릴레이는 주사위를 하나하나 구별해 모든 경우를 셌어요. 모두 216가지 중 합 9는 25가지, 10은 27가지였어요. 3, 3, 3은 한 가지 순서뿐이지만, 1, 4, 5는 여섯 가지 순서로 나올 수 있거든요.</p>
+    <p>해 보기에서 100번씩 계속 굴려 보세요. 횟수가 많아질수록 막대가 점선 모양에 가까워져요. 몇십 번만 굴리면 7보다 6이나 8이 더 많을 때도 있어요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>로또 6/45의 1등 번호 조합은 8,145,060가지 중 하나예요. 지난주에 나온 번호라고 이번 주에 덜 나오지 않아요. "이번엔 나올 차례"라는 느낌을 수가 바로잡아 줘요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">주사위 두 개의 합은 만드는 칸이 많을수록 잘 나와요.<br>7은 36칸 중 6칸, 12는 1칸.</p>
+    <div class="quiz" data-stamp="dice">
+      <div class="quiz-q" data-answer="0">
+        <p class="qtext">주사위 두 개의 합이 2가 되는 칸은 36칸 중 몇 칸일까요?</p>
+        <div class="opts">
+          <button class="opt">1칸</button>
+          <button class="opt" data-hint="1과 1 말고 합이 2가 되는 짝이 있을까요? 주사위에는 0이 없어요.">2칸</button>
+          <button class="opt" data-hint="6칸인 것은 합 7이에요. 2는 가장 작은 합이에요.">6칸</button>
+        </div>
+        <p class="why">1과 1, 한 칸뿐이에요. 그래서 2도 12처럼 드물어요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">주사위 한 개로 6이 네 번 연달아 나왔어요. 다음에 6이 나올 가능성은?</p>
+        <div class="opts">
+          <button class="opt" data-hint="주사위가 앞에 나온 눈을 기억할 수 있을까요?">더 작아졌어요</button>
+          <button class="opt">처음과 똑같아요</button>
+          <button class="opt" data-hint="연달아 나왔다고 주사위가 6 쪽으로 기울지는 않아요.">더 커졌어요</button>
+        </div>
+        <p class="why">매번 여섯 눈이 똑같이 6번에 1번꼴로 나와요.</p>
+      </div>
+      <div class="quiz-q" data-answer="2">
+        <p class="qtext">주사위 두 개의 합, 6과 8 중 더 잘 나오는 것은?</p>
+        <div class="opts">
+          <button class="opt" data-hint="36칸 표에서 6이 적힌 칸과 8이 적힌 칸을 세어 봐요.">6</button>
+          <button class="opt" data-hint="8이 6보다 크다고 더 잘 나오지는 않아요. 칸을 세어 봐요.">8</button>
+          <button class="opt">둘이 같아요</button>
+        </div>
+        <p class="why">6도 5칸, 8도 5칸이라 가능성이 같아요. 표는 7을 가운데로 양쪽이 똑같아요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const reduce = (() => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } })();
+  const PIPS = { 1: [[0, 0]], 2: [[-1, -1], [1, 1]], 3: [[-1, -1], [0, 0], [1, 1]], 4: [[-1, -1], [1, -1], [-1, 1], [1, 1]], 5: [[-1, -1], [1, -1], [0, 0], [-1, 1], [1, 1]], 6: [[-1, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [1, 1]] };
+  // 주사위 한 면: 가운데 (0,0), 한 변 size
+  function face(g, n, size, opt) {
+    g.textContent = '';
+    const h = size / 2, d = size * 0.27, pr = size * 0.095;
+    S('rect', { x: -h, y: -h, width: size, height: size, rx: size * 0.2, class: 'die-face', style: opt && opt.accent ? 'stroke:var(--accent)' : '' }, g);
+    if (n) PIPS[n].forEach(([a, b]) => S('circle', { cx: a * d, cy: b * d, r: pr, class: 'die-pip' }, g));
+    else S('text', { x: 0, y: 1, 'text-anchor': 'middle', 'dominant-baseline': 'central', 'font-size': size * 0.55, text: '?', style: 'fill:var(--accent)' }, g);
+    return g;
+  }
+
+  /* ---------- 증명하기의 36칸 표, 흔한 오해의 그림 ---------- */
+  (function proof() {
+    const P = $('proof36'), ox = 110, oy = 18, c = 36;
+    const g = S('g', { filter: 'url(#sb-ink)' }, P);
+    for (let a = 1; a <= 6; a++) for (let b = 1; b <= 6; b++) {
+      const s = a + b, x = ox + (b - 1) * c, y = oy + (a - 1) * c;
+      S('rect', { x, y, width: c, height: c, class: s === 7 ? 'glow-halo' : s === 12 ? 'wash-pink' : 'fill-card' }, g);
+    }
+    S('path', { class: 'ink', d: `M${ox} ${oy} h${6 * c} v${6 * c} h${-6 * c} Z` }, g);
+    for (let i = 1; i < 6; i++) S('path', { class: 'ink-thin', d: `M${ox + i * c} ${oy} v${6 * c} M${ox} ${oy + i * c} h${6 * c}` }, g);
+    for (let a = 1; a <= 6; a++) for (let b = 1; b <= 6; b++) {
+      const s = a + b;
+      S('text', { x: ox + (b - 0.5) * c, y: oy + (a - 0.5) * c + 1, 'font-size': 16, 'text-anchor': 'middle', 'dominant-baseline': 'central', text: s, style: s === 7 || s === 12 ? 'fill:var(--accent)' : 'fill:var(--ink-faint)' }, P);
+    }
+    S('text', { x: 8, y: 92, 'font-size': 18, text: '합 7: 6칸' , style: 'fill:var(--accent)' }, P);
+    S('path', { class: 'ink-thin', d: 'M86 96 C96 100 104 104 112 108', style: 'stroke:var(--accent)' }, P);
+    S('text', { x: 236, y: 252, 'font-size': 18, 'text-anchor': 'end', text: '합 12: 1칸' }, P);
+    S('path', { class: 'ink-thin', d: 'M242 246 C276 248 300 244 308 232' }, P);
+  })();
+  (function myth() {
+    const M = $('myth-dice');
+    [6, 6, 6].forEach((n, i) => face(S('g', { transform: `translate(${34 + i * 56} 44)` }, M), n, 40));
+    face(S('g', { transform: 'translate(214 44)' }, M), 0, 40, { accent: true });
+    S('path', { class: 'ink-thin', d: 'M242 44 h16 m-6 -5 l6 5 l-6 5' }, M);
+    for (let n = 1; n <= 6; n++) face(S('g', { transform: `translate(${266 + ((n - 1) % 3) * 30} ${n <= 3 ? 26 : 60})` }, M), n, 24);
+    S('text', { x: 296, y: 92, 'font-size': 14, 'text-anchor': 'middle', text: '모두 6번에 1번꼴', style: 'fill:var(--ink-soft)' }, M);
+  })();
+
+  /* ---------- 해 보기 ---------- */
+  const rand = SIM.rng(34);
+  const d1 = $('die1'), d2 = $('die2');
+  let counts, pairCount, n, last, sel = 7, busy = false;
+  function reset() {
+    counts = {}; for (let s = 2; s <= 12; s++) counts[s] = 0;
+    pairCount = Array.from({ length: 7 }, () => Array(7).fill(0));
+    n = 0; last = null;
+    face(d1, 0, 72); face(d2, 0, 72); $('sum-big').textContent = '?';
+  }
+
+  // 막대그래프
+  const B = $('bars'), BX = 34, BW = 28, BY = 196, BH = 168;
+  const axis = S('g', { filter: 'url(#sb-ink)' }, B);
+  S('path', { class: 'ink', d: `M${BX - 8} ${BY} H${BX + 11 * BW + 6}` }, axis);
+  const cols = {};
+  for (let s = 2; s <= 12; s++) {
+    const x = BX + (s - 2) * BW;
+    const g = S('g', { class: 'col', tabindex: 0, role: 'button', 'aria-label': `합 ${s}` }, B);
+    S('rect', { x: x - 2, y: BY - BH - 14, width: BW, height: BH + 40, fill: 'transparent' }, g);
+    const bar = S('rect', { x: x + 3, y: BY, width: BW - 6, height: 0, class: 'bar', rx: 2 }, g);
+    const ghost = S('rect', { x: x + 1, y: BY, width: BW - 2, height: 0, class: 'ghost' }, g);
+    const cnt = S('text', { x: x + BW / 2, y: BY - 4, class: 'cnt', text: '' }, g);
+    const xl = S('text', { x: x + BW / 2, y: BY + 22, class: 'xl', text: s }, g);
+    g.addEventListener('click', () => choose(s));
+    g.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(s); } });
+    cols[s] = { bar, ghost, cnt, xl };
+  }
+
+  // 36칸 표
+  const T = $('grid36'), TX = 36, TY = 30, C = 42;
+  for (let b = 1; b <= 6; b++) face(S('g', { transform: `translate(${TX + (b - 0.5) * C} ${TY - 15})` }, T), b, 20);
+  for (let a = 1; a <= 6; a++) face(S('g', { transform: `translate(${TX - 17} ${TY + (a - 0.5) * C})` }, T), a, 20);
+  const cells = [];
+  for (let a = 1; a <= 6; a++) for (let b = 1; b <= 6; b++) {
+    const x = TX + (b - 1) * C, y = TY + (a - 1) * C, s = a + b;
+    const g = S('g', { class: 'cellg' }, T);
+    const rect = S('rect', { x, y, width: C, height: C, class: 'cell' }, g);
+    const heat = S('rect', { x: x + 1, y: y + 1, width: C - 2, height: C - 2, class: 'heat-c', opacity: 0 }, g);
+    const t = S('text', { x: x + C / 2, y: y + C / 2 + 1, class: 'ct', text: s }, g);
+    g.addEventListener('click', () => choose(s));
+    cells.push({ a, b, s, rect, heat, t });
+  }
+  S('path', { class: 'ink', d: `M${TX} ${TY} h${6 * C} v${6 * C} h${-6 * C} Z`, filter: 'url(#sb-ink)' }, T);
+  const lastMark = S('rect', { class: 'last', width: C - 6, height: C - 6, rx: 4, style: 'display:none' }, T);
+
+  function choose(s) { sel = s; draw(); }
+
+  function draw() {
+    const top = Math.max(4, ...Object.values(counts), SIM.diceExpected(7, n));
+    for (let s = 2; s <= 12; s++) {
+      const c = cols[s], h = (counts[s] / top) * BH, eh = (SIM.diceExpected(s, n) / top) * BH;
+      c.bar.setAttribute('y', BY - h); c.bar.setAttribute('height', h);
+      c.ghost.setAttribute('y', BY - eh); c.ghost.setAttribute('height', eh);
+      c.ghost.style.display = n ? '' : 'none';
+      c.cnt.textContent = n ? counts[s] : '';
+      c.cnt.setAttribute('y', BY - Math.max(h, eh) - 5);
+      c.bar.classList.toggle('sel', s === sel); c.xl.classList.toggle('sel', s === sel);
+    }
+    let maxPair = 1; cells.forEach((k) => { maxPair = Math.max(maxPair, pairCount[k.a][k.b]); });
+    cells.forEach((k) => {
+      k.heat.setAttribute('opacity', n ? (0.55 * pairCount[k.a][k.b] / maxPair).toFixed(3) : 0);
+      k.rect.classList.toggle('sel', k.s === sel); k.t.classList.toggle('sel', k.s === sel);
+    });
+    // 고른 칸들이 위로 오게
+    cells.filter((k) => k.s === sel).forEach((k) => T.appendChild(k.rect.parentNode));
+    if (last) {
+      lastMark.style.display = '';
+      lastMark.setAttribute('x', TX + (last[1] - 1) * C + 3); lastMark.setAttribute('y', TY + (last[0] - 1) * C + 3);
+      T.appendChild(lastMark);
+    } else lastMark.style.display = 'none';
+    $('dice-read').innerHTML = n
+      ? `<b>${SIM.fmtNum(n)}번</b> 굴렸어요 · 7은 <b>${counts[7]}번</b>, 12는 <b>${counts[12]}번</b>`
+      : '굴리기를 눌러 봐요';
+    const ways = SIM.dicePairs(sel).length;
+    $('sel-read').innerHTML = `합 <b>${sel}</b>이 되는 칸은 36칸 중 <b>${ways}칸</b>` +
+      (n ? ` · ${n}번 중 <b>${counts[sel]}번</b> 나왔어요 (36칸 표대로라면 ${SIM.round(SIM.diceExpected(sel, n), 1)}번쯤)` : '이에요. 막대나 칸을 눌러 다른 합도 골라 봐요.');
+    $('r0').disabled = !n;
+  }
+
+  function add(k) {
+    for (let i = 0; i < k; i++) {
+      const p = SIM.rollPair(rand);
+      counts[p[0] + p[1]]++; pairCount[p[0]][p[1]]++; n++; last = p;
+    }
+    face(d1, last[0], 72); face(d2, last[1], 72); $('sum-big').textContent = last[0] + last[1];
+    draw();
+  }
+
+  function rollOnce() {
+    if (busy) return;
+    if (reduce) { add(1); return; }
+    busy = true;
+    let f = 0;
+    const r2 = SIM.rng(n + 99);
+    const tick = () => {
+      face(d1, SIM.randInt(r2, 1, 6), 72); face(d2, SIM.randInt(r2, 1, 6), 72);
+      d1.setAttribute('transform', `translate(70 54) rotate(${(f % 2 ? 8 : -8)})`);
+      d2.setAttribute('transform', `translate(200 54) rotate(${(f % 2 ? -10 : 10)})`);
+      if (++f < 7) setTimeout(tick, 55);
+      else { d1.setAttribute('transform', 'translate(70 54)'); d2.setAttribute('transform', 'translate(200 54)'); busy = false; add(1); }
+    };
+    tick();
+  }
+
+  $('r1').addEventListener('click', rollOnce);
+  $('r10').addEventListener('click', () => { if (!busy) add(10); });
+  $('r100').addEventListener('click', () => { if (!busy) add(100); });
+  $('r0').addEventListener('click', () => { if (!busy) { reset(); draw(); } });
+  reset(); draw();
+});
+</script>
+</body>
+</html>

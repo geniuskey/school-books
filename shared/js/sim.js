@@ -148,6 +148,244 @@
     shadowLength, diceSumWays, rollSums, mean, median, compound, simpleInterest, dist, moonLitFraction,
     G, kmhToMs, momentum, stopForce, stopDistance, timesWeight, humpForce, crashSim, constStopG, springStopG, pressure
   };
+  /* ---------- 초등 장별 계산: 각 장은 자기 표식 자리에만 더한다 (Object.assign(SIM, {...})) ---------- */
+  /* ch:mirror */
+  // 02장: 공기 1m³가 온도 T(℃)에서 품을 수 있는 수증기의 최대량(포화 수증기량, g/m³).
+  // 포화 수증기압은 Magnus 식(Alduchov & Eskridge 1996 계수, 물 위), 밀도는 이상 기체로 바꾼다. 기압의 영향은 뺐다.
+  const satVaporPressure = (T) => 6.1094 * Math.exp((17.625 * T) / (T + 243.04)); // hPa
+  const satVaporDensity = (T) => (satVaporPressure(T) * 100 * 18.015) / (8.314 * (T + 273.15));
+  // 수증기 rho(g/m³)가 맺히기 시작하는 온도(이슬점). 공기가 식으며 줄어드는 부피는 뺐다(같은 rho 로 비교).
+  function dewPointOf(rho) {
+    let lo = -40, hi = 60;
+    for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2; if (satVaporDensity(mid) < rho) lo = mid; else hi = mid; }
+    return (lo + hi) / 2;
+  }
+  // 거울 온도 Tm 에서 넘치는 수증기(g/m³). 0보다 크면 그만큼 물방울로 맺히고(응결), 작으면 물방울이 다시 날아간다(증발).
+  const condenseExcess = (rho, Tm) => rho - satVaporDensity(Tm);
+  Object.assign(SIM, { satVaporPressure, satVaporDensity, dewPointOf, condenseExcess });
+  /* ch:toast */
+  // 03장: 토스트(정사각형)를 똑같이 n조각으로 나누는 격자 [줄, 칸]. 실제로 자르기 쉬운 모양만 고른다(7·9·11조각은 뺐다).
+  const TOAST_CUTS = [1, 2, 3, 4, 5, 6, 8, 10, 12];
+  const TOAST_GRID = { 1: [1, 1], 2: [1, 2], 3: [1, 3], 4: [2, 2], 5: [1, 5], 6: [2, 3], 8: [2, 4], 10: [2, 5], 12: [3, 4] };
+  const toastGrid = (n) => TOAST_GRID[n] || [1, n];
+  // 분수 a/b 와 c/d 비교: -1(작다), 0(같다), 1(크다). 곱해서 비교해 소수 오차가 없다.
+  const fracCompare = (a, b, c, d) => Math.sign(a * d - c * b);
+  // a/b 와 크기가 같은 분수들(분모가 maxDen 이하, 나누기 쉬운 조각 수 안에서)
+  function equivalents(a, b, maxDen, cuts) {
+    const [n, d] = simplify(a, b), out = [];
+    for (let k = 1; d * k <= (maxDen || 12); k++) if (!cuts || cuts.includes(d * k)) out.push([n * k, d * k]);
+    return out;
+  }
+  // 분모가 10인 분수는 소수 한 자리로 바로 읽힌다: 3/10 → "0.3". 다른 분모는 null(이 장에서는 다루지 않는다).
+  function tenthsText(a, b) {
+    if ((a * 10) % b !== 0) return null;
+    const t = (a * 10) / b;
+    return t % 10 === 0 ? String(t / 10) : Math.floor(t / 10) + "." + (t % 10);
+  }
+  Object.assign(SIM, { TOAST_CUTS, toastGrid, fracCompare, equivalents, tenthsText });
+  /* ch:shadow */
+  // 04장: 해의 높이(태양 고도). 위도 lat, 적위 dec(하지 +23.44, 춘추분 0, 동지 -23.44), 남중에서 h시간 떨어진 때.
+  // 대기의 빛 꺾임, 균시차(남중 시각이 날마다 조금씩 바뀌는 것), 해의 크기는 뺐다.
+  const SEOUL_LAT = 37.57;
+  const SEOUL_NOON = 12 * 60 + 30; // 서울(동경 127도)은 한국 표준시 기준 경도(135도)보다 서쪽이라 해가 12시 30분쯤 가장 높다
+  const SEASON_DEC = { summer: 23.44, equinox: 0, winter: -23.44 };
+  function sunAltitude(lat, dec, h) {
+    const s = Math.sin(rad(lat)) * Math.sin(rad(dec)) + Math.cos(rad(lat)) * Math.cos(rad(dec)) * Math.cos(rad(15 * h));
+    return deg(Math.asin(clamp(s, -1, 1)));
+  }
+  const noonAltitude = (lat, dec) => 90 - Math.abs(lat - dec);
+  // 해가 떠 있는 시간의 반(시간)
+  const halfDay = (lat, dec) => deg(Math.acos(clamp(-Math.tan(rad(lat)) * Math.tan(rad(dec)), -1, 1))) / 15;
+  // 해가 높이 alt 에 오는 때가 남중에서 몇 시간 떨어져 있는가(오전이면 그만큼 앞, 오후면 뒤). 그 높이까지 못 오르면 null
+  function hoursFromNoon(lat, dec, alt) {
+    const c = (Math.sin(rad(alt)) - Math.sin(rad(lat)) * Math.sin(rad(dec))) / (Math.cos(rad(lat)) * Math.cos(rad(dec)));
+    if (c > 1 + 1e-12 || c < -1) return null;
+    return deg(Math.acos(clamp(c, -1, 1))) / 15;
+  }
+  // 분 → "오전 8시 5분", "낮 12시 30분", "오후 3시 50분" (step 분 단위로 반올림)
+  function koClock(min, step) {
+    const t = Math.round(min / (step || 1)) * (step || 1), h = Math.floor(t / 60) % 24, m = t % 60;
+    const pre = h < 12 ? "오전" : h === 12 ? "낮" : "오후", hh = h > 12 ? h - 12 : h;
+    return pre + " " + hh + "시" + (m ? " " + m + "분" : "");
+  }
+  Object.assign(SIM, { SEOUL_LAT, SEOUL_NOON, SEASON_DEC, sunAltitude, noonAltitude, halfDay, hoursFromNoon, koClock });
+  /* ch:tiles */
+  // 05장: 끈(둘레) 길이 p 를 지키며 가로를 바꾼다. 가로 w(1 ~ p/2-1)이면 세로는 p/2 - w.
+  function rectForPerimeter(p, w) { const half = p / 2; w = clamp(Math.round(w), 1, half - 1); return [w, half - w, w * (half - w)]; }
+  // 둘레가 p 인 직사각형 중 가장 넓은 것(정사각형에 가장 가까운 것)
+  function widestRect(p) { return rectsWithPerimeter(p).reduce((a, b) => (b[2] > a[2] ? b : a)); }
+  // 정다각형 한 각의 크기(도)와, 한 점에 빈틈없이 모일 수 있는 장 수(안 되면 0)
+  const polygonAngle = (n) => ((n - 2) * 180) / n;
+  function tilesAtPoint(n) { const k = 360 / polygonAngle(n); return Math.abs(k - Math.round(k)) < 1e-9 ? Math.round(k) : 0; }
+  Object.assign(SIM, { rectForPerimeter, widestRect, polygonAngle, tilesAtPoint });
+  /* ch:magnet */
+  // 06장: 전기 회로. 전선(이어짐)·전구·끊김으로 된 그래프에서 전지 (+)극 'P'와 (-)극 'N'을 본다.
+  // 전구 두 끝이 전선으로 각각 P와 N에 이어지면 켜진다(한 바퀴). 전선만으로 P와 N이 이어지면 합선이라 전구를 피해 간다.
+  // 전선·전지 속 저항, 밝기 차이는 뺐다(켜짐과 꺼짐만).
+  function circuitState(edges) {
+    const up = {};
+    const find = (x) => { if (!(x in up)) up[x] = x; while (up[x] !== x) { up[x] = up[up[x]]; x = up[x]; } return x; };
+    find("P"); find("N");
+    for (const [a, b, k] of edges) { find(a); find(b); if (k === "wire") up[find(a)] = find(b); }
+    const p = find("P"), n = find("N"), short = p === n;
+    const bulbs = edges.filter((e) => e[2] === "bulb").map(([a, b]) => {
+      const ca = find(a), cb = find(b);
+      return !short && ((ca === p && cb === n) || (ca === n && cb === p));
+    });
+    return { lit: bulbs.some(Boolean), bulbs, short };
+  }
+  // 06장 해 보기에 쓰는 물건: 전기가 통하는가, 자석에 붙는가
+  // 10원 동전: 2006년부터 구리 씌운 알루미늄(그 전 것은 황동), 둘 다 자석에 붙지 않는다.
+  const MATERIALS = {
+    clip: { name: "쇠 클립", conducts: true, magnetic: true },
+    foil: { name: "알루미늄 포일", conducts: true, magnetic: false },
+    coin: { name: "10원 동전", conducts: true, magnetic: false },
+    stick: { name: "나무젓가락", conducts: false, magnetic: false },
+    eraser: { name: "지우개", conducts: false, magnetic: false }
+  };
+  // 해 보기 회로: 전구 끼우개 한쪽(S)에서 나온 전선 끝 a, 다른 쪽(T)에서 시험대(C1-물건-C2)를 지나 나온 전선 끝 b.
+  // a, b 는 'P' | 'N' | null(아무 데도 안 물림). mat 은 MATERIALS 의 키 또는 null(비어 있음).
+  // reason: lit | openA | openB | openAB | same | gap | insulator
+  function bulbLab(a, b, mat) {
+    const m = mat ? MATERIALS[mat] : null;
+    const edges = [["S", "T", "bulb"], ["T", "C1", "wire"], ["C1", "C2", m && m.conducts ? "wire" : "open"]];
+    if (a) edges.push(["S", a, "wire"]);
+    if (b) edges.push(["C2", b, "wire"]);
+    const st = circuitState(edges);
+    let reason = "lit";
+    if (!st.lit) {
+      if (!a && !b) reason = "openAB";
+      else if (!a) reason = "openA";
+      else if (!b) reason = "openB";
+      else if (a === b) reason = "same";
+      else reason = m ? "insulator" : "gap";
+    }
+    return { lit: st.lit, short: st.short, reason, magnetic: !!(m && m.magnetic), conducts: !!(m && m.conducts) };
+  }
+  Object.assign(SIM, { circuitState, MATERIALS, bulbLab });
+  /* ch:lunch */
+  // 07장: 먹은 음식이 지나는 길과 머무는 대략의 시간(분). 사람·음식마다 크게 다르다.
+  // 위 + 작은창자 6~8시간, 큰창자 약 36시간(Mayo Clinic, Digestion: How long does it take?). 위 3시간·작은창자 4시간으로 나눈 것은 그림을 위한 가정.
+  // 입은 1분, 식도는 몇 초(10초로 둔다). 간을 거치는 길, 쓸개즙·이자액은 뺐다.
+  const DIGEST = [
+    { key: "mouth", name: "입", min: 1 },
+    { key: "esophagus", name: "식도", min: 10 / 60 },
+    { key: "stomach", name: "위", min: 180 },
+    { key: "small", name: "작은창자", min: 240 },
+    { key: "large", name: "큰창자", min: 36 * 60 }
+  ];
+  // i번째 기관 안을 frac(0~1)만큼 지났을 때 먹은 뒤 지난 분
+  function digestElapsed(i, frac) {
+    i = clamp(Math.floor(i), 0, DIGEST.length - 1);
+    let t = 0;
+    for (let j = 0; j < i; j++) t += DIGEST[j].min;
+    return t + DIGEST[i].min * clamp(frac, 0, 1);
+  }
+  // 지난 분 → 쉬운 말: "막 먹었어요", "약 40분", "약 3시간", "약 1일 19시간"
+  function koAbout(min) {
+    if (min < 1) return "막 먹었어요";
+    if (min < 60) return "약 " + Math.round(min) + "분";
+    const h = Math.round(min / 60);
+    if (h < 24) return "약 " + h + "시간";
+    return "약 " + Math.floor(h / 24) + "일" + (h % 24 ? " " + (h % 24) + "시간" : "");
+  }
+  // 시작 시각(분)에서 min 분 뒤: "오늘 15시 20분", "내일 7시", "모레 …" (10분 단위로 반올림)
+  function koDayTime(start, min) {
+    const t = Math.round((start + min) / 10) * 10, d = Math.floor(t / 1440);
+    return (["오늘", "내일", "모레"][d] || d + "일 뒤") + " " + koTime(t);
+  }
+  Object.assign(SIM, { DIGEST, digestElapsed, koAbout, koDayTime });
+  /* ch:store */
+  // 08장: 어림과 거스름돈. 값은 원 단위 자연수(10원 단위)라고 본다.
+  const roundUpTo = (v, unit) => Math.ceil(v / unit) * unit;
+  const roundDownTo = (v, unit) => Math.floor(v / unit) * unit;
+  // 한 개 값 price를 unit 자리로 올리고 내려 n개 값을 어림한다. 가진 돈 have와 비교:
+  // sure = 올려 어림해도 넉넉하다(확실히 살 수 있다), no = 내려 어림해도 넘는다(확실히 못 산다), check = 어림으로는 모른다.
+  function affordEstimate(price, n, have, unit) {
+    const up = roundUpTo(price, unit) * n, down = roundDownTo(price, unit) * n, exact = price * n;
+    const verdict = up <= have ? "sure" : down > have ? "no" : "check";
+    return { up, down, exact, verdict, ok: exact <= have, change: Math.max(0, have - exact), short: Math.max(0, exact - have) };
+  }
+  // 거스름돈 "위로 세기": 물건값에서 출발해 먼저 100원 단위, 다음 1,000원 단위로 맞춘 뒤 낸 돈까지 센다.
+  // 단계마다 가장 큰 동전·지폐부터(10·50·100·500·1,000·5,000원). [{unit, count, reach}]
+  function countUpChange(total, paid) {
+    const steps = []; let cur = total;
+    const legs = [[100, [50, 10]], [1000, [500, 100]], [0, [5000, 1000]]];
+    for (const [to, units] of legs) {
+      const target = to ? Math.min(paid, Math.ceil(cur / to) * to) : paid;
+      for (const u of units) {
+        const k = Math.floor((target - cur) / u);
+        if (k > 0) { cur += k * u; steps.push({ unit: u, count: k, reach: cur }); }
+      }
+    }
+    return steps;
+  }
+  Object.assign(SIM, { roundUpTo, roundDownTo, affordEstimate, countUpChange });
+  /* ch:sprout */
+  // 09장: 강낭콩 키 모형. 실제로 잰 값이 아니라 그럴듯한 모양을 보이려고 만든 가상 모형이다.
+  // 빛 light = 하루에 햇빛이 드는 시간(2~12), 물 water = 흙의 촉촉함(0~100, 60이 알맞다).
+  // 싹 트는 날은 물로만 정한다(강낭콩은 어두워도 싹이 튼다). 싹이 튼 뒤 키는 S자(로지스틱) 곡선:
+  // 느리게 → 쑥 → 거의 멈춤. 다 자란 키는 빛과 물에 따라 줄어든다. 온도·흙·웃자람(빛이 아주 적을 때 가늘고 길게 크는 것)은 뺐다.
+  function beanModel(light, water) {
+    const fl = clamp((light - 1) / 9, 0.1, 1);
+    const fw = clamp(1 - Math.pow((water - 60) / 55, 2), 0.1, 1);
+    const sprout = Math.round(6 + 6 * (1 - fw));
+    const K = 45 * fl * fw, r = 0.28, c = sprout + 14;
+    const s = (d) => 1 / (1 + Math.exp(-r * (d - c)));
+    const s0 = s(sprout);
+    const height = (d) => (d <= sprout ? 0 : (K * (s(d) - s0)) / (1 - s0));
+    const health = fl * fw;
+    return { light, water, fl, fw, sprout, K, health, height, flowerDay: health > 0.35 ? sprout + 30 : null, podDay: health > 0.35 ? sprout + 38 : null };
+  }
+  // 날마다 잰 키(cm, 소수 한 자리)와 하루 동안 자란 길이
+  function beanRecord(model, days) {
+    const h = [], grow = [];
+    for (let d = 0; d <= days; d++) { h.push(round(model.height(d), 1)); grow.push(d ? round(model.height(d) - model.height(d - 1), 1) : 0); }
+    return { h, grow };
+  }
+  // 그날의 모습: seed(씨) → root(뿌리가 먼저) → cotyledon(떡잎) → leaves(본잎) → flower(꽃) → pod(꼬투리)
+  function beanStage(model, d) {
+    if (d < model.sprout - 2) return "seed";
+    if (d <= model.sprout) return "root";
+    if (model.podDay && d >= model.podDay) return "pod";
+    if (model.flowerDay && d >= model.flowerDay) return "flower";
+    return model.height(d) < 6 ? "cotyledon" : "leaves";
+  }
+  Object.assign(SIM, { beanModel, beanRecord, beanStage });
+  /* ch:dice */
+  // 10장: 주사위 두 개. 주사위는 고르다(여섯 면이 똑같이 나온다)고 본다.
+  // 한 번 굴리기 → [첫째, 둘째]
+  const rollPair = (r) => [randInt(r, 1, 6), randInt(r, 1, 6)];
+  // 합이 s가 되는 [첫째, 둘째] 짝들(36칸 표에서 그 합이 적힌 칸)
+  function dicePairs(s) { const out = []; for (let a = 1; a <= 6; a++) { const b = s - a; if (b >= 1 && b <= 6) out.push([a, b]); } return out; }
+  // n번 굴렸을 때 합 s가 나올 것으로 기대되는 횟수(36칸 중 몇 칸인가에 비례)
+  const diceExpected = (s, n) => (dicePairs(s).length * n) / 36;
+  Object.assign(SIM, { rollPair, dicePairs, diceExpected });
+  /* ch:map */
+  // 11장: 축척. 1:k 지도에서 지도 위 1cm는 실제 k cm. 땅은 평평하다고 본다(지구가 둥근 것은 뺐다).
+  const mapToRealM = (cm, k) => (cm * k) / 100;
+  const realToMapCm = (m, k) => (m * 100) / k;
+  // 1234567 → "1,234,567"
+  function fmtNum(v) { const s = String(Math.round(v)); return s.replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+  // 실제 거리(m)를 읽기 좋게: 1000m 이상은 km(소수 한 자리까지), 그 아래는 10m 단위
+  function fmtLen(m) {
+    if (m >= 1000) { const k = Math.round(m / 100) / 10; return (Number.isInteger(k) ? k : k.toFixed(1)) + "km"; }
+    return fmtNum(m >= 100 ? Math.round(m / 10) * 10 : Math.round(m)) + "m";
+  }
+  Object.assign(SIM, { mapToRealM, realToMapCm, fmtNum, fmtLen });
+  /* ch:moon */
+  // 12장: 달의 모양. θ는 지구에서 본 해와 달 사이 각(0 = 해 쪽, 반시계 방향으로 늘어 180 = 해 반대쪽).
+  // 궤도는 원, 궤도 기울기와 해까지의 실제 거리는 뺐다. 북반구(우리나라)에서 본 모습: 차오를 때 오른쪽이 밝다.
+  const SYNODIC = 29.53; // 삭에서 다음 삭까지(날), 한국천문연구원·NASA 평균 삭망월
+  function moonPhase(thetaDeg) {
+    const t = ((thetaDeg % 360) + 360) % 360;
+    const age = (t / 360) * SYNODIC;
+    const name = t < 15 || t >= 345 ? "보이지 않는 달" : t < 75 ? "초승달" : t < 105 ? "상현달" : t < 165 ? "차오르는 달"
+      : t < 195 ? "보름달" : t < 255 ? "기우는 달" : t < 285 ? "하현달" : "그믐달";
+    // tx: 밝은 쪽 경계선(타원)의 가로 반지름 / 달 반지름. 양수면 경계가 밝은 쪽으로 볼록(초승·그믐), 음수면 반대(보름 쪽)
+    return { theta: t, lit: moonLitFraction(t), waxing: t > 0 && t < 180, age, lunarDay: Math.floor(age) + 1, name, tx: Math.cos(rad(t)) };
+  }
+  Object.assign(SIM, { SYNODIC, moonPhase });
   if (typeof module !== "undefined" && module.exports) module.exports = SIM;
   else root.SIM = SIM;
 })(typeof self !== "undefined" ? self : this);

@@ -1,0 +1,382 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "먹은 밥은 위, 식도, 작은창자 중 어디를 먼저 지날까요? 밥 한 숟가락을 직접 끌어 몸속 길을 따라가며, 영양소가 피를 타고 온몸으로 퍼지는 모습과 걸리는 시간을 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>급식은 몸속 어디로 갈까요? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="먹은 밥은 위, 식도, 작은창자 중 어디를 먼저 지날까요? 밥 한 숟가락을 직접 끌어 몸속 길을 따라가며, 영양소가 피를 타고 온몸으로 퍼지는 모습과 걸리는 시간을 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/lunch.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="급식은 몸속 어디로 갈까요? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="먹은 밥은 위, 식도, 작은창자 중 어디를 먼저 지날까요? 밥 한 숟가락을 직접 끌어 몸속 길을 따라가며, 영양소가 피를 타고 온몸으로 퍼지는 모습과 걸리는 시간을 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/lunch.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/lunch.html#chapter","name":"급식은 몸속 어디로 갈까요?","headline":"급식은 몸속 어디로 갈까요? · 초등 하루의 수학과 과학","description":"먹은 밥은 위, 식도, 작은창자 중 어디를 먼저 지날까요? 밥 한 숟가락을 직접 끌어 몸속 길을 따라가며, 영양소가 피를 타고 온몸으로 퍼지는 모습과 걸리는 시간을 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/lunch.html","position":7,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"소화, 심장과 피, 숨쉬기","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"07. 급식은 몸속 어디로 갈까요?","item":"https://school.euiyun.com/elementary/chapters/lunch.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  #body-svg { touch-action: none; }
+  #body-svg .tube-out { fill: none; stroke: var(--ink); stroke-width: 13; stroke-linecap: round; stroke-linejoin: round; }
+  #body-svg .tube-in { fill: none; stroke: var(--wash-warm); stroke-width: 8.6; stroke-linecap: round; stroke-linejoin: round; transition: stroke .2s; }
+  #body-svg .tube-in.large { stroke: var(--wash-green); }
+  #body-svg .tube-in.on, #body-svg .organ.on { stroke: var(--glow); }
+  #body-svg path.organ-fill.on { fill: var(--glow-soft); }
+  #body-svg .vessel { fill: none; stroke: var(--heat-soft); stroke-width: 3; stroke-linecap: round; }
+  #body-svg .olab { font-size: 16px; }
+  #body-svg .olab.on { fill: var(--accent); }
+  #body-svg .lead { stroke: var(--ink-faint); stroke-width: 1; fill: none; }
+  #body-svg .handle .knob { fill: var(--wash-warm); stroke: var(--accent); stroke-width: 3; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: center; font-size: .88rem; color: var(--ink-soft); margin: 0 0 6px; }
+  .legend i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+  #gut-read { font-size: 1.4rem; }
+  #gut-time { text-align: center; color: var(--ink-soft); margin: -4px 0 6px; min-height: 1.5em; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="lunch">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">12:20</span><span class="chip science">과학</span><span>읽는 시간 9분</span></div>
+    <h1>급식은 몸속 어디로 갈까요?</h1>
+    <p class="unit">소화, 심장과 피, 숨쉬기</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 260" role="img" aria-label="위에서 본 급식 식판. 위 칸에는 김치, 브로콜리, 달걀말이, 아래 칸에는 밥과 미역국이 담겨 있다. 옆에 숟가락과 젓가락, 우유갑이 있다.">
+        <g filter="url(#sb-ink)">
+          <rect class="fill-card" x="84" y="30" width="316" height="210" rx="22"/>
+          <path class="ink" d="M106 30 H378 A22 22 0 0 1 400 52 V218 A22 22 0 0 1 378 240 H106 A22 22 0 0 1 84 218 V52 A22 22 0 0 1 106 30 Z"/>
+          <rect class="wash-pink" x="100" y="46" width="88" height="66" rx="10"/>
+          <rect class="wash-green" x="198" y="46" width="88" height="66" rx="10"/>
+          <rect class="wash-warm" x="296" y="46" width="88" height="66" rx="10"/>
+          <path class="ink-thin" d="M110 46 H178 A10 10 0 0 1 188 56 V102 A10 10 0 0 1 178 112 H110 A10 10 0 0 1 100 102 V56 A10 10 0 0 1 110 46 Z M208 46 H276 A10 10 0 0 1 286 56 V102 A10 10 0 0 1 276 112 H208 A10 10 0 0 1 198 102 V56 A10 10 0 0 1 208 46 Z M306 46 H374 A10 10 0 0 1 384 56 V102 A10 10 0 0 1 374 112 H306 A10 10 0 0 1 296 102 V56 A10 10 0 0 1 306 46 Z"/>
+          <path class="ink-thin" style="stroke:var(--heat)" d="M116 70 C126 60 140 64 146 74 C152 84 166 80 172 70 M118 92 C130 82 144 88 150 96 M150 62 C160 58 168 62 172 58"/>
+          <path class="ink-thin" style="stroke:var(--life)" d="M222 92 V78 M222 80 C214 76 214 66 222 64 C226 58 236 60 236 68 C244 70 242 80 234 80 H222 M254 94 V82 M254 84 C246 80 248 70 256 70 C262 64 270 70 268 76 C272 84 262 86 254 84"/>
+          <path class="ink-thin" d="M312 66 H366 V92 H312 Z M322 79 a6 6 0 1 1 6 6 M346 79 a6 6 0 1 1 6 6"/>
+          <rect class="fill-paper" x="100" y="124" width="132" height="100" rx="12"/>
+          <path class="ink-thin" d="M112 124 H220 A12 12 0 0 1 232 136 V212 A12 12 0 0 1 220 224 H112 A12 12 0 0 1 100 212 V136 A12 12 0 0 1 112 124 Z"/>
+          <path class="ink-thin" d="M124 150 q4 -3 8 0 M146 142 q4 -3 8 0 M170 150 q4 -3 8 0 M194 144 q4 -3 8 0 M132 168 q4 -3 8 0 M158 164 q4 -3 8 0 M184 170 q4 -3 8 0 M206 162 q4 -3 8 0 M122 190 q4 -3 8 0 M146 186 q4 -3 8 0 M172 194 q4 -3 8 0 M198 188 q4 -3 8 0 M140 208 q4 -3 8 0 M186 210 q4 -3 8 0"/>
+          <rect class="wash-warm" x="244" y="124" width="140" height="100" rx="12"/>
+          <path class="ink-thin" d="M256 124 H372 A12 12 0 0 1 384 136 V212 A12 12 0 0 1 372 224 H256 A12 12 0 0 1 244 212 V136 A12 12 0 0 1 256 124 Z"/>
+          <path class="ink-thin" style="stroke:var(--life)" d="M270 160 C280 150 292 166 302 156 M318 190 C328 180 340 196 350 186 M300 202 c8 -6 14 2 22 -4"/>
+          <path class="ink-thin" d="M340 148 a4 4 0 1 0 0.1 0 M286 186 a3 3 0 1 0 0.1 0"/>
+          <path class="ink" d="M420 40 V180 M432 40 V180"/>
+          <ellipse class="fill-card" cx="456" cy="62" rx="12" ry="18"/>
+          <path class="ink" d="M456 44 C444 44 444 80 456 80 C468 80 468 44 456 44 Z M456 80 V200"/>
+          <rect class="wash-cool" x="18" y="96" width="50" height="78"/>
+          <path class="ink" d="M18 96 H68 V174 H18 Z M18 96 L30 80 H56 L68 96 M30 80 V72 H56 V80"/>
+          <path class="ink-thin" d="M28 124 H58 M28 132 H50"/>
+        </g>
+      </svg>
+    </figure>
+    <p>12시 20분, 급식 시간이에요. 오늘은 밥과 미역국, 김치, 브로콜리, 달걀말이예요.</p>
+    <p>지우는 밥 한 숟가락을 꼭꼭 씹어 꿀꺽 삼켜요. 집에서는 두부도 지금쯤 밥그릇 앞에 앉아 있겠죠.</p>
+    <p class="question">삼킨 밥은 몸속 어디를 지나 어디로 갈까요?</p>
+  </section>
+
+  <section class="predict card" id="p-lunch" data-id="lunch" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">먹은 밥이 지나는 차례는?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 위가 가장 먼저 떠오르죠. 그런데 입과 위 사이에 긴 길이 하나 있어요.">위 → 식도 → 작은창자</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 밥을 직접 끌고 따라가 봐요.">식도 → 위 → 작은창자</button>
+      <button class="choice" data-v="c" data-echo="좋은 예상이에요. 작은창자는 꽤 아래쪽에 있어요. 해 보기에서 길을 따라가 봐요.">작은창자 → 위</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="gut-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>입에 있는 밥 한 숟가락을 끌어 몸속 길을 따라가 봐요. 지나는 곳과 걸리는 시간이 아래에 나와요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="body-svg" viewBox="0 0 360 470" role="img" aria-label="앞에서 본 몸속 그림. 입에서 식도, 위, 작은창자, 큰창자로 이어지는 길이 있고, 심장에서 나온 혈관이 머리와 온몸을 돈다. 폐와 간도 보인다.">
+        <g filter="url(#sb-ink)">
+          <path class="fill-card" d="M166 112 C128 114 100 124 94 152 C88 196 98 250 106 300 C112 344 112 392 116 446 H244 C248 392 248 344 254 300 C262 250 272 196 266 152 C260 124 232 114 194 112 Z"/>
+          <rect class="fill-card" x="166" y="84" width="28" height="32"/>
+          <circle class="fill-card" cx="180" cy="52" r="38"/>
+          <path class="ink" d="M166 112 C128 114 100 124 94 152 C88 196 98 250 106 300 C112 344 112 392 116 446 M244 446 C248 392 248 344 254 300 C262 250 272 196 266 152 C260 124 232 114 194 112 M166 88 V113 M194 88 V113"/>
+          <circle class="ink" cx="180" cy="52" r="38"/>
+          <path class="fill-ink" d="M143 48 C140 8 222 8 217 48 C206 28 156 26 143 48 Z"/>
+          <path class="ink-thin" d="M165 54 q3 2 6 0 M189 54 q3 2 6 0 M172 70 q8 6 16 0"/>
+          <path class="wash-cool" d="M172 138 C150 130 122 140 118 180 C114 214 118 236 126 240 C142 244 160 238 172 230 Z"/>
+          <path class="wash-cool" d="M190 138 C212 130 240 140 244 180 C248 214 244 236 236 240 C222 244 208 238 200 230 C206 222 210 212 206 204 Z"/>
+          <path class="ink-thin" d="M172 138 C150 130 122 140 118 180 C114 214 118 236 126 240 C142 244 160 238 172 230 Z M190 138 C212 130 240 140 244 180 C248 214 244 236 236 240 C222 244 208 238 200 230 C206 222 210 212 206 204 Z"/>
+          <path class="wash-pink" d="M114 252 C140 244 196 246 210 254 C204 270 172 284 122 288 C112 278 110 262 114 252 Z"/>
+          <path class="ink-thin" d="M114 252 C140 244 196 246 210 254 C204 270 172 284 122 288 C112 278 110 262 114 252 Z"/>
+          <path class="ink-soft" d="M110 248 C150 236 210 236 250 248"/>
+        </g>
+        <path class="vessel" d="M200 186 C220 150 212 108 196 100 C188 95 172 95 164 100 C150 112 150 160 188 194"/>
+        <path class="vessel" d="M206 206 C258 236 256 330 244 400 C240 428 214 436 180 436 C146 436 120 428 116 400 C104 330 104 236 184 208"/>
+        <path class="vessel" d="M188 190 C160 170 140 176 140 196 C140 214 168 214 190 204"/>
+        <path class="vessel" style="stroke:var(--glow-soft)" d="M180 350 C176 326 160 300 150 280 C140 258 168 226 192 212"/>
+        <g id="tubes">
+          <path class="tube-out" d="M174 68 Q182 70 182 80 L182 120 C182 170 186 220 194 252"/>
+          <path class="tube-in" id="t1" d="M174 68 Q182 70 182 80 L182 120 C182 170 186 220 194 252"/>
+          <path class="tube-out" d="M208 300 C206 312 204 320 196 326 L158 326 A8 8 0 0 0 158 342 L204 342 A8 8 0 0 1 204 358 L158 358 A8 8 0 0 0 158 374 L204 374 A8 8 0 0 1 204 390 L136 390"/>
+          <path class="tube-in" id="t3" d="M208 300 C206 312 204 320 196 326 L158 326 A8 8 0 0 0 158 342 L204 342 A8 8 0 0 1 204 358 L158 358 A8 8 0 0 0 158 374 L204 374 A8 8 0 0 1 204 390 L136 390"/>
+          <path class="tube-out" d="M136 390 C126 390 124 386 124 378 L124 322 C124 316 128 314 134 314 L230 314 C236 314 238 318 238 324 L238 386 C238 406 204 406 190 416 C184 420 182 426 182 442"/>
+          <path class="tube-in large" id="t4" d="M136 390 C126 390 124 386 124 378 L124 322 C124 316 128 314 134 314 L230 314 C236 314 238 318 238 324 L238 386 C238 406 204 406 190 416 C184 420 182 426 182 442"/>
+          <path id="t2" class="organ-fill" style="fill:var(--wash-warm)" d="M190 252 C204 236 252 238 258 266 C264 298 236 314 208 308 C194 305 192 294 200 288 C212 282 214 270 204 262 C198 258 192 257 190 252 Z"/>
+          <path class="ink" d="M190 252 C204 236 252 238 258 266 C264 298 236 314 208 308 C194 305 192 294 200 288 C212 282 214 270 204 262 C198 258 192 257 190 252 Z"/>
+        </g>
+        <g filter="url(#sb-ink)">
+          <path style="fill:var(--heat-soft)" d="M194 214 C170 200 170 180 183 177 C190 176 194 181 194 186 C194 179 201 174 208 177 C219 183 214 202 194 214 Z"/>
+          <path class="ink" d="M194 214 C170 200 170 180 183 177 C190 176 194 181 194 186 C194 179 201 174 208 177 C219 183 214 202 194 214 Z"/>
+        </g>
+        <path id="s0" d="M174 68 Q182 70 182 80" fill="none" stroke="none"/>
+        <path id="s1" d="M182 80 L182 120 C182 170 186 220 194 252" fill="none" stroke="none"/>
+        <path id="s2" d="M194 252 C214 246 248 252 246 276 C244 294 226 302 208 300" fill="none" stroke="none"/>
+        <path id="s3" d="M208 300 C206 312 204 320 196 326 L158 326 A8 8 0 0 0 158 342 L204 342 A8 8 0 0 1 204 358 L158 358 A8 8 0 0 0 158 374 L204 374 A8 8 0 0 1 204 390 L136 390" fill="none" stroke="none"/>
+        <path id="s4" d="M136 390 C126 390 124 386 124 378 L124 322 C124 316 128 314 134 314 L230 314 C236 314 238 318 238 324 L238 386 C238 406 204 406 190 416 C184 420 182 426 182 442" fill="none" stroke="none"/>
+        <g id="leads">
+          <path class="lead" d="M186 72 H276 M186 150 H276 M258 272 H284 M240 352 H284 M210 192 H284 M118 182 H70 M116 268 H70 M150 366 H74"/>
+        </g>
+        <text class="olab" id="L0" x="280" y="77">입</text>
+        <text class="olab" id="L1" x="280" y="155">식도</text>
+        <text class="olab" id="L2" x="288" y="277">위</text>
+        <text class="olab" id="L4" x="288" y="357">큰창자</text>
+        <text class="olab" id="L3" x="8" y="371">작은창자</text>
+        <text class="olab" x="288" y="197">심장</text>
+        <text class="olab" x="42" y="187">폐</text>
+        <text class="olab" x="42" y="273">간</text>
+        <g id="flows"></g>
+        <g id="food" aria-label="밥 한 숟가락"><circle class="hit" r="33"/><circle class="knob" r="9"/></g>
+      </svg>
+    </figure>
+    <p class="legend"><span><i style="background:var(--heat)"></i>피</span><span><i style="background:var(--life)"></i>산소</span><span><i style="background:var(--glow)"></i>영양소</span></p>
+    <p class="readout" id="gut-read" aria-live="polite"></p>
+    <p id="gut-time"></p>
+    <div class="controls">
+      <div class="btn-row">
+        <button class="btn primary" type="button" id="next">다음 곳으로</button>
+        <button class="btn" type="button" id="play">저절로 가기</button>
+        <button class="btn" type="button" id="reset">처음으로</button>
+      </div>
+    </div>
+    <p class="simplified">머무는 시간은 어른 기준의 대략값이고, 사람과 음식마다 크게 달라요. 간을 거치는 길과 콩팥은 뺐어요.</p>
+  </section>
+
+  <section class="flap" id="f-lunch" data-for="p-lunch" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 식도 → 위 → 작은창자예요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 300 176" role="img" aria-label="입, 식도, 위가 화살표로 이어지고, 위에서 작은창자, 큰창자로 이어진다. 작은창자에서 아래로 화살표가 나가 영양소가 피를 타고 심장과 온몸으로 간다.">
+          <g filter="url(#sb-ink)">
+            <rect class="fill-card" x="10" y="10" width="50" height="38" rx="8"/><rect class="fill-card" x="100" y="10" width="64" height="38" rx="8"/><rect class="fill-card" x="204" y="10" width="50" height="38" rx="8"/>
+            <rect class="glow-halo" x="40" y="88" width="100" height="38" rx="8"/><rect class="wash-green" x="180" y="88" width="90" height="38" rx="8"/>
+            <path class="ink" d="M18 10 h34 a8 8 0 0 1 8 8 v22 a8 8 0 0 1 -8 8 h-34 a8 8 0 0 1 -8 -8 v-22 a8 8 0 0 1 8 -8 z M108 10 h48 a8 8 0 0 1 8 8 v22 a8 8 0 0 1 -8 8 h-48 a8 8 0 0 1 -8 -8 v-22 a8 8 0 0 1 8 -8 z M212 10 h34 a8 8 0 0 1 8 8 v22 a8 8 0 0 1 -8 8 h-34 a8 8 0 0 1 -8 -8 v-22 a8 8 0 0 1 8 -8 z M48 88 h84 a8 8 0 0 1 8 8 v22 a8 8 0 0 1 -8 8 h-84 a8 8 0 0 1 -8 -8 v-22 a8 8 0 0 1 8 -8 z M188 88 h74 a8 8 0 0 1 8 8 v22 a8 8 0 0 1 -8 8 h-74 a8 8 0 0 1 -8 -8 v-22 a8 8 0 0 1 8 -8 z"/>
+            <path class="ink-thin" d="M66 29 h28 l-5 -4 M94 29 l-5 4 M170 29 h28 l-5 -4 M198 29 l-5 4 M146 107 h28 l-5 -4 M174 107 l-5 4 M229 52 C229 72 90 62 90 84 l-4 -5 M90 84 l4 -5"/>
+            <path class="ink" style="stroke:var(--glow)" d="M90 130 V150 l-5 -6 M90 150 l5 -6"/>
+          </g>
+          <text x="35" y="35" font-size="17" text-anchor="middle">입</text>
+          <text x="132" y="35" font-size="17" text-anchor="middle">식도</text>
+          <text x="229" y="35" font-size="17" text-anchor="middle">위</text>
+          <text x="90" y="113" font-size="17" text-anchor="middle">작은창자</text>
+          <text x="225" y="113" font-size="17" text-anchor="middle">큰창자</text>
+          <text x="100" y="146" font-size="15" style="fill:var(--ink-soft)">영양소</text>
+          <text x="20" y="170" font-size="17" style="fill:var(--heat)">피 → 심장 → 온몸</text>
+        </svg>
+      </figure>
+      <p>입에서 삼킨 밥은 식도를 타고 위로 내려가요. 위에서 죽처럼 묽어진 뒤 작은창자와 큰창자를 차례로 지나요.</p>
+      <p>이 길에서 음식을 잘게 쪼개 몸이 쓸 수 있게 바꾸는 일을 <span class="term">소화</span>라고 해요.</p>
+      <p>몸에 필요한 <span class="term">영양소</span>는 대부분 작은창자에서 피로 들어가요. 심장이 그 피를 밀어 온몸에 보내요. 폐에서 받은 산소도 같은 피에 실려 가요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">손목 핏줄 속 피는 파래요.</span><span class="no">아니에요</span></p>
+    <p>피는 언제나 빨개요. 산소를 실은 피는 밝은 빨강, 산소를 내려놓고 돌아오는 피는 검붉은색이에요.</p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 120" role="img" aria-label="왼쪽은 밝은 빨강 핏방울, 산소를 실은 피. 오른쪽은 검붉은 핏방울, 산소를 내려놓은 피. 둘 다 빨간색이다.">
+        <g filter="url(#sb-ink)">
+          <path style="fill:var(--heat)" d="M90 14 C104 34 114 48 114 62 A24 24 0 0 1 66 62 C66 48 76 34 90 14 Z"/>
+          <path class="ink" d="M90 14 C104 34 114 48 114 62 A24 24 0 0 1 66 62 C66 48 76 34 90 14 Z"/>
+          <path style="fill:color-mix(in srgb, var(--heat) 55%, black)" d="M270 14 C284 34 294 48 294 62 A24 24 0 0 1 246 62 C246 48 256 34 270 14 Z"/>
+          <path class="ink" d="M270 14 C284 34 294 48 294 62 A24 24 0 0 1 246 62 C246 48 256 34 270 14 Z"/>
+        </g>
+        <text x="90" y="110" font-size="19" text-anchor="middle">산소를 실은 피</text>
+        <text x="270" y="110" font-size="19" text-anchor="middle">산소를 내려놓은 피</text>
+      </svg>
+    </figure>
+    <p>핏줄이 파르스름해 보이는 건 빛 때문이에요. 피부 속 깊이 들어간 빨간빛이 핏줄에 많이 먹혀, 그 자리만 빨간빛이 덜 돌아와요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="fill-card" d="M8 26 H48 C48 40 40 48 28 48 C16 48 8 40 8 26 Z"/><path class="ink" d="M8 26 H48 C48 40 40 48 28 48 C16 48 8 40 8 26 Z M20 48 h16"/><path class="ink-thin" d="M16 22 q3 -3 6 0 M26 18 q3 -3 6 0 M34 22 q3 -3 6 0"/></g></svg>
+        <span>밥을 오래 씹으면 단맛이 나요. 침이 밥의 녹말을 단 성분으로 바꾸기 시작해서예요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path style="fill:var(--heat-soft)" d="M28 46 C10 34 6 20 16 14 C22 10 28 16 28 20 C28 16 34 10 40 14 C50 20 46 34 28 46 Z"/><path class="ink" d="M28 46 C10 34 6 20 16 14 C22 10 28 16 28 20 C28 16 34 10 40 14 C50 20 46 34 28 46 Z"/><path class="ink-thin accent" d="M4 30 h8 l3 -6 l4 12 l3 -6 h4"/></g></svg>
+        <span>달리면 심장이 빨리 뛰고 숨이 가빠져요. 근육에 산소와 영양소를 더 빨리 보내려는 거예요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="wash-cool" d="M16 22 H40 L37 48 H19 Z"/><path class="ink" d="M14 10 H42 L37 48 H19 Z"/><path class="ink-thin" d="M16 22 H40"/></g></svg>
+        <span>물을 적게 마시면 큰창자가 물을 더 빨아들여 똥이 딱딱해지기 쉬워요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 작은창자는 얼마나 길까요?</summary>
+    <p>어른의 작은창자는 길이가 6m쯤이에요. 어른 키의 서너 배예요. 배 속에 꼬불꼬불 접혀 들어 있어요.</p>
+    <p>안쪽 벽은 아주 작은 돌기로 빽빽하게 덮여 있어요. 그래서 영양소가 닿는 넓이가 아주 넓어요. 소화관 안쪽을 다 펼치면 배드민턴 코트 절반쯤이라는 연구가 있어요.</p>
+    <p>음식이 입에서 몸 밖으로 나갈 때까지는 사람에 따라 2~5일쯤 걸려요. 해 보기의 시간은 그중 하나의 예예요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>건강검진의 "위내시경"은 입과 식도를 지나 위를, "대장내시경"은 반대쪽 끝에서 큰창자를 들여다봐요. 오늘 따라간 길의 양 끝에서 들어가는 셈이에요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">밥은 입 → 식도 → 위 → 작은창자 → 큰창자.<br>영양소는 작은창자에서 피를 타고 온몸으로 가요.</p>
+    <div class="quiz" data-stamp="lunch">
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">영양소를 가장 많이 빨아들여 피로 보내는 곳은?</p>
+        <div class="opts">
+          <button class="opt" data-hint="위는 음식을 위액과 섞어 묽게 만드는 곳이에요.">위</button>
+          <button class="opt">작은창자</button>
+          <button class="opt" data-hint="식도는 음식을 위로 내려보내는 길이에요.">식도</button>
+        </div>
+        <p class="why">작은창자 벽의 작은 돌기들이 영양소를 피로 보내요.</p>
+      </div>
+      <div class="quiz-q" data-answer="0">
+        <p class="qtext">영양소를 실은 피를 온몸으로 밀어 보내는 곳은?</p>
+        <div class="opts">
+          <button class="opt">심장</button>
+          <button class="opt" data-hint="폐는 숨 쉰 공기에서 산소를 피에 실어 줘요.">폐</button>
+          <button class="opt" data-hint="해 보기에서 빨간 점들이 어디서 출발하는지 봐요.">위</button>
+        </div>
+        <p class="why">심장은 쉬지 않고 피를 밀어 온몸을 돌게 해요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">손목 핏줄 속 피는 무슨 색일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="파랗게 보이는 건 빛 때문이었어요.">파란색</button>
+          <button class="opt">검붉은색</button>
+          <button class="opt" data-hint="피는 언제나 빨간 쪽이에요.">투명한 색</button>
+        </div>
+        <p class="why">산소를 내려놓고 돌아오는 피라 검붉은색이에요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const $ = (id) => document.getElementById(id);
+  const svg = $('body-svg'), food = $('food');
+  const LUNCH = 12 * 60 + 20;
+  const DO = ['이로 잘게 씹고 침과 섞어요', '근육이 꿈틀꿈틀 밀어 내려요', '위액과 섞여 죽처럼 묽어져요', '영양소를 빨아들여 피로 보내요', '물을 빨아들이고, 남은 찌꺼기를 모아요'];
+
+  // 길을 2px 간격으로 잘라 둔다: {x, y, i(기관), f(그 기관 안에서 간 몫)}
+  const pts = [], start = [];
+  for (let i = 0; i < 5; i++) {
+    const p = $('s' + i), L = p.getTotalLength(), n = Math.max(6, Math.round(L / 2));
+    start.push(pts.length);
+    for (let k = 0; k <= n; k++) { if (i && !k) continue; const q = p.getPointAtLength(L * k / n); pts.push({ x: q.x, y: q.y, i, f: k / n }); }
+  }
+  start.push(pts.length);
+  const END = pts.length - 1;
+
+  const blood = [
+    SB.flow($('flows'), { path: svg.querySelectorAll('.vessel')[0], n: 6, kind: 'heat', r: 2.6, speed: 38 }),
+    SB.flow($('flows'), { path: svg.querySelectorAll('.vessel')[1], n: 12, kind: 'heat', r: 2.6, speed: 38 })
+  ];
+  const oxy = SB.flow($('flows'), { path: svg.querySelectorAll('.vessel')[2], n: 4, kind: 'life', r: 2.6, speed: 26 });
+  const nut = [
+    SB.flow($('flows'), { path: svg.querySelectorAll('.vessel')[3], n: 6, kind: 'glow', r: 2.8, speed: 30 }),
+    SB.flow($('flows'), { path: svg.querySelectorAll('.vessel')[0], n: 3, kind: 'glow', r: 2.4, speed: 38 }),
+    SB.flow($('flows'), { path: svg.querySelectorAll('.vessel')[1], n: 6, kind: 'glow', r: 2.4, speed: 38 })
+  ];
+  blood.concat([oxy]).forEach((c) => c.place());
+  nut[1].phase = 40; nut[2].phase = 70;
+
+  let cur = 0, playing = false, raf = 0;
+
+  function draw() {
+    const p = pts[cur];
+    food.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`);
+    for (let i = 0; i < 5; i++) {
+      $('t' + i) && $('t' + i).classList.toggle('on', i === p.i);
+      $('L' + i).classList.toggle('on', i === p.i);
+    }
+    // 영양소: 밥이 작은창자에 닿은 뒤부터 피를 타고 퍼진다
+    const fed = p.i >= 3;
+    nut.forEach((c) => { c.g.style.display = fed ? '' : 'none'; c.place(); });
+    const name = SIM.DIGEST[p.i].name;
+    const out = cur === END;
+    $('gut-read').innerHTML = out ? '<b>몸 밖으로</b> · 찌꺼기는 똥이 되어 나가요' : `<b>${name}</b> · ${DO[p.i]}`;
+    const min = SIM.digestElapsed(p.i, p.f);
+    $('gut-time').textContent = p.i === 1 ? '삼키고 몇 초면 위에 닿아요' : min < 1 ? '점심을 막 먹었어요' : `점심 먹고 ${SIM.koAbout(min)} · ${SIM.koDayTime(LUNCH, min)}쯤`;
+    food.setAttribute('aria-valuenow', cur);
+    food.setAttribute('aria-valuetext', name + (out ? ', 몸 밖으로' : ''));
+    $('next').disabled = out;
+  }
+  function set(k) { cur = SIM.clamp(Math.round(k), 0, END); draw(); }
+  function stop() { playing = false; cancelAnimationFrame(raf); $('play').textContent = '저절로 가기'; }
+
+  food.setAttribute('aria-valuemin', 0); food.setAttribute('aria-valuemax', END);
+  SB.drag(food, {
+    svg,
+    onStart() { stop(); },
+    onMove(q) {
+      // 지금 자리 앞뒤에서만 가장 가까운 점을 찾는다: 꼬불꼬불한 창자에서 옆 줄로 건너뛰지 않게
+      let best = cur, bd = Infinity;
+      for (let k = Math.max(0, cur - 24); k <= Math.min(END, cur + 24); k++) {
+        const d = (pts[k].x - q.x) ** 2 + (pts[k].y - q.y) ** 2;
+        if (d < bd) { bd = d; best = k; }
+      }
+      set(best);
+    },
+    onKey(dx, dy) { stop(); set(cur + (dx || dy) * 4); }
+  });
+  $('next').addEventListener('click', () => {
+    stop();
+    const i = pts[cur].i;
+    set(i >= 4 ? END : Math.round((start[i + 1] + start[i + 2] - 1) / 2));
+  });
+  $('reset').addEventListener('click', () => { stop(); set(0); });
+  $('play').addEventListener('click', () => {
+    if (playing) return stop();
+    if (cur === END) set(0);
+    playing = true; $('play').textContent = '멈추기';
+    let last = 0;
+    const tick = (t) => {
+      if (!playing) return;
+      if (last && t - last > 30) { last = t; set(cur + 1); if (cur === END) return stop(); }
+      if (!last) last = t;
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+  });
+  draw();
+});
+</script>
+</body>
+</html>

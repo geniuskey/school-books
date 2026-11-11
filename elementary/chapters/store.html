@@ -1,0 +1,379 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "980원짜리 공책 6권을 6,000원으로 살 수 있을까요? 값을 올려서 어림하면 계산하지 않고도 확실히 알 수 있어요. 어림이 대충이 아닌 이유와 거스름돈을 위로 세는 요령을 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문구점에서 거스름돈을 빨리 세는 법 · 초등 하루의 수학과 과학</title>
+<meta name="description" content="980원짜리 공책 6권을 6,000원으로 살 수 있을까요? 값을 올려서 어림하면 계산하지 않고도 확실히 알 수 있어요. 어림이 대충이 아닌 이유와 거스름돈을 위로 세는 요령을 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/store.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="문구점에서 거스름돈을 빨리 세는 법 · 초등 하루의 수학과 과학">
+<meta property="og:description" content="980원짜리 공책 6권을 6,000원으로 살 수 있을까요? 값을 올려서 어림하면 계산하지 않고도 확실히 알 수 있어요. 어림이 대충이 아닌 이유와 거스름돈을 위로 세는 요령을 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/store.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/store.html#chapter","name":"문구점에서 거스름돈을 빨리 세는 법","headline":"문구점에서 거스름돈을 빨리 세는 법 · 초등 하루의 수학과 과학","description":"980원짜리 공책 6권을 6,000원으로 살 수 있을까요? 값을 올려서 어림하면 계산하지 않고도 확실히 알 수 있어요. 어림이 대충이 아닌 이유와 거스름돈을 위로 세는 요령을 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/store.html","position":8,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"큰 수, 어림, 곱셈·나눗셈의 요령","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"08. 문구점에서 거스름돈을 빨리 세는 법","item":"https://school.euiyun.com/elementary/chapters/store.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  #est-svg .lbl { font-size: 20px; }
+  #est-svg .val { font-size: 20px; paint-order: stroke; stroke: var(--card); stroke-width: 5px; stroke-linejoin: round; }
+  #est-svg .tick { font-size: 16px; text-anchor: middle; fill: var(--ink-soft); font-family: var(--font); font-weight: 400; }
+  #est-svg .wallet { stroke: var(--accent); stroke-width: 2.6; stroke-dasharray: 7 5; }
+  #est-svg .wallet-t { font-size: 20px; fill: var(--ink); }
+  #est-svg .wallet { stroke: var(--ink); }
+  #est-svg .seg { stroke: var(--card); stroke-width: 2; }
+  #est-svg .bar-up { fill: var(--glow-soft); stroke: var(--ink); stroke-width: 1.4; }
+  #est-svg .bar-ex { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 2.4; }
+  #est-svg .bar-dn { fill: var(--wash-cool); stroke: var(--ink); stroke-width: 1.4; }
+  .verdict { text-align: center; margin: 2px 0 8px; font-size: 1rem; color: var(--ink-soft); }
+  .change { border-top: 1px dashed var(--rule); margin-top: 10px; padding-top: 10px; }
+  .change h3 { font-family: var(--hand); font-size: 1.35rem; margin: 0 0 6px; text-align: center; }
+  .change .steps { display: flex; flex-wrap: wrap; gap: 6px 4px; align-items: center; justify-content: center; font-family: var(--hand); font-weight: 700; font-size: 1.2rem; }
+  .change .reach { padding: 0 2px; }
+  .change .reach.end { color: var(--accent); }
+  .change .arrow { color: var(--ink-faint); }
+  .change .money { display: inline-flex; gap: 2px; align-items: center; }
+  .change .money svg { height: 34px; width: auto; }
+  .change .money text { font-family: var(--font); font-weight: 700; font-size: 11px; text-anchor: middle; dominant-baseline: central; fill: var(--ink); }
+  .change .sum { text-align: center; margin: 8px 0 0; font-size: .95rem; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="store">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">14:00</span><span class="chip math">수학</span><span>읽는 시간 9분</span></div>
+    <h1>문구점에서 거스름돈을 빨리 세는 법</h1>
+    <p class="unit">큰 수, 어림, 곱셈·나눗셈의 요령</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="책상 위에 천 원짜리 지폐 여섯 장과 980원 가격표가 붙은 공책이 놓여 있다. 고양이 두부가 책상 끝에서 지폐 한 장을 앞발로 누르고 있다.">
+        <g filter="url(#sb-ink)">
+          <rect class="wash-cool" x="0" y="0" width="480" height="206"/>
+          <rect class="fill-card" x="300" y="22" width="150" height="104" rx="3"/>
+          <path class="ink" d="M300 22 H450 V126 H300 Z M375 22 V126 M300 74 H450"/>
+          <path class="ink-thin" d="M290 132 H460"/>
+          <path class="wash-warm" d="M0 206 H480 V290 H0 Z"/>
+          <path class="ink" d="M0 206 H480"/>
+          <path class="ink-thin" d="M0 216 H480"/>
+          <!-- 공책 더미 -->
+          <path class="fill-card" d="M30 196 L44 140 H150 L136 196 Z"/>
+          <path class="wash-green" d="M34 188 L46 142 H148 L136 188 Z"/>
+          <path class="ink" d="M30 196 L44 140 H150 L136 196 Z M34 188 L136 188 M36 180 L138 180"/>
+          <path class="ink-thin" d="M60 158 H124 M58 166 H112"/>
+          <!-- 가격표 -->
+          <path class="ink-thin" d="M140 150 C152 140 160 128 168 118"/>
+          <path class="fill-card" d="M160 92 H216 V122 H160 Z"/>
+          <path class="ink" d="M160 92 H216 V122 H160 Z"/>
+          <circle class="ink-thin" cx="168" cy="107" r="3"/>
+          <!-- 지폐 여섯 장 -->
+          <g transform="rotate(-6 210 160)"><rect class="wash-cool" x="176" y="142" width="74" height="36" rx="2"/><rect class="ink" x="176" y="142" width="74" height="36" rx="2"/><circle class="ink-thin" cx="196" cy="160" r="9"/></g>
+          <g transform="rotate(3 250 166)"><rect class="wash-cool" x="214" y="148" width="74" height="36" rx="2"/><rect class="ink" x="214" y="148" width="74" height="36" rx="2"/><circle class="ink-thin" cx="234" cy="166" r="9"/></g>
+          <g transform="rotate(-2 280 172)"><rect class="wash-cool" x="244" y="156" width="74" height="36" rx="2"/><rect class="ink" x="244" y="156" width="74" height="36" rx="2"/><circle class="ink-thin" cx="264" cy="174" r="9"/></g>
+          <g transform="rotate(5 196 188)"><rect class="wash-cool" x="160" y="170" width="74" height="30" rx="2"/><rect class="ink" x="160" y="170" width="74" height="30" rx="2"/></g>
+          <g transform="rotate(-4 250 190)"><rect class="wash-cool" x="214" y="174" width="74" height="28" rx="2"/><rect class="ink" x="214" y="174" width="74" height="28" rx="2"/></g>
+          <g transform="rotate(8 330 186)"><rect class="wash-cool" x="300" y="164" width="74" height="36" rx="2"/><rect class="ink" x="300" y="164" width="74" height="36" rx="2"/><circle class="ink-thin" cx="320" cy="182" r="9"/></g>
+          <!-- 두부: 책상 끝에서 앞발로 지폐 한 장을 누른다 -->
+          <path class="fill-card" d="M400 206 C396 180 404 150 428 146 C454 142 470 166 472 206 Z"/>
+          <path class="ink" d="M400 206 C396 180 404 150 428 146 C454 142 470 166 472 206"/>
+          <path class="fill-card" d="M408 150 L404 124 L422 138 Z M444 138 L462 124 L458 150 Z"/>
+          <path class="ink" d="M408 150 L404 124 L422 138 M444 138 L462 124 L458 150"/>
+          <path class="ink-thin" d="M418 162 q4 -3 8 0 M440 162 q4 -3 8 0 M431 170 l2 2 l2 -2 M404 172 l-14 -2 M404 177 l-14 2 M460 172 l14 -2 M460 177 l14 2"/>
+          <path class="fill-card" d="M410 184 C398 184 384 186 374 188 C364 190 364 206 374 206 C386 206 400 204 410 202 Z"/>
+          <path class="ink" d="M410 184 C398 184 384 186 374 188 C364 190 364 206 374 206 C386 206 400 204 410 202"/>
+          <path class="ink-thin" d="M372 194 q4 1 6 0 M372 200 q4 1 6 0"/>
+        </g>
+        <text x="188" y="113" font-size="17" text-anchor="middle">980원</text>
+        <text x="228" y="165" font-size="13" text-anchor="middle" transform="rotate(-6 210 160)">1000</text>
+        <text x="266" y="171" font-size="13" text-anchor="middle" transform="rotate(3 250 166)">1000</text>
+        <text x="294" y="179" font-size="13" text-anchor="middle" transform="rotate(-2 280 172)">1000</text>
+        <text x="352" y="187" font-size="13" text-anchor="middle" transform="rotate(8 330 186)">1000</text>
+      </svg>
+    </figure>
+    <p>오후 2시, 지우는 문구점에 가기 전 책상에 돈을 펼쳐요. 천 원짜리 6장, 모두 6,000원이에요.</p>
+    <p>공책은 한 권에 980원이고, 6권이 필요해요. 두부가 지폐 한 장을 앞발로 꾹 눌러요.</p>
+    <p class="question">980원 공책 6권, 6,000원으로 살 수 있을까요?</p>
+  </section>
+
+  <section class="predict card" id="p-store" data-id="store" data-answer="a" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">980원 공책 6권을 6,000원으로?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="예상이 맞았어요! 곱셈을 끝까지 하지 않고도 알 수 있어요.">살 수 있다</button>
+      <button class="choice" data-v="b" data-echo="좋은 예상이에요. 그런데 980원은 1,000원보다 싸요. 그림으로 따져 봐요.">살 수 없다</button>
+      <button class="choice" data-v="c" data-echo="좋은 예상이에요. 정확히 계산해도 되지만, 계산 없이 알아내는 방법이 있어요.">계산해 봐야 안다</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="store-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>공책 값과 권 수를 바꿔 봐요. 한 권 값을 백 원 단위로 올리고 내려서 어림한 막대가 지갑 선과 만나요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="est-svg" viewBox="0 0 420 252" role="img" aria-label="올려 어림한 값, 정확한 값, 내려 어림한 값을 막대로 비교하고, 가진 돈 6,000원을 세로 점선으로 보여 준다.">
+        <g id="est-axis"></g>
+        <g id="est-bars"></g>
+        <line id="wallet" class="wallet" x1="0" x2="0" y1="28" y2="216"/>
+        <text id="wallet-t" class="wallet-t" x="0" y="20"></text>
+      </svg>
+    </figure>
+    <p class="readout" id="est-read" aria-live="polite"></p>
+    <p class="verdict" id="est-why"></p>
+    <div class="controls">
+      <div class="slider">
+        <label for="price">공책 한 권 값 <output for="price"></output></label>
+        <input type="range" id="price" min="300" max="1500" step="10" value="980">
+      </div>
+      <div class="slider">
+        <label for="qty">권 수 <output for="qty"></output></label>
+        <input type="range" id="qty" min="1" max="9" step="1" value="6">
+      </div>
+    </div>
+    <div class="change" aria-live="polite">
+      <h3 id="chg-h">거스름돈, 위로 세기</h3>
+      <div class="steps" id="chg-steps"></div>
+      <p class="sum" id="chg-sum"></p>
+    </div>
+    <p class="simplified">물건값은 지어낸 값이에요. 지갑에는 천 원짜리 6장이 있다고 봐요.</p>
+  </section>
+
+  <section class="flap" id="f-store" data-for="p-store" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 "살 수 있다"예요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 400 160" role="img" aria-label="1,000원 칸 여섯 개가 모여 6,000원. 칸마다 980원만 칠하면 칸 끝에 20원씩 남는다. 남은 20원 여섯 개를 모으면 120원.">
+          <g filter="url(#sb-ink)">
+            <rect class="wash-warm" x="16" y="44" width="52" height="40"/><rect class="glow" x="68" y="44" width="8" height="40"/><rect class="wash-warm" x="76" y="44" width="52" height="40"/><rect class="glow" x="128" y="44" width="8" height="40"/><rect class="wash-warm" x="136" y="44" width="52" height="40"/><rect class="glow" x="188" y="44" width="8" height="40"/><rect class="wash-warm" x="196" y="44" width="52" height="40"/><rect class="glow" x="248" y="44" width="8" height="40"/><rect class="wash-warm" x="256" y="44" width="52" height="40"/><rect class="glow" x="308" y="44" width="8" height="40"/><rect class="wash-warm" x="316" y="44" width="52" height="40"/><rect class="glow" x="368" y="44" width="8" height="40"/>
+            <path class="ink" d="M16 44 H376 V84 H16 Z M76 44 V84 M136 44 V84 M196 44 V84 M256 44 V84 M316 44 V84"/>
+          </g>
+          <text x="42" y="70" font-size="17" text-anchor="middle">980</text><text x="102" y="70" font-size="17" text-anchor="middle">980</text><text x="162" y="70" font-size="17" text-anchor="middle">980</text><text x="222" y="70" font-size="17" text-anchor="middle">980</text><text x="282" y="70" font-size="17" text-anchor="middle">980</text><text x="342" y="70" font-size="17" text-anchor="middle">980</text>
+          <path class="ink-thin" d="M16 30 H376 M16 25 v10 M376 25 v10"/>
+          <text x="196" y="20" font-size="17" text-anchor="middle">1,000원 칸 6개 = 6,000원</text>
+          <path class="ink-thin" style="stroke:var(--accent)" d="M72 88 L200 118 M132 88 L200 118 M192 88 L200 118 M252 88 L200 118 M312 88 L200 118 M372 88 L200 118"/>
+          <text x="200" y="144" font-size="18" text-anchor="middle" style="fill:var(--accent)">칸 끝에 남은 20원 6개 = 120원</text>
+        </svg>
+        <figcaption>20원 자리는 잘 보이게 크게 그렸어요.</figcaption>
+      </figure>
+      <p>980원은 1,000원보다 조금 싸요. 그러니 6권 값은 1,000원짜리 6권 값인 6,000원보다 적어요.</p>
+      <p>이렇게 값을 쉬운 수로 바꿔 대강 셈하는 것을 <span class="term">어림</span>이라고 해요.</p>
+      <p>980을 1,000으로 바꾼 것처럼 위의 자리로 올리는 것을 <span class="term">올림</span>이라고 해요. 올려서 어림해도 모자라지 않으면 실제 값은 반드시 그보다 적어요.</p>
+      <p>정확히는 5,880원이고, 거스름돈은 120원이에요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">어림은 대충 해서 틀린 계산이에요.</span><span class="no">아니에요</span></p>
+    <p>어림한 값은 실제 값과 다르지만, 어느 쪽으로 다른지는 확실해요. 올려서 어림한 값은 언제나 실제보다 크거나 같아요.</p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 400 104" role="img" aria-label="수직선 위에 내려 어림한 5,400원, 실제 5,880원, 올려 어림한 6,000원. 실제 값은 언제나 두 어림 사이에 있다.">
+        <g filter="url(#sb-ink)">
+          <rect class="wash-cool" x="40" y="46" width="256" height="12"/>
+          <rect class="glow-halo" x="296" y="46" width="64" height="12"/>
+          <path class="ink" d="M20 52 H384 M40 40 V64 M360 40 V64"/>
+          <path class="ink" d="M296 36 V68" style="stroke:var(--accent)"/>
+        </g>
+        <text x="40" y="26" font-size="15" text-anchor="middle">5,400</text>
+        <text x="40" y="88" font-size="15" text-anchor="middle">내려 어림</text>
+        <text x="290" y="26" font-size="15" text-anchor="middle" style="fill:var(--accent)">5,880</text>
+        <text x="290" y="88" font-size="15" text-anchor="middle" style="fill:var(--accent)">실제</text>
+        <text x="364" y="26" font-size="15" text-anchor="middle">6,000</text>
+        <text x="364" y="88" font-size="15" text-anchor="middle">올려 어림</text>
+      </svg>
+    </figure>
+    <p>그래서 "충분할까?"는 올려서, "적어도 얼마일까?"는 내려서 어림하면 계산 없이 확실히 알아요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><path class="fill-card" d="M8 16 H48 L43 40 H14 Z"/><path class="wash-warm" d="M12 22 H46 L43 34 H14 Z"/><path class="ink" d="M4 10 H10 L16 40 H44 L48 16 H11 M18 22 H46"/><circle class="ink" cx="20" cy="47" r="3.5"/><circle class="ink" cx="40" cy="47" r="3.5"/></g></svg>
+        <span>장 볼 때 값을 모두 올려 더하면, 계산대에서 돈이 모자랄 일이 없어요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="wash-cool" x="6" y="22" width="40" height="22" rx="2"/><rect class="fill-card" x="10" y="14" width="40" height="22" rx="2"/><rect class="wash-cool" x="10" y="14" width="40" height="22" rx="2" opacity=".6"/><path class="ink" d="M6 22 V44 H46 V36 M10 14 H50 V36 H10 Z"/><circle class="ink-thin" cx="22" cy="25" r="5"/></g></svg>
+        <span>천 원짜리 10장이 모이면 10,000원, 곧 만 원이에요. 자리가 하나 올라가요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="wash-green" x="5" y="14" width="46" height="26" rx="5"/><path class="ink" d="M5 40 V19 a5 5 0 0 1 5 -5 H46 a5 5 0 0 1 5 5 V40 Z M11 20 H23 V29 H11 Z M27 20 H39 V29 H27 Z M43 20 H51"/><circle class="ink" cx="15" cy="42" r="4"/><circle class="ink" cx="41" cy="42" r="4"/></g></svg>
+        <span>52명이 45명 타는 버스로 가면 2대가 있어야 해요. 사람 수는 올려야 하니까요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 980 × 6을 머릿속으로</summary>
+    <p>980원을 "1,000원에서 20원 모자란 값"으로 보면 곱셈이 쉬워져요.</p>
+    <p>1,000원씩 6권이면 6,000원이에요. 한 권마다 20원씩 덜 내니, 6권이면 120원을 덜 내요. 6,000원에서 120원을 빼면 5,880원이에요.</p>
+    <p>299원, 1,990원, 49,900원처럼 끝이 9로 끝나는 값도 같은 요령으로 셈할 수 있어요. 어림을 먼저 해 두면 계산이 맞는지 확인하기도 쉬워요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>예산 안에 들어오는지 볼 때는 모든 값을 올려서 더해 보세요. 그래도 예산 안이면 정확한 계산 없이 안심해도 돼요. 계산기 결과가 어림과 크게 다르면 자릿수를 잘못 누른 거예요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">올려서 어림해도 모자라지 않으면, 실제로도 넉넉해요.<br>어림은 방향이 확실한 셈이에요.</p>
+    <div class="quiz" data-stamp="store">
+      <div class="quiz-q" data-answer="0">
+        <p class="qtext">490원 지우개 4개, 2,000원으로 살 수 있을까요?</p>
+        <div class="opts">
+          <button class="opt">살 수 있어요</button>
+          <button class="opt" data-hint="490원을 500원으로 올려 어림해 볼까요? 500원 4개는 얼마일까요?">살 수 없어요</button>
+          <button class="opt" data-hint="올려서 어림하면 계산하지 않고도 알 수 있어요.">정확히 곱해야만 알아요</button>
+        </div>
+        <p class="why">500원으로 올려도 4개에 2,000원이라, 실제 값은 그보다 적어요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">5,880원짜리를 사고 6,000원을 내면, 점원은 어떻게 세어 줄까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="6,000에서 5,880을 거꾸로 빼려면 받아내림이 두 번이에요. 위로 세면 더 쉬워요.">6,000원에서 하나씩 빼며 세요</button>
+          <button class="opt">5,880원에서 위로 세요: 10원 2개로 5,900, 100원 1개로 6,000</button>
+          <button class="opt" data-hint="동전 수는 거스름돈 금액에 따라 달라요. 해 보기의 위로 세기를 봐요.">100원짜리를 아무렇게나 줘요</button>
+        </div>
+        <p class="why">물건값에서 낸 돈까지 위로 세면 120원이 바로 나와요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">천 원짜리 지폐 10장은 모두 얼마일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="1,000이 하나가 아니라 10개 있어요.">1,000원</button>
+          <button class="opt">10,000원</button>
+          <button class="opt" data-hint="0이 하나 많아요. 1,000이 100개 모여야 그 값이 돼요.">100,000원</button>
+        </div>
+        <p class="why">1,000이 10개면 10,000, 곧 만 원이에요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const HAVE = 6000, UNIT = 100, X0 = 14, W = 380;
+  const won = (n) => n.toLocaleString('ko-KR');
+  const svg = $('est-svg');
+  const rows = [
+    { key: 'up', cls: 'bar-up', name: '올려 어림', y: 54 },
+    { key: 'exact', cls: 'bar-ex', name: '정확한 값', y: 116 },
+    { key: 'down', cls: 'bar-dn', name: '내려 어림', y: 178 }
+  ];
+  let maxV = 0;
+
+  function axis() {
+    const g = $('est-axis'); g.textContent = '';
+    S('line', { x1: X0, y1: 216, x2: X0 + W, y2: 216, class: 'ink-thin' }, g);
+    const step = maxV > 8000 ? 2000 : 1000;
+    for (let v = 0; v <= maxV; v += step) {
+      const x = X0 + (v / maxV) * W;
+      S('line', { x1: x, y1: 216, x2: x, y2: 222, class: 'ink-thin' }, g);
+      if (v % 2000 === 0) S('text', { x, y: 240, class: 'tick', text: v ? (v / 1000) + '천' : '0' }, g);
+    }
+  }
+
+  // 막대 하나 = 한 권 값 칸이 권 수만큼 이어 붙은 것(묶어 세기)
+  function bar(g, r, each, n, label) {
+    const total = each * n, w = (total / maxV) * W;
+    S('text', { x: X0, y: r.y - 6, class: 'lbl', text: `${r.name}: 한 권 ${won(each)}원` }, g);
+    S('rect', { x: X0, y: r.y, width: Math.max(1, w), height: 30, rx: 2, class: r.cls }, g);
+    for (let i = 1; i < n; i++) { const x = X0 + (i * each / maxV) * W; S('line', { x1: x, y1: r.y + 2, x2: x, y2: r.y + 28, class: 'seg' }, g); }
+    const inside = w > W - 76;
+    S('text', { x: inside ? X0 + w - 6 : X0 + w + 6, y: r.y + 22, class: 'val', 'text-anchor': inside ? 'end' : 'start', text: label || won(total) + '원' }, g);
+  }
+
+  let price = null, qty = null;
+
+  function money(unit, count) {
+    const box = document.createElement('span'); box.className = 'money';
+    const bill = unit >= 1000, show = Math.min(count, 5);
+    for (let i = 0; i < show; i++) {
+      const s = S('svg', { viewBox: bill ? '0 0 58 34' : '0 0 34 34', 'aria-hidden': 'true' });
+      if (bill) {
+        S('rect', { x: 2, y: 5, width: 54, height: 24, rx: 2, class: unit === 5000 ? 'wash-warm' : 'wash-cool' }, s);
+        S('rect', { x: 2, y: 5, width: 54, height: 24, rx: 2, class: 'ink-thin' }, s);
+      } else {
+        S('circle', { cx: 17, cy: 17, r: unit >= 500 ? 15 : unit === 10 ? 12 : 13.5, class: unit === 10 ? 'wash-warm' : 'fill-card' }, s);
+        S('circle', { cx: 17, cy: 17, r: unit >= 500 ? 15 : unit === 10 ? 12 : 13.5, class: 'ink-thin' }, s);
+      }
+      S('text', { x: bill ? 29 : 17, y: 17, text: unit }, s);
+      box.appendChild(s);
+    }
+    if (count > show) { const t = document.createElement('span'); t.textContent = '×' + count; box.appendChild(t); }
+    box.setAttribute('aria-label', `${won(unit)}원 ${count}개`);
+    return box;
+  }
+
+  function draw() {
+    if (!price || !qty) return;
+    const p = price.value, n = qty.value;
+    const e = SIM.affordEstimate(p, n, HAVE, UNIT);
+    const up1 = SIM.roundUpTo(p, UNIT), dn1 = SIM.roundDownTo(p, UNIT);
+    const need = Math.max(8000, Math.ceil(e.up / 2000) * 2000);
+    if (need !== maxV) { maxV = need; axis(); }
+    const g = $('est-bars'); g.textContent = '';
+    bar(g, rows[0], up1, n);
+    bar(g, rows[1], p, n);
+    bar(g, rows[2], dn1, n);
+    const wx = X0 + (HAVE / maxV) * W;
+    $('wallet').setAttribute('x1', wx); $('wallet').setAttribute('x2', wx);
+    const wt = $('wallet-t');
+    wt.textContent = '지갑 6,000원';
+    wt.setAttribute('x', wx); wt.setAttribute('text-anchor', wx > X0 + W - 60 ? 'end' : 'middle');
+
+    const read = $('est-read'), why = $('est-why');
+    if (e.verdict === 'sure') {
+      read.innerHTML = '<b>확실히 살 수 있어요</b>';
+      why.textContent = `올려 어림해도 ${won(e.up)}원이라 6,000원을 넘지 않아요.`;
+    } else if (e.verdict === 'no') {
+      read.innerHTML = '<b>확실히 살 수 없어요</b>';
+      why.textContent = `내려 어림해도 ${won(e.down)}원이라 6,000원을 넘어요.`;
+    } else {
+      read.innerHTML = '어림으로는 <b>몰라요</b>';
+      why.textContent = `6,000원이 두 어림 사이에 있어요. 정확히 셈하면 ${won(e.exact)}원이라 ${e.ok ? '살 수 있어요' : '살 수 없어요'}.`;
+    }
+
+    const box = $('chg-steps'); box.textContent = '';
+    if (!e.ok) {
+      $('chg-h').textContent = '모자라는 돈';
+      $('chg-sum').innerHTML = `정확한 값 ${won(e.exact)}원에서 <b>${won(e.short)}원</b>이 모자라요.`;
+      return;
+    }
+    $('chg-h').textContent = '거스름돈, 위로 세기';
+    const add = (cls, txt) => { const s = document.createElement('span'); s.className = cls; s.textContent = txt; box.appendChild(s); };
+    add('reach', won(e.exact));
+    for (const st of SIM.countUpChange(e.exact, HAVE)) {
+      add('arrow', '→'); box.appendChild(money(st.unit, st.count)); add('arrow', '→');
+      add('reach' + (st.reach === HAVE ? ' end' : ''), won(st.reach));
+    }
+    $('chg-sum').innerHTML = e.change ? `물건값에서 6,000원까지 세어 올라가면 거스름돈은 <b>${won(e.change)}원</b>이에요.` : '딱 맞아요. 거스름돈이 없어요.';
+  }
+  price = SB.slider($('price'), { format: (v) => won(v) + '원', onInput: draw });
+  qty = SB.slider($('qty'), { format: (v) => v + '권', onInput: draw });
+  draw();
+});
+</script>
+</body>
+</html>
