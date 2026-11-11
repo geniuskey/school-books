@@ -484,3 +484,19 @@ table.plan th { font-weight: 700; color: var(--ink-soft); white-space: nowrap; }
 :root[data-theme="dark"] .bk-elementary { --bk: #ff8f70; }
 :root[data-theme="dark"] .bk-middle { --bk: #b5d65a; }
 :root[data-theme="dark"] .bk-high { --bk: #f08cc0; }
+
+/* ---------- 고등 권: 손글씨 대신 정돈된 글꼴, 차분한 표지 ---------- */
+body[data-book="high"] { --hand: var(--font); }
+body[data-book="high"] .step-label { font-size: .82rem; font-weight: 700; letter-spacing: .08em; color: var(--accent); margin: 0 0 6px; }
+body[data-book="high"] .lab .readout { font-size: 1.05rem; font-weight: 600; }
+body[data-book="high"] .slider output { font-size: 1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+body[data-book="high"] .flap-cover .tab { font-size: 1.1rem; }
+body[data-book="high"] .flap-echo { font-size: 1.02rem; font-weight: 600; }
+body[data-book="high"] .callout > .label { font-size: .82rem; letter-spacing: .08em; }
+body[data-book="high"] .callout.myth .claim + .no { font-size: .95rem; }
+body[data-book="high"] details.more > summary { font-family: var(--serif); font-size: 1.1rem; }
+body[data-book="high"] .quiz-q .qtext .n { font-size: 1rem; line-height: 1.8; }
+body[data-book="high"] .stamp-msg, body[data-book="high"] .predict .saved { font-size: 1rem; font-weight: 600; }
+body[data-book="high"] .stamp-spot .empty { font-size: .95rem; }
+body[data-book="high"] .ch-meta .clock-badge { font-size: .95rem; letter-spacing: .04em; }
+body[data-book="high"] .choice .mark { font-size: .9rem; }

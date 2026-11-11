@@ -120,3 +120,29 @@ test('고등 11장: 충돌 힘 곡선', () => {
   // 시속 80km 맨몸도 최고 힘이 그래프(120배) 안에 들어온다
   assert.ok(k(80, 0.03) * Math.PI / 2 < 120)
 })
+
+test('고등 11장: 두 덩어리 충돌 모형', () => {
+  const v0 = SIM.kmhToMs(50)
+  const none = SIM.crashSim({ v0, crush: 0.6, belt: false })
+  const belt = SIM.crashSim({ v0, crush: 0.6, belt: true })
+  // 탑승자가 멈출 때까지 받은 충격량 = m·v0 (벨트가 있든 없든)
+  near(none.impulse, 60 * v0, 2)
+  near(belt.impulse, 60 * v0, 2)
+  // 차는 0.6m 찌그러지며 약 16g로 0.086초에 멈춘다
+  near(none.carG, 16.4, 0.1); near(none.tc, 0.0864, 1e-3)
+  // 맨몸은 핸들에 부딪히고 최대 힘이 벨트보다 훨씬 크다
+  assert.ok(none.hit && !belt.hit)
+  assert.ok(none.peakG > 4 * belt.peakG)
+  assert.ok(belt.peakG > 20 && belt.peakG < 35, String(belt.peakG))
+  // 벨트를 맨 탑승자는 차와 함께 일찍 느려지기 시작한다(같은 시각의 속도가 더 낮다)
+  const i = belt.s.t.findIndex((t) => t >= 0.05)
+  assert.ok(belt.s.occV[i] < none.s.occV[i])
+  // 차가 더 길게 찌그러지면 벨트를 맨 탑승자의 최대 힘이 줄어든다
+  assert.ok(SIM.crashSim({ v0, crush: 0.9, belt: true }).peakG < SIM.crashSim({ v0, crush: 0.3, belt: true }).peakG)
+  // 시속 80km, 0.6m: 벨트만으로는 핸들에 닿는다
+  assert.ok(SIM.crashSim({ v0: SIM.kmhToMs(80), crush: 0.6, belt: true }).hit)
+  // 같은 거리에서 일정한 힘이 가장 낮다: 50km/h, 1m → 약 9.8g, 용수철 모양은 2배
+  near(SIM.constStopG(v0, 1), 9.84, 0.01)
+  near(SIM.springStopG(v0, 1) / SIM.constStopG(v0, 1), 2)
+  near(SIM.pressure(6000, 300), 20)
+})

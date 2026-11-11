@@ -109,6 +109,36 @@
   // 충돌 힘의 모양: T초 동안 사인 반 주기로 솟았다 줄어든다. 넓이(충격량)는 평균 힘 × T와 같고 최고 힘은 평균의 π/2배.
   const humpForce = (avg, T, t) => (t <= 0 || t >= T ? 0 : (Math.PI / 2) * avg * Math.sin((Math.PI * t) / T));
 
+  // 두 덩어리 충돌 모형(고등 11장). 차는 찌그러지는 길이 crush(m) 동안 일정하게 느려져 멈춘다(실제 충돌 파형은 들쭉날쭉하다).
+  // 탑승자(m kg)는 차 안에서 앞으로 r(m)만큼 밀린다. 벨트는 느슨함 slack 뒤로 늘어나는 끈(용수철 + 감쇠, 되돌아올 때는 약하게),
+  // 핸들·계기판은 r = gapDash 에서 만나는 아주 단단한 벽이다. 좌석 마찰·몸의 회전·몸 부위별 차이는 뺐다.
+  // 결과 s 는 sample 초 간격의 시계열(t, 차 속도, 탑승자 속도, 탑승자가 받는 힘[몸무게의 배], r, 차 찌그러짐).
+  function crashSim(o) {
+    const m = o.m || 60, v0 = o.v0, L = o.crush, belt = !!o.belt;
+    const P = Object.assign({ slack: 0.03, kb: 5e4, cb: 600, gapDash: 0.42, kd: 1.5e6, cd: 6000 }, o.p || {});
+    const ac = (v0 * v0) / (2 * L), tc = v0 / ac;
+    const dt = 1e-5, tEnd = o.tEnd || 0.2, every = Math.round((o.sample || 0.0005) / dt);
+    let r = 0, u = 0, t = 0, imp = 0, tStop = null, rMax = 0, peakF = 0, hit = false, tHit = null, tPeak = 0;
+    const s = { t: [], carV: [], occV: [], g: [], r: [], crush: [] };
+    for (let i = 0; t <= tEnd + 1e-12; i++, t += dt) {
+      const aCar = t < tc ? ac : 0, carV = t < tc ? v0 - ac * t : 0, crush = t < tc ? v0 * t - (ac * t * t) / 2 : L;
+      let F = 0;
+      if (belt && r > P.slack) F += Math.max(0, (P.kb * (r - P.slack) + (u > 0 ? P.cb * u : 0)) * (u < 0 ? 0.3 : 1));
+      if (r > P.gapDash) { F += Math.max(0, P.kd * (r - P.gapDash) + P.cd * u); if (!hit) { hit = true; tHit = t; } }
+      if (i % every === 0) { s.t.push(t); s.carV.push(carV); s.occV.push(carV + u); s.g.push(F / (m * G)); s.r.push(r); s.crush.push(crush); }
+      if (tStop === null) { imp += F * dt; if (carV + u <= 0) tStop = t; }
+      if (F > peakF) { peakF = F; tPeak = t; }
+      if (r > rMax) rMax = r;
+      u += (aCar - F / m) * dt; r += u * dt;
+    }
+    return { s, m, v0, peakF, peakG: peakF / (m * G), tPeak, tStop, rMax, impulse: imp, hit, tHit, tc, carG: ac / G, gapDash: P.gapDash };
+  }
+  // 거리 d 안에 v 에서 멈출 때: 일정한 힘이면 a = v²/2d (가장 낮은 최대 힘), 용수철처럼 커지는 힘이면 최대 힘이 그 2배
+  const constStopG = (v, d) => (v * v) / (2 * d) / G;
+  const springStopG = (v, d) => (v * v) / d / G;
+  // 같은 힘을 받는 넓이가 다르면 압력(N/cm²)이 다르다
+  const pressure = (F, areaCm2) => F / areaCm2;
+
   const SIM = {
     clamp, lerp, round, deg, rad, gcd, lcm, rng, randInt,
     foldLayers, foldThickness, foldSize,
@@ -116,7 +146,7 @@
     simplify, sameFraction,
     rectArea, rectPerimeter, rectsWithPerimeter,
     shadowLength, diceSumWays, rollSums, mean, median, compound, simpleInterest, dist, moonLitFraction,
-    G, kmhToMs, momentum, stopForce, stopDistance, timesWeight, humpForce
+    G, kmhToMs, momentum, stopForce, stopDistance, timesWeight, humpForce, crashSim, constStopG, springStopG, pressure
   };
   if (typeof module !== "undefined" && module.exports) module.exports = SIM;
   else root.SIM = SIM;
