@@ -4,7 +4,8 @@
 
 준비된 장(book.json 의 ready=true)마다:
   오류(1로 끝남)  - 장의 틀 9단계가 순서대로 있는가: .scene → .predict → .lab → .flap → .callout.myth → .everyday
-                    → (details.more) → .callout.grownup → .wrapup(.oneline, .quiz 안 .quiz-q 3개, .stamp-spot)
+                    → (details.more) → .callout.grownup(고등은 .callout.explore) → .wrapup(.oneline, .quiz 안 .quiz-q 3개,
+                    도장이 있는 책은 .stamp-spot)
                   - 새 용어(.term) 수: 초등 2, 중등 3, 고등 4 이하
                   - 수식 수: 초등 0 / 중등 본문 0·한 걸음 더 1 / 고등 본문 1·한 걸음 더 2 이하  (\\( \\) 와 \\[ \\] 를 센다)
                   - 이모지 없음, Cloudflare 비컨 1개, head 표식 있음
@@ -21,7 +22,7 @@ SHELF = json.loads((ROOT / "book.json").read_text(encoding="utf-8"))
 RULES = {
     "elementary": dict(terms=2, body_math=0, more_math=0, chars=1500, sentence=45),
     "middle": dict(terms=3, body_math=0, more_math=1, chars=2500, sentence=None),
-    "high": dict(terms=4, body_math=1, more_math=2, chars=3500, sentence=None),
+    "high": dict(terms=4, body_math=1, more_math=2, chars=3500, sentence=None, closer="explore"),
 }
 ORDER = ["scene", "predict", "lab", "flap", "myth", "everyday", "more", "grownup", "wrapup"]
 EMOJI = re.compile("[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F000-\U0001F2FF\U0001F900-\U0001F9FF⭐⭕‼⁉™ℹ⌚-⌛⏩-⏳▪-◾️]")
@@ -76,6 +77,7 @@ def kind(n):
     if "everyday" in c: return "everyday"
     if n.tag == "details" and "more" in c: return "more"
     if "callout" in c and "grownup" in c: return "grownup"
+    if "callout" in c and "explore" in c: return "explore"
     if "wrapup" in c: return "wrapup"
     return None
 
@@ -84,8 +86,9 @@ def count_math(s):
     return len(re.findall(r"\\\(", s)) + len(re.findall(r"\\\[", s))
 
 
-def lint(book, c):
+def lint(book, c, b):
     rule = RULES[book]
+    order = [rule.get("closer", "grownup") if x == "grownup" else x for x in ORDER]
     p = ROOT / book / "chapters" / f"{c['slug']}.html"
     src = p.read_text(encoding="utf-8")
     errs, warns = [], []
@@ -98,7 +101,7 @@ def lint(book, c):
     if not main: return ["main 없음"], [], {}
     top = [k for k in main.kids if isinstance(k, Node)]
     seq = [kind(k) for k in top if kind(k)]
-    want = [x for x in ORDER if x != "more" or "more" in seq]
+    want = [x for x in order if x != "more" or "more" in seq]
     if seq != want: errs.append(f"장의 틀 순서가 다름: {seq} (기대: {want})")
     terms = [n for n in walk(main) if "term" in n.cls]
     if len(terms) > rule["terms"]: errs.append(f"새 용어 {len(terms)}개 (최대 {rule['terms']}): " + ", ".join(text(x) for x in terms))
@@ -113,7 +116,9 @@ def lint(book, c):
         nq = sum(1 for n in walk(wrap) if "quiz-q" in n.cls)
         if nq != 3: errs.append(f"확인 문항 {nq}개 (3개여야 함)")
         if not any("oneline" in n.cls for n in walk(wrap)): errs.append("오늘의 한 줄(.oneline) 없음")
-        if not any("stamp-spot" in n.cls for n in walk(wrap)): errs.append("도장 자리(.stamp-spot) 없음")
+        has_spot = any("stamp-spot" in n.cls for n in walk(wrap))
+        if b.get("stamps", True) and not has_spot: errs.append("도장 자리(.stamp-spot) 없음")
+        if not b.get("stamps", True) and has_spot: errs.append("도장이 없는 책인데 .stamp-spot 이 있음")
     labs = [k for k in top if kind(k) == "lab"]
     if len(labs) != 1: errs.append(f"해 보기(.lab)는 장마다 하나 ({len(labs)}개)")
     chars = len(re.sub(r"\s", "", body_txt))
@@ -147,7 +152,7 @@ for bp in SHELF["books"]:
         if not (ROOT / book / "chapters" / f"{c['slug']}.html").exists():
             if c["ready"]: print(f"[{key}] 파일 없음"); bad += 1
             continue
-        errs, warns, st = lint(book, c)
+        errs, warns, st = lint(book, c, b)
         status = "오류" if errs else ("경고" if warns else "OK")
         if st:
             print(f"[{key}] {status}  글자 {st['chars']}/{st['target']}  용어 {st['terms']}  수식 {st['math']}  문장 평균 {st['avg']}자")

@@ -45,10 +45,16 @@ def write(p, s):
         p.write_text(s, encoding="utf-8")
 
 
+def book_pages(b):
+    """책 폴더의 고정 페이지. 도장 수첩·선생님 노트는 book.json 의 stamps/teachers 가 false 면 없다(고등)."""
+    return ["index.html"] + (["stamps.html"] if b.get("stamps", True) else []) + (["teachers.html"] if b.get("teachers", True) else [])
+
+
 def book_js(b):
     keep = ("num", "slug", "subject", "title", "unit", "stamp", "time", "scene", "headline", "ready")
     data = {"id": b["dir"], "portalId": b["id"], "short": b["short"], "title": b["title"], "subtitle": b["subtitle"],
             "minutes": b["minutes"], "color": b["color"], "colorDark": b["colorDark"],
+            "stamps": b.get("stamps", True), "teachers": b.get("teachers", True),
             "chapters": [{k: c[k] for k in keep if k in c} for c in b["chapters"]]}
     return ("/* 자동 생성 파일: book.json 을 고치고 python3 tools/head.py 를 실행한다. */\n"
             "window.SB_BOOK = " + json.dumps(data, ensure_ascii=False, indent=1) + ";\n"
@@ -174,7 +180,7 @@ for b in BOOKS:
         if not c["ready"]:
             print("참고: 파일은 있지만 ready=false:", b["dir"], c["slug"])
         fill(p, lambda meta, b=b, c=c: chapter_head(b, c, meta))
-    for f in ("index.html", "stamps.html", "teachers.html"):
+    for f in book_pages(b):
         p = ROOT / b["dir"] / f
         if p.exists():
             fill(p, lambda meta, b=b: book_page_head(b, meta))
@@ -206,7 +212,7 @@ def toc_html(b):
         meta = f'<small>{SUBJ[c["subject"]]} · {e(c["unit"])}' + (f" · {sub}" if b["dir"] == "high" and sub else "") + "</small>"
         if c["ready"]:
             out.append(f'<li><a href="chapters/{c["slug"]}.html" data-slug="{c["slug"]}"><span class="t">{t}{small}</span>'
-                       f'<span class="ttl">{e(c["title"])}{meta}</span><span class="got" aria-hidden="true"></span></a></li>')
+                       f'<span class="ttl">{e(c["title"])}{meta}</span>' + ('<span class="got" aria-hidden="true"></span>' if b.get("stamps", True) else "") + '</a></li>')
         else:
             out.append(f'<li><span class="off"><span class="t">{t}{small}</span><span class="ttl">{e(c["title"])}{meta}</span>'
                        f'<span class="badge">준비 중</span></span></li>')
@@ -277,12 +283,13 @@ def block(p, name, content):
 
 for b in BOOKS:
     block(ROOT / b["dir"] / "index.html", "toc", toc_html(b))
-    block(ROOT / b["dir"] / "teachers.html", "plan", plan_html(b))
+    if b.get("teachers", True):
+        block(ROOT / b["dir"] / "teachers.html", "plan", plan_html(b))
     block(ROOT / "CONTRIBUTING.md", f"plan:{b['dir']}", plan_md(b))
 
 urls = [SITE]
 for b in BOOKS:
-    urls += [f"{SITE}{b['dir']}/index.html", f"{SITE}{b['dir']}/stamps.html", f"{SITE}{b['dir']}/teachers.html"]
+    urls += [f"{SITE}{b['dir']}/{f}" for f in book_pages(b)]
     urls += [f"{SITE}{b['dir']}/chapters/{c['slug']}.html" for c in b["chapters"] if c["ready"]]
 write(ROOT / "sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
       "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")

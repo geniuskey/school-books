@@ -110,6 +110,9 @@
   const toShelf = () => (page() === "shelf" ? "" : page() === "chapter" ? "../../" : "../");
   const chapters = () => (BOOK ? BOOK.chapters : []);
   const current = () => doc.body.dataset.chapter || null;
+  // 고등 권은 도장 수첩과 선생님 노트가 없다(book.json 의 stamps/teachers)
+  const hasStamps = () => !!BOOK && BOOK.stamps !== false;
+  const hasNotes = () => !!BOOK && BOOK.teachers !== false;
 
   /* ---------- 상단 바와 목차 서랍 ---------- */
   function feedbackUrl() {
@@ -125,7 +128,7 @@
     top.innerHTML = `
       ${BOOK ? `<button class="sb-btn icon toc-open" type="button" aria-label="목차 열기" title="목차" aria-expanded="false" aria-controls="sb-drawer">${ICON.menu}</button>` : ""}
       <a class="brand" href="${BOOK ? toBook() + "index.html" : toShelf() || "./"}">${ICON.logo}<b>SchoolBooks</b>${bookPart}</a>
-      ${BOOK ? `<a class="sb-btn" href="${toBook()}stamps.html" title="도장 수첩">${ICON.stamp}<span class="lbl">도장 수첩</span></a>` : ""}
+      ${hasStamps() ? `<a class="sb-btn" href="${toBook()}stamps.html" title="도장 수첩">${ICON.stamp}<span class="lbl">도장 수첩</span></a>` : ""}
       <button class="sb-btn icon theme-toggle" type="button"></button>
       <a class="sb-btn series-link" href="https://books.euiyun.com/" aria-label="전체 책 보기" title="전체 책 보기">${ICON.books}<span class="lbl">전체 책</span></a>
       <a class="sb-btn icon feedback-button" href="${feedbackUrl()}" target="_blank" rel="noopener" aria-label="독자 의견 보내기" title="독자 의견 보내기">${ICON.chat}</a>`;
@@ -137,7 +140,7 @@
     if (BOOK) drawer(top);
   }
   function drawer(top) {
-    const got = stamps();
+    const got = hasStamps() ? stamps() : {};
     const d = el("div", { class: "sb-drawer", id: "sb-drawer" });
     const items = chapters().map((c) => {
       const num = c.time ? c.time : String(c.num).padStart(2, "0");
@@ -151,8 +154,8 @@
       <ol class="sb-chlist">${items}</ol>
       <div class="links">
         <a href="${toBook()}index.html">${ICON.house} 책 첫 화면</a>
-        <a href="${toBook()}stamps.html">${ICON.stamp} 도장 수첩</a>
-        <a href="${toBook()}teachers.html">${ICON.note} 선생님·부모님 노트</a>
+        ${hasStamps() ? `<a href="${toBook()}stamps.html">${ICON.stamp} 도장 수첩</a>` : ""}
+        ${hasNotes() ? `<a href="${toBook()}teachers.html">${ICON.note} 선생님·부모님 노트</a>` : ""}
         <a href="${toShelf()}index.html">${ICON.books} SchoolBooks 서가</a>
       </div></nav>`;
     doc.body.appendChild(d);
@@ -175,7 +178,7 @@
       const prev = list[i - 1], next = list[i + 1];
       const p = el("nav", { class: "pager", "aria-label": "이전·다음 장" });
       p.innerHTML = (prev ? `<a class="prev" href="${prev.slug}.html"><small>← 이전</small>${esc(prev.title)}</a>` : "<span></span>") +
-        (next ? `<a class="next" href="${next.slug}.html"><small>다음 →</small>${esc(next.title)}</a>` : `<a class="next" href="../stamps.html"><small>다음 →</small>도장 수첩 보기</a>`);
+        (next ? `<a class="next" href="${next.slug}.html"><small>다음 →</small>${esc(next.title)}</a>` : hasStamps() ? `<a class="next" href="../stamps.html"><small>다음 →</small>도장 수첩 보기</a>` : `<a class="next" href="../index.html"><small>다음 →</small>목차로 돌아가기</a>`);
       main.after(p);
     }
     const f = el("footer", { class: "sb-foot" });
@@ -344,7 +347,8 @@
       });
     });
     function finish() {
-      if (box.dataset.stamp !== "off") stamp(box.dataset.stamp || current(), $(".stamp-spot", box.closest("section") || doc));
+      if (hasStamps() && box.dataset.stamp !== "off") stamp(box.dataset.stamp || current(), $(".stamp-spot", box.closest("section") || doc));
+      else if (!$(".quiz-done", box)) box.appendChild(el("p", { class: "quiz-done", "aria-live": "polite" }, "세 문제를 모두 풀었어요. 틀렸던 문제는 해 보기로 돌아가 직접 확인해 보세요."));
       box.dispatchEvent(new CustomEvent("sb:quizdone", { bubbles: true }));
     }
     return box;

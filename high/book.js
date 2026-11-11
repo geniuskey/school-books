@@ -8,13 +8,15 @@ window.SB_BOOK = {
  "minutes": "15~20분",
  "color": "#7a2350",
  "colorDark": "#f08cc0",
+ "stamps": false,
+ "teachers": false,
  "chapters": [
   {
    "num": 0,
    "slug": "start",
    "subject": "guide",
    "title": "뉴스를 수학·과학으로 읽기",
-   "unit": "이 책을 읽는 법과 도장 수첩",
+   "unit": "이 책을 읽는 법",
    "stamp": "출발",
    "ready": false
   },

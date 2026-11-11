@@ -8,6 +8,8 @@ window.SB_BOOK = {
  "minutes": "8~10분",
  "color": "#b03a2e",
  "colorDark": "#ff8f70",
+ "stamps": true,
+ "teachers": true,
  "chapters": [
   {
    "num": 0,

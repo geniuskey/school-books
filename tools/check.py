@@ -27,7 +27,7 @@ if not args:
     for bp in SHELF["books"]:
         d = bp.split("/")[0]
         b = json.loads((ROOT / bp).read_text(encoding="utf-8"))
-        args += [f"{d}/index", f"{d}/stamps", f"{d}/teachers"] + [f"{d}/{c['slug']}" for c in b["chapters"] if c["ready"]]
+        args += [f"{d}/{p}" for p in ("index", "stamps", "teachers") if (ROOT / d / f"{p}.html").exists()] + [f"{d}/{c['slug']}" for c in b["chapters"] if c["ready"]]
 
 
 def path_of(name):
@@ -65,7 +65,7 @@ POKE = """async () => {
   // 6) 문항: 모든 보기를 차례로 누른다(틀린 것 → 맞는 것)
   for (const q of document.querySelectorAll('.quiz-q')) for (const b of q.querySelectorAll('button.opt')) if (!b.disabled) b.click();
   await sleep(700);
-  if (document.querySelector('.quiz')) out.stamped = !!document.querySelector('.stamp-spot .sb-stamp');
+  if (document.querySelector('.quiz') && document.querySelector('.stamp-spot')) out.stamped = !!document.querySelector('.stamp-spot .sb-stamp');
   // 7) 한 걸음 더 펼치기, 목차 서랍 열고 닫기
   for (const d of document.querySelectorAll('details')) d.open = true;
   const t = document.querySelector('.toc-open'); if (t) { t.click(); await sleep(50); document.querySelector('.toc-close').click(); }
