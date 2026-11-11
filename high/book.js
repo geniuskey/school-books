@@ -126,7 +126,7 @@ window.SB_BOOK = {
    "unit": "뉴턴 법칙, 운동량, 충격량",
    "stamp": "충격량",
    "headline": "자율주행차 급제동",
-   "ready": false
+   "ready": true
   },
   {
    "num": 12,

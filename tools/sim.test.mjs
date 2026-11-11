@@ -85,3 +85,21 @@ test('대푯값·복리·거리·달', () => {
   near(SIM.moonLitFraction(90), 0.5)
   near(SIM.moonLitFraction(180), 1)
 })
+
+test('고등 11장: 충격량', () => {
+  near(SIM.kmhToMs(36), 10)
+  near(SIM.momentum(60, 10), 600)
+  const v = SIM.kmhToMs(50)
+  // 같은 속도: 0.1초에 멈추면 0.5초보다 평균 힘이 5배
+  near(SIM.stopForce(60, v, 0.1) / SIM.stopForce(60, v, 0.5), 5, 1e-12)
+  // 힘 × 시간 = 운동량 변화 (어떤 시간이든)
+  for (const t of [0.02, 0.1, 0.37]) near(SIM.stopForce(60, v, t) * t, SIM.momentum(60, v), 1e-9)
+  // 60kg, 50km/h, 0.1초: 약 8,333N, 몸무게의 약 14배, 약 69cm
+  near(SIM.stopForce(60, v, 0.1), 8333.333, 1e-3)
+  assert.equal(Math.round(SIM.timesWeight(SIM.stopForce(60, v, 0.1), 60)), 14)
+  near(SIM.stopDistance(v, 0.1), 0.6944, 1e-4)
+  // 10kg 아이를 안고 있다면: 같은 조건에서 약 1,389N, 아이 몸무게의 약 14배
+  near(SIM.stopForce(10, v, 0.1), 1388.889, 1e-3)
+  // 속도가 두 배면 충격량도 두 배
+  near(SIM.momentum(60, 2 * v) / SIM.momentum(60, v), 2)
+})

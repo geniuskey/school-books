@@ -95,13 +95,26 @@
   // 해-지구-달 사이 각(0 = 삭, 180 = 망)으로 달의 밝은 면 비율. 궤도는 원, 기울기는 뺐다.
   const moonLitFraction = (angleDeg) => (1 - Math.cos(rad(angleDeg))) / 2;
 
+  /* ---------- 충격량 (고등 11장) ---------- */
+  // 단위는 SI: kg, m/s, s, N. 멈추는 동안 힘이 일정하다고 본다(실제 힘은 솟았다 줄어든다: 평균 힘만 다룬다).
+  const G = 9.8;
+  const kmhToMs = (kmh) => kmh / 3.6;
+  const momentum = (m, v) => m * v;
+  // 속력 v에서 t초 만에 멈출 때 평균 힘: 운동량 변화 / 시간
+  const stopForce = (m, v, t) => (m * v) / t;
+  // 같은 감속으로 멈출 때 그동안 앞으로 간 거리(등가속도): v·t/2
+  const stopDistance = (v, t) => (v * t) / 2;
+  // 힘이 몸무게(m·g)의 몇 배인가
+  const timesWeight = (F, m) => F / (m * G);
+
   const SIM = {
     clamp, lerp, round, deg, rad, gcd, lcm, rng, randInt,
     foldLayers, foldThickness, foldSize,
     hm, fmtHM, clockAngles, koTime, koDuration, unwrapDeg, divisors,
     simplify, sameFraction,
     rectArea, rectPerimeter, rectsWithPerimeter,
-    shadowLength, diceSumWays, rollSums, mean, median, compound, simpleInterest, dist, moonLitFraction
+    shadowLength, diceSumWays, rollSums, mean, median, compound, simpleInterest, dist, moonLitFraction,
+    G, kmhToMs, momentum, stopForce, stopDistance, timesWeight
   };
   if (typeof module !== "undefined" && module.exports) module.exports = SIM;
   else root.SIM = SIM;
