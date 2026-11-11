@@ -30,6 +30,22 @@ test('시각과 시간', () => {
   assert.equal(SIM.fmtHM(23 * 60 + 70), '00:10')
   assert.deepEqual(SIM.clockAngles(3 * 60), { hour: 90, minute: 0 })
   assert.deepEqual(SIM.clockAngles(7 * 60 + 30), { hour: 225, minute: 180 })
+  // 01장: 7시 50분 + 25분 = 8시 15분
+  assert.equal(SIM.koTime(7 * 60 + 50 + 25), '8시 15분')
+  assert.equal(SIM.koTime(9 * 60), '9시')
+  assert.equal(SIM.koDuration(25), '25분')
+  assert.equal(SIM.koDuration(65), '1시간 5분')
+  assert.equal(SIM.koDuration(120), '2시간')
+  assert.equal(SIM.koDuration(0), '0분')
+  assert.equal(SIM.koTime(8 * 60 + 40 + 30), '9시 10분')
+  assert.equal(SIM.unwrapDeg(350 - 10), -20)
+  assert.equal(SIM.unwrapDeg(10 - 350), 20)
+  assert.equal(SIM.unwrapDeg(90), 90)
+  // 60은 2·3·4·5·6으로 나누어떨어지고 100은 3으로 안 나누어떨어진다
+  assert.deepEqual(SIM.divisors(60), [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60])
+  for (const k of [2, 3, 4, 5, 6]) assert.equal(60 % k, 0)
+  assert.notEqual(100 % 3, 0)
+  assert.equal(SIM.divisors(100).length, 9)
 })
 
 test('분수와 넓이', () => {

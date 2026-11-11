@@ -26,7 +26,7 @@ window.SB_BOOK = {
    "unit": "시각과 시간",
    "stamp": "60분",
    "time": "07:00",
-   "ready": false
+   "ready": true
   },
   {
    "num": 2,

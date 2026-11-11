@@ -1,0 +1,327 @@
+<!doctype html>
+<!-- Copyright (c) 2026 geniuskey and SchoolBooks contributors.
+     Executable code: MIT (see ../../LICENSE-MIT).
+     Text, illustrations, questions and explanations: CC-BY-4.0 (see ../../LICENSE.md). -->
+<html lang="ko">
+<head>
+<!--head:start {"desc": "7시 50분에서 25분이 지나면 몇 시 몇 분일까요? 시곗바늘을 직접 돌려 보며 분침 한 바퀴가 60분이라는 것, 시각과 시간의 차이, 그리고 왜 하필 60인지 알아봐요."}-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1시간은 왜 100분이 아니라 60분일까요? · 초등 하루의 수학과 과학</title>
+<meta name="description" content="7시 50분에서 25분이 지나면 몇 시 몇 분일까요? 시곗바늘을 직접 돌려 보며 분침 한 바퀴가 60분이라는 것, 시각과 시간의 차이, 그리고 왜 하필 60인지 알아봐요.">
+<link rel="canonical" href="https://school.euiyun.com/elementary/chapters/clock.html">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<meta name="theme-color" content="#b03a2e">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SchoolBooks">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="1시간은 왜 100분이 아니라 60분일까요? · 초등 하루의 수학과 과학">
+<meta property="og:description" content="7시 50분에서 25분이 지나면 몇 시 몇 분일까요? 시곗바늘을 직접 돌려 보며 분침 한 바퀴가 60분이라는 것, 시각과 시간의 차이, 그리고 왜 하필 60인지 알아봐요.">
+<meta property="og:url" content="https://school.euiyun.com/elementary/chapters/clock.html">
+<meta property="og:image" content="https://school.euiyun.com/elementary/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Chapter","LearningResource"],"@id":"https://school.euiyun.com/elementary/chapters/clock.html#chapter","name":"1시간은 왜 100분이 아니라 60분일까요?","headline":"1시간은 왜 100분이 아니라 60분일까요? · 초등 하루의 수학과 과학","description":"7시 50분에서 25분이 지나면 몇 시 몇 분일까요? 시곗바늘을 직접 돌려 보며 분침 한 바퀴가 60분이라는 것, 시각과 시간의 차이, 그리고 왜 하필 60인지 알아봐요.","url":"https://school.euiyun.com/elementary/chapters/clock.html","position":1,"inLanguage":"ko","isAccessibleForFree":true,"learningResourceType":"인터랙티브 교재","educationalLevel":"초등 3–6학년 · 어른","about":"시각과 시간","image":"https://school.euiyun.com/elementary/og.png","isPartOf":{"@type":"Book","@id":"https://school.euiyun.com/elementary/#book","name":"하루의 수학과 과학 · SchoolBooks 초등","url":"https://school.euiyun.com/elementary/"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"SchoolBooks","item":"https://school.euiyun.com/"},{"@type":"ListItem","position":2,"name":"하루의 수학과 과학 · SchoolBooks 초등","item":"https://school.euiyun.com/elementary/"},{"@type":"ListItem","position":3,"name":"01. 1시간은 왜 100분이 아니라 60분일까요?","item":"https://school.euiyun.com/elementary/chapters/clock.html"}]}]}</script>
+<link rel="stylesheet" href="../../shared/css/style.css">
+<script src="../book.js"></script>
+<script src="../../shared/js/sim.js"></script>
+<script src="../../shared/js/common.js"></script>
+<!--head:end-->
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"3d6151a0abc94ede89285d462527fa80"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<style>
+  #clock-svg .num { font-size: 21px; text-anchor: middle; dominant-baseline: central; }
+  #clock-svg .num.now { fill: var(--accent); }
+  #clock-svg .band { fill: none; stroke: var(--glow-soft); stroke-width: 12; stroke-linecap: round; }
+  #clock-svg .hand-h { stroke: var(--ink); stroke-width: 8; stroke-linecap: round; }
+  #clock-svg .hand-m { stroke: var(--accent); stroke-width: 4.5; stroke-linecap: round; }
+  #clock-svg .lap { font-size: 19px; text-anchor: middle; fill: var(--accent); }
+  #clock-svg { touch-action: none; }
+</style>
+</head>
+<body data-book="elementary" data-page="chapter" data-chapter="clock">
+<main class="chapter">
+  <header class="ch-head">
+    <div class="ch-meta"><span class="clock-badge">07:00</span><span class="chip math">수학</span><span>읽는 시간 9분</span></div>
+    <h1>1시간은 왜 100분이 아니라 60분일까요?</h1>
+    <p class="unit">시각과 시간</p>
+  </header>
+
+  <section class="scene" aria-labelledby="scene-h">
+    <h2 id="scene-h" class="sr-only">장면</h2>
+    <figure>
+      <svg class="drawing" viewBox="0 0 480 290" role="img" aria-label="아침 7시, 침대 옆 탁자의 자명종이 울린다. 지우가 이불 밖으로 손을 뻗고, 고양이 두부는 이불 끝에 웅크리고 있다.">
+        <g filter="url(#sb-ink)">
+          <rect class="wash-cool" x="28" y="26" width="118" height="112" rx="3"/>
+          <path class="glow-halo" d="M50 138 A38 38 0 0 1 126 138 Z"/>
+          <path class="glow" d="M70 138 A18 18 0 0 1 106 138 Z" opacity=".85"/>
+          <path class="ink" d="M28 26 H146 V138 H28 Z M87 26 V138 M28 82 H146"/>
+          <path class="ink-thin" d="M18 144 H156"/>
+          <path class="wash-warm" d="M168 196 H252 V270 H168 Z"/>
+          <path class="ink" d="M168 196 H252 V270 H168 Z M168 232 H252 M206 214 h8"/>
+          <circle class="fill-card" cx="210" cy="164" r="26"/>
+          <circle class="ink" cx="210" cy="164" r="26"/>
+          <path class="ink" d="M192 142 a8 8 0 0 1 10 -6 M228 142 a8 8 0 0 0 -10 -6 M196 188 l-6 8 M224 188 l6 8"/>
+          <path class="ink" d="M210 164 V146" stroke-width="2.6"/>
+          <path class="ink" d="M210 164 L201 179" stroke-width="3.6"/>
+          <path class="ink-thin accent" style="stroke:var(--accent)" d="M176 140 l-10 -6 M174 156 l-12 -2 M244 140 l10 -6 M246 156 l12 -2"/>
+          <path class="ink" d="M262 128 V270 M466 196 V270"/>
+          <path class="ink" d="M262 128 C262 118 282 118 282 128 V200"/>
+          <path class="fill-card" d="M282 200 H466 V242 H282 Z"/>
+          <path class="wash-pink" d="M300 206 C330 176 380 184 404 196 C430 190 456 196 464 206 V240 H300 Z"/>
+          <path class="ink" d="M282 242 H466 M300 206 C330 176 380 184 404 196 C430 190 456 196 464 206"/>
+          <ellipse class="fill-card" cx="302" cy="192" rx="26" ry="11"/>
+          <ellipse class="ink-thin" cx="302" cy="192" rx="26" ry="11"/>
+          <circle class="fill-card" cx="306" cy="180" r="17"/>
+          <circle class="ink" cx="306" cy="180" r="17"/>
+          <path class="fill-ink" d="M288 182 C286 160 326 158 324 182 C320 170 296 168 288 182 Z"/>
+          <path class="ink-thin" d="M298 184 q3 2 6 0 M310 184 q3 2 6 0"/>
+          <path class="ink" d="M300 202 C284 196 264 186 240 180"/>
+          <circle class="fill-card" cx="238" cy="180" r="5"/>
+          <circle class="ink-thin" cx="238" cy="180" r="5"/>
+          <path class="fill-card" d="M410 196 C410 178 420 168 434 168 C448 168 456 180 454 196 Z"/>
+          <path class="ink" d="M410 196 C410 178 420 168 434 168 C448 168 456 180 454 196 M416 176 L418 160 L427 170 M441 170 L450 160 L452 176"/>
+          <path class="ink-thin" d="M422 180 q3 2 6 0 M438 180 q3 2 6 0"/>
+        </g>
+      </svg>
+    </figure>
+    <p>아침 7시, 자명종이 울려요. 지우는 7시 50분에 집을 나서요. 학교까지는 걸어서 25분이 걸려요.</p>
+    <p>두부가 이불 위에서 꼬리를 탁탁 쳐요. 몇 시에 도착하냐고 묻는 것 같아요.</p>
+    <p class="question">7시 50분에서 25분이 지나면, 몇 시 몇 분일까요?</p>
+  </section>
+
+  <section class="predict card" id="p-clock" data-id="clock" data-answer="b" aria-labelledby="p-h">
+    <h2 id="p-h" class="step-label">먼저 예상해 봐요</h2>
+    <p class="q">7시 50분 + 25분은?</p>
+    <div class="choices cols-3">
+      <button class="choice" data-v="a" data-echo="좋은 예상이에요. 50과 25를 더하면 75가 맞아요. 그런데 시계에는 75분이 없어요.">7시 75분</button>
+      <button class="choice" data-v="b" data-echo="예상이 맞았어요! 왜 8시 15분인지 볼까요?">8시 15분</button>
+      <button class="choice" data-v="c" data-echo="좋은 예상이에요. 아쉽게 10분이 더해졌어요. 시계를 따라가 봐요.">8시 25분</button>
+    </div>
+  </section>
+
+  <section class="lab card" id="clock-lab" aria-labelledby="lab-h">
+    <h2 id="lab-h" class="step-label">해 보기</h2>
+    <p>빨간 분침을 잡고 시계 방향으로 돌려 봐요. 7시 50분에 출발해서 지난 시간이 노랗게 쌓여요.</p>
+    <figure class="stage">
+      <svg class="drawing" id="clock-svg" viewBox="0 0 360 336" role="img" aria-label="분침을 돌리는 시계. 출발한 뒤 지난 시간이 바깥 띠로 표시된다.">
+        <g filter="url(#sb-ink)">
+          <circle class="fill-card" cx="180" cy="165" r="118"/>
+          <circle class="ink" cx="180" cy="165" r="118"/>
+        </g>
+        <g id="ticks"></g>
+        <g id="nums"></g>
+        <path id="band1" class="band" d=""/>
+        <path id="band2" class="band" d=""/>
+        <g id="flows"></g>
+        <g id="start-mark"></g>
+        <text id="lap" class="lap" x="180" y="327"></text>
+        <line id="hand-h" class="hand-h" x1="180" y1="165" x2="180" y2="105"/>
+        <line id="hand-m" class="hand-m" x1="180" y1="165" x2="180" y2="67"/>
+        <circle class="fill-ink" cx="180" cy="165" r="6"/>
+        <g id="grip" aria-label="분침" aria-valuemin="0" aria-valuemax="120">
+          <circle class="hit" r="26"/>
+          <circle class="knob" r="13"/>
+        </g>
+      </svg>
+    </figure>
+    <p class="readout" id="clock-read" aria-live="polite"></p>
+    <div class="controls">
+      <div class="btn-row">
+        <button class="btn" type="button" id="m5">5분 빼기</button>
+        <button class="btn primary" type="button" id="p5">5분 더하기</button>
+        <button class="btn" type="button" id="reset">처음으로</button>
+      </div>
+    </div>
+    <p class="simplified">초는 빼고 분까지만 다뤄요. 출발한 뒤 2시간까지 돌릴 수 있어요.</p>
+  </section>
+
+  <section class="flap" id="f-clock" data-for="p-clock" aria-labelledby="f-h">
+    <h2 id="f-h" class="step-label">증명하기</h2>
+    <div class="flap-body card">
+      <p><b>정답은 8시 15분이에요.</b></p>
+      <figure>
+        <svg class="drawing" viewBox="0 0 360 132" role="img" aria-label="50분에 25분을 더하면 75분. 그중 60분이 모여 1시간이 되어 8시가 되고, 15분이 남는다.">
+          <g filter="url(#sb-ink)">
+            <rect class="wash-warm" x="20" y="44" width="200" height="34"/>
+            <rect class="glow-halo" x="220" y="44" width="100" height="34"/>
+            <path class="ink" d="M20 44 H320 V78 H20 Z M220 44 V78"/>
+          </g>
+          <path class="ink-soft" d="M260 24 V100"/>
+          <text x="120" y="67" font-size="18" text-anchor="middle">7시에서 50분</text>
+          <text x="270" y="67" font-size="18" text-anchor="middle">25분</text>
+          <text x="260" y="18" font-size="17" text-anchor="middle" style="fill:var(--accent)">60분 = 1시간 → 8시</text>
+          <path class="ink-thin" d="M260 108 H320 M260 104 v8 M320 104 v8"/>
+          <text x="290" y="128" font-size="17" text-anchor="middle">남은 15분</text>
+          <path class="ink-thin" d="M20 108 H320 M20 104 v8" style="stroke:var(--ink-faint)"/>
+          <text x="80" y="128" font-size="17" text-anchor="middle" style="fill:var(--ink-faint)">모두 75분</text>
+        </svg>
+      </figure>
+      <p>50분에 25분을 더하면 75분이 맞아요. 하지만 분침은 60분이 되면 한 바퀴를 다 돌아요.</p>
+      <p>분침이 한 바퀴 돌 때 시침은 숫자 한 칸을 가요. 그래서 60분은 1시간이 되어 7시가 8시로 바뀌어요. 남은 15분을 붙이면 8시 15분이에요.</p>
+      <p>8시 15분처럼 "어느 한 때"를 <span class="term">시각</span>이라고 해요. 25분처럼 "두 시각 사이의 길이"는 <span class="term">시간</span>이라고 해요.</p>
+    </div>
+  </section>
+
+  <aside class="callout myth" aria-labelledby="m-h">
+    <h2 id="m-h" class="label">흔한 오해</h2>
+    <p><span class="claim">60은 아무 이유 없이 정한 숫자예요.</span><span class="no">아니에요</span></p>
+    <p>60은 2, 3, 4, 5, 6으로 모두 똑같이 나누어떨어져요. 반 시간은 30분, 3분의 1시간은 20분, 4분의 1시간은 15분이에요.</p>
+    <figure>
+      <svg class="drawing" viewBox="0 0 360 112" role="img" aria-label="60을 셋으로 나누면 20, 20, 20. 100을 셋으로 나누면 33.333…으로 끝나지 않는다.">
+        <g filter="url(#sb-ink)">
+          <rect class="glow-halo" x="70" y="12" width="270" height="34"/>
+          <path class="ink" d="M70 12 H340 V46 H70 Z M160 12 V46 M250 12 V46"/>
+          <rect class="wash-cool" x="70" y="66" width="270" height="34"/>
+          <path class="ink" d="M70 66 H340 V100 H70 Z M160 66 V100 M250 66 V100"/>
+        </g>
+        <text x="8" y="35" font-size="18">60분</text>
+        <text x="8" y="89" font-size="18">100분</text>
+        <text x="115" y="35" font-size="18" text-anchor="middle">20</text><text x="205" y="35" font-size="18" text-anchor="middle">20</text><text x="295" y="35" font-size="18" text-anchor="middle">20</text>
+        <text x="115" y="89" font-size="16" text-anchor="middle">33.333…</text><text x="205" y="89" font-size="16" text-anchor="middle">33.333…</text><text x="295" y="89" font-size="16" text-anchor="middle">33.333…</text>
+      </svg>
+    </figure>
+    <p>100은 3으로 나누면 33.333…처럼 끝나지 않아요. 시간을 여러 사람이 똑같이 나누기엔 60이 훨씬 편해요.</p>
+  </aside>
+
+  <section class="everyday" aria-labelledby="e-h">
+    <h2 id="e-h" class="step-label">생활 속에서</h2>
+    <div class="items">
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><circle class="fill-card" cx="28" cy="28" r="20"/><circle class="ink" cx="28" cy="28" r="20"/><path class="fill-ink" d="M28 20 l7 5 -3 8 h-8 l-3 -8 z"/><path class="ink-thin" d="M28 20 V8 M35 25 l11 -4 M32 33 l7 9 M24 33 l-7 9 M21 25 l-11 -4"/></g></svg>
+        <span>축구는 전반 45분, 후반 45분. 모두 90분이니 1시간 30분이에요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><rect class="fill-card" x="6" y="12" width="44" height="32" rx="3"/><path class="ink" d="M6 12 H50 V44 H6 Z M36 12 V44"/><rect class="wash-cool" x="10" y="17" width="22" height="22"/><path class="ink-thin" d="M40 20 h6 M40 26 h6 M40 32 h6"/></g></svg>
+        <span>전자레인지 "1:30"은 1분 30초, 곧 90초예요. 1분도 60초예요.</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><g filter="url(#sb-ink)"><circle class="fill-card" cx="28" cy="28" r="20"/><circle class="ink" cx="28" cy="28" r="20"/><path class="ink" d="M28 28 V14 M28 28 L37 33"/><path class="ink-thin accent" style="stroke:var(--accent)" d="M10 16 a22 22 0 0 1 10 -9 l-1 5 M46 40 a22 22 0 0 1 -10 9 l1 -5"/></g></svg>
+        <span>시침은 하루에 두 바퀴 돌아요. 12시간이 두 번이라 하루는 24시간이에요.</span>
+      </div>
+    </div>
+  </section>
+
+  <details class="more">
+    <summary>한 걸음 더: 60은 어디서 왔을까요?</summary>
+    <p>아주 옛날 메소포타미아(지금의 이라크 땅)에서는 수를 60씩 묶어 셌어요. 이 셈법이 별을 관찰하는 천문학으로 이어져, 지금의 60분과 60초, 그리고 각도의 단위로 남았어요.</p>
+    <p>왜 하필 60을 골랐는지는 학자들도 확실히 모른다고 해요. 다만 여러 가지로 똑같이 나누기 편해서 지금까지 쓰여요.</p>
+    <p>1793년 프랑스는 하루를 10시간, 1시간을 100분으로 바꾼 시계를 쓰자고 정했어요. 하지만 사람들이 익숙한 시계를 버리지 않았고, 1795년에 그만두었어요.</p>
+  </details>
+
+  <aside class="callout grownup" aria-labelledby="g-h">
+    <h2 id="g-h" class="label">어른의 쓸모</h2>
+    <p>근무 시간을 계산할 때 "1시간 30분"을 1.3시간으로 쓰면 틀려요. 30분은 60분의 반이라 1.5시간이에요. 표 계산 프로그램에서 시간을 더할 때도 60에서 한 번 올려야 해요.</p>
+  </aside>
+
+  <section class="wrapup" aria-labelledby="w-h">
+    <h2 id="w-h" class="step-label">오늘의 한 줄</h2>
+    <p class="oneline">분침이 한 바퀴 돌면 60분, 시침은 한 칸.<br>그래서 분이 60을 넘으면 1시간으로 올려요.</p>
+    <div class="quiz" data-stamp="clock">
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">8시 40분에서 30분이 지나면 몇 시 몇 분일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="40과 30을 더하면 70분이에요. 60분은 1시간으로 올려 볼까요?">8시 70분</button>
+          <button class="opt">9시 10분</button>
+          <button class="opt" data-hint="20분만 더 가면 9시예요. 남은 10분을 붙여 봐요.">9시 30분</button>
+        </div>
+        <p class="why">70분 중 60분이 1시간이 되어 9시, 남은 10분을 붙여요.</p>
+      </div>
+      <div class="quiz-q" data-answer="1">
+        <p class="qtext">분침이 한 바퀴 도는 동안 시침은 어떻게 될까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="시침이 한 바퀴 돌려면 12시간이 걸려요.">시침도 한 바퀴 돌아요</button>
+          <button class="opt">숫자 한 칸을 가요</button>
+          <button class="opt" data-hint="해 보기에서 분침을 한 바퀴 돌려 보세요. 짧은 바늘도 움직여요.">그대로 있어요</button>
+        </div>
+        <p class="why">60분 = 1시간이라 시침은 숫자 한 칸을 가요.</p>
+      </div>
+      <div class="quiz-q" data-answer="2">
+        <p class="qtext">2시간 30분은 모두 몇 분일까요?</p>
+        <div class="opts">
+          <button class="opt" data-hint="2와 30을 붙여 쓴 수예요. 1시간은 100분이 아니라 60분이었죠?">230분</button>
+          <button class="opt" data-hint="1시간 30분이 90분이에요. 1시간이 더 있어요.">90분</button>
+          <button class="opt">150분</button>
+        </div>
+        <p class="why">60분 + 60분 + 30분 = 150분이에요.</p>
+      </div>
+    </div>
+    <div class="stamp-spot" aria-live="polite"></div>
+    <p class="stamp-msg"></p>
+  </section>
+</main>
+
+<script>
+SB.ready(() => {
+  const S = SB.svg, $ = (id) => document.getElementById(id);
+  const CX = 180, CY = 165, START = 7 * 60 + 50, MAX = 120;
+  const svg = $('clock-svg');
+  const polar = (r, deg) => { const a = (deg - 90) * Math.PI / 180; return { x: CX + r * Math.cos(a), y: CY + r * Math.sin(a) }; };
+  function arc(r, a0, a1) {
+    if (a1 - a0 < 0.5) return '';
+    a1 = Math.min(a1, a0 + 359.5);
+    const p = polar(r, a0), q = polar(r, a1);
+    return `M${p.x.toFixed(1)} ${p.y.toFixed(1)} A${r} ${r} 0 ${a1 - a0 > 180 ? 1 : 0} 1 ${q.x.toFixed(1)} ${q.y.toFixed(1)}`;
+  }
+
+  // 눈금과 숫자
+  for (let i = 0; i < 60; i++) {
+    const a = polar(i % 5 ? 109 : 104, i * 6), b = polar(114, i * 6);
+    S('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: i % 5 ? 'ink-thin' : 'ink' }, $('ticks'));
+  }
+  const nums = [];
+  for (let h = 1; h <= 12; h++) { const p = polar(88, h * 30); nums[h] = S('text', { x: p.x, y: p.y, class: 'num', text: h }, $('nums')); }
+
+  // 출발 표시(7시 50분 = 분침 300도)
+  const s0 = polar(122, 300), s1 = polar(152, 300), st = polar(152, 292);
+  S('line', { x1: s0.x, y1: s0.y, x2: s1.x, y2: s1.y, class: 'ink', style: 'stroke:var(--accent)' }, $('start-mark'));
+  S('text', { x: st.x - 4, y: st.y - 6, 'font-size': 17, 'text-anchor': 'middle', text: '출발', style: 'fill:var(--accent)' }, $('start-mark'));
+
+  const flow1 = SB.flow($('flows'), { path: $('band1'), n: 7, kind: 'glow', r: 3.2, speed: 45 });
+  const flow2 = SB.flow($('flows'), { path: $('band2'), n: 7, kind: 'glow', r: 3.2, speed: 45 });
+  const grip = $('grip');
+  let el = 0;
+
+  function draw() {
+    const total = START + el;
+    const minDeg = (total % 60) * 6, hourDeg = ((total / 60) % 12) * 30;
+    $('hand-m').setAttribute('transform', `rotate(${minDeg} ${CX} ${CY})`);
+    $('hand-h').setAttribute('transform', `rotate(${hourDeg} ${CX} ${CY})`);
+    const g = polar(98, minDeg);
+    grip.setAttribute('transform', `translate(${g.x.toFixed(1)} ${g.y.toFixed(1)})`);
+    $('band1').setAttribute('d', arc(128, 300, 300 + Math.min(el, 60) * 6));
+    $('band2').setAttribute('d', el > 60 ? arc(142, 300, 300 + (el - 60) * 6) : '');
+    flow1.g.style.display = el > 0.5 ? '' : 'none';
+    flow2.g.style.display = el > 60.5 ? '' : 'none';
+    flow1.place(); flow2.place();
+    const m = Math.round(el), now = START + m;
+    $('lap').textContent = m >= 60 ? (m >= 120 ? '두 바퀴 = 120분 = 2시간' : '한 바퀴 = 60분 = 1시간') : '';
+    const hNow = Math.floor(now / 60) % 12 || 12;
+    nums.forEach((t, h) => t && t.classList.toggle('now', h === hNow));
+    $('clock-read').innerHTML = m ? `<b>${SIM.koTime(now)}</b> · 출발하고 <b>${SIM.koDuration(m)}</b> 지났어요` : '지금은 <b>7시 50분</b>, 집을 나서요';
+    grip.setAttribute('aria-valuenow', m);
+    grip.setAttribute('aria-valuetext', SIM.koTime(now));
+    $('m5').disabled = m <= 0; $('p5').disabled = m >= MAX;
+  }
+
+  function set(v) { el = SIM.clamp(v, 0, MAX); draw(); }
+  SB.drag(grip, {
+    svg, area: svg,
+    onMove(p) {
+      const deg = (Math.atan2(p.x - CX, -(p.y - CY)) * 180 / Math.PI + 360) % 360;
+      const cur = ((START + el) % 60) * 6;
+      set(el + SIM.unwrapDeg(deg - cur) / 6);
+    },
+    onEnd() { set(Math.round(el)); },
+    onKey(dx, dy) { set(Math.round(el) + (dx || -dy)); }
+  });
+  $('p5').addEventListener('click', () => set(Math.round(el) + 5));
+  $('m5').addEventListener('click', () => set(Math.round(el) - 5));
+  $('reset').addEventListener('click', () => set(0));
+  draw();
+});
+</script>
+</body>
+</html>

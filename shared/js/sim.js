@@ -44,6 +44,15 @@
   // 시곗바늘 각도(12시 방향 0도, 시계 방향): 분침은 1분에 6도, 시침은 1분에 0.5도
   function clockAngles(totalMin) { const { h, m } = hm(totalMin); return { hour: ((h % 12) * 60 + m) * 0.5, minute: m * 6 }; }
 
+  // 분 → "8시 15분" (0분이면 "8시", 12시간제 아님: 24시간 그대로)
+  function koTime(totalMin) { const { h, m } = hm(totalMin); return h + "시" + (m ? " " + m + "분" : ""); }
+  // 분 → "1시간 5분", "25분", "2시간"
+  function koDuration(min) { const h = Math.floor(min / 60), m = Math.round(min - h * 60); return (h ? h + "시간" : "") + (h && m ? " " : "") + (m || !h ? m + "분" : ""); }
+  // 경계를 넘는 각도 차이(도)를 -180~180으로: 시곗바늘이 12를 지나도 끊기지 않게 돈다
+  const unwrapDeg = (d) => ((d % 360) + 540) % 360 - 180;
+  // n의 약수
+  function divisors(n) { const out = []; for (let i = 1; i <= n; i++) if (n % i === 0) out.push(i); return out; }
+
   /* ---------- 분수 ---------- */
   function simplify(n, d) { const g = gcd(n, d) || 1; return [n / g, d / g]; }
   const sameFraction = (a, b, c, d) => a * d === b * c;
@@ -89,7 +98,7 @@
   const SIM = {
     clamp, lerp, round, deg, rad, gcd, lcm, rng, randInt,
     foldLayers, foldThickness, foldSize,
-    hm, fmtHM, clockAngles,
+    hm, fmtHM, clockAngles, koTime, koDuration, unwrapDeg, divisors,
     simplify, sameFraction,
     rectArea, rectPerimeter, rectsWithPerimeter,
     shadowLength, diceSumWays, rollSums, mean, median, compound, simpleInterest, dist, moonLitFraction

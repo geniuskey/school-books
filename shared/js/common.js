@@ -98,7 +98,7 @@
     if ($("#sb-defs")) return;
     const s = el("div", { id: "sb-defs", "aria-hidden": "true", style: "position:absolute;width:0;height:0;overflow:hidden" });
     s.innerHTML = `<svg width="0" height="0"><defs>
-      <filter id="sb-ink" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>
+      <filter id="sb-ink" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="1" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/></filter>
       <filter id="sb-rough" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.2 1.45" result="holes"/><feComposite in="SourceGraphic" in2="holes" operator="in" result="ink"/><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="2" result="w"/><feDisplacementMap in="ink" in2="w" scale="2.2"/></filter>
     </defs></svg>`;
     doc.body.prepend(s);
